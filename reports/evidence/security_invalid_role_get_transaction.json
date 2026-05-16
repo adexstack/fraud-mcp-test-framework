@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:18:11.938935+00:00",
+  "captured_at": "2026-05-16T22:45:01.649760+00:00",
   "evidence_type": "test_evidence",
   "name": "security_invalid_role_get_transaction",
   "payload": {
@@ -13,11 +13,11 @@
         "transaction_id": "txn_low_risk_001"
       },
       "error": null,
-      "latency_ms": 375.054,
+      "latency_ms": 376.09,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"trace_id\": \"80674df5-06ac-4c62-ab90-d5cf4c218773\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"trace_id\": \"d7665fc9-d487-427c-85cd-b5472030f88f\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -28,13 +28,13 @@
           "message": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
           "ok": false,
           "retryable": false,
-          "trace_id": "80674df5-06ac-4c62-ab90-d5cf4c218773"
+          "trace_id": "d7665fc9-d487-427c-85cd-b5472030f88f"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:18:11.563331+00:00",
+      "timestamp": "2026-05-16T22:45:01.272897+00:00",
       "tool_name": "get_transaction",
-      "trace_id": "cb65f40c-7eda-4724-9f26-3698c67d9e76"
+      "trace_id": "fe7807f5-4a2b-42b8-969a-72fe9d625c81"
     },
     "trace": {
       "rpc": [
@@ -48,7 +48,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 408.109,
+          "latency_ms": 458.968,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -97,10 +97,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/security/test_security_boundaries.py::test_invalid_role_is_rejected",
-          "timestamp": "2026-05-16T22:18:11.563297+00:00",
+          "timestamp": "2026-05-16T22:45:01.272839+00:00",
           "tool_name": "initialize",
-          "trace_id": "57874b3b-c4ee-4c40-ab7b-5ca459ea5a44",
-          "workflow_id": "3a1e26eb-8c3e-483d-9f16-bba7875649ad"
+          "trace_id": "9d7f4f07-67cb-405b-af05-18c74087b00c",
+          "workflow_id": "4c806ea2-0c50-4d91-9082-f43349798326"
         },
         {
           "error": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
@@ -108,7 +108,7 @@
             "role": "external_attacker",
             "transaction_id": "txn_low_risk_001"
           },
-          "latency_ms": 374.858,
+          "latency_ms": 375.769,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -128,7 +128,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"trace_id\": \"80674df5-06ac-4c62-ab90-d5cf4c218773\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"trace_id\": \"d7665fc9-d487-427c-85cd-b5472030f88f\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -139,7 +139,7 @@
                 "message": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "80674df5-06ac-4c62-ab90-d5cf4c218773"
+                "trace_id": "d7665fc9-d487-427c-85cd-b5472030f88f"
               }
             }
           },
@@ -150,13 +150,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/security/test_security_boundaries.py::test_invalid_role_is_rejected",
-          "timestamp": "2026-05-16T22:18:11.938342+00:00",
+          "timestamp": "2026-05-16T22:45:01.648929+00:00",
           "tool_name": "get_transaction",
-          "trace_id": "cb65f40c-7eda-4724-9f26-3698c67d9e76",
-          "workflow_id": "3a1e26eb-8c3e-483d-9f16-bba7875649ad"
+          "trace_id": "fe7807f5-4a2b-42b8-969a-72fe9d625c81",
+          "workflow_id": "4c806ea2-0c50-4d91-9082-f43349798326"
         }
       ],
-      "workflow_id": "3a1e26eb-8c3e-483d-9f16-bba7875649ad"
+      "workflow_id": "4c806ea2-0c50-4d91-9082-f43349798326"
     }
   }
 }

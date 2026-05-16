@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:18:00.019262+00:00",
+  "captured_at": "2026-05-16T22:44:50.529520+00:00",
   "evidence_type": "test_evidence",
   "name": "safety_incomplete_evidence_summary",
   "payload": {
@@ -19,14 +19,14 @@
           "message": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
           "ok": false,
           "retryable": false,
-          "trace_id": "c0bee1d6-370c-47e0-9c91-04f694ffc5c1"
+          "trace_id": "40ae51df-537a-4486-8ad4-53bacc42a87a"
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 360.3,
+          "latency_ms": 382.066,
           "success": true,
-          "timestamp": "2026-05-16T22:17:59.658438+00:00",
-          "trace_id": "cb2e2e40-3c3e-4afe-9c59-077800a53b0d"
+          "timestamp": "2026-05-16T22:44:50.146643+00:00",
+          "trace_id": "2701ef1a-81df-4593-8286-392d6b002bad"
         },
         "tool_name": "generate_investigation_summary"
       }
@@ -43,7 +43,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 401.302,
+          "latency_ms": 424.861,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -92,10 +92,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/safety/test_policy_grounding.py::test_summary_includes_uncertainty_wording_when_evidence_is_incomplete",
-          "timestamp": "2026-05-16T22:17:59.658341+00:00",
+          "timestamp": "2026-05-16T22:44:50.146583+00:00",
           "tool_name": "initialize",
-          "trace_id": "9421ad6a-8d99-436d-8694-4d03136a8ec6",
-          "workflow_id": "c5dace34-abca-4a6f-a466-40f9d40bb2b8"
+          "trace_id": "0e7ab76d-e93f-40c3-aa8b-656f1eac05e1",
+          "workflow_id": "5a969c82-1c65-4396-b13a-df94dab720f8"
         },
         {
           "error": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
@@ -103,7 +103,7 @@
             "case_id": "case_missing_summary_001",
             "role": "investigator_manager"
           },
-          "latency_ms": 359.983,
+          "latency_ms": 381.811,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -123,7 +123,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown or incomplete evidence: Unknown case: case_missing_summary_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown or incomplete evidence: Unknown case: case_missing_summary_001\",\n  \"trace_id\": \"c0bee1d6-370c-47e0-9c91-04f694ffc5c1\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown or incomplete evidence: Unknown case: case_missing_summary_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown or incomplete evidence: Unknown case: case_missing_summary_001\",\n  \"trace_id\": \"40ae51df-537a-4486-8ad4-53bacc42a87a\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -134,7 +134,7 @@
                 "message": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "c0bee1d6-370c-47e0-9c91-04f694ffc5c1"
+                "trace_id": "40ae51df-537a-4486-8ad4-53bacc42a87a"
               }
             }
           },
@@ -145,13 +145,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/safety/test_policy_grounding.py::test_summary_includes_uncertainty_wording_when_evidence_is_incomplete",
-          "timestamp": "2026-05-16T22:18:00.018691+00:00",
+          "timestamp": "2026-05-16T22:44:50.528669+00:00",
           "tool_name": "generate_investigation_summary",
-          "trace_id": "cb2e2e40-3c3e-4afe-9c59-077800a53b0d",
-          "workflow_id": "c5dace34-abca-4a6f-a466-40f9d40bb2b8"
+          "trace_id": "2701ef1a-81df-4593-8286-392d6b002bad",
+          "workflow_id": "5a969c82-1c65-4396-b13a-df94dab720f8"
         }
       ],
-      "workflow_id": "c5dace34-abca-4a6f-a466-40f9d40bb2b8"
+      "workflow_id": "5a969c82-1c65-4396-b13a-df94dab720f8"
     }
   }
 }

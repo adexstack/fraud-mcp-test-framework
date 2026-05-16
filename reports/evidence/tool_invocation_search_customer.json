@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:17:38.392836+00:00",
+  "captured_at": "2026-05-16T22:44:29.336280+00:00",
   "evidence_type": "test_evidence",
   "name": "tool_invocation_search_customer",
   "payload": {
@@ -11,11 +11,11 @@
         "customer_id": "cust_001"
       },
       "error": null,
-      "latency_ms": 409.068,
+      "latency_ms": 379.298,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown customer: cust_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown customer: cust_001\",\n  \"trace_id\": \"85f91818-6bdf-4760-9431-7547a56a208a\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown customer: cust_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown customer: cust_001\",\n  \"trace_id\": \"a147c350-4c1d-48e5-965a-b3389ca778bc\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -26,13 +26,13 @@
           "message": "Unknown customer: cust_001",
           "ok": false,
           "retryable": false,
-          "trace_id": "85f91818-6bdf-4760-9431-7547a56a208a"
+          "trace_id": "a147c350-4c1d-48e5-965a-b3389ca778bc"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:17:37.982889+00:00",
+      "timestamp": "2026-05-16T22:44:28.956141+00:00",
       "tool_name": "search_customer",
-      "trace_id": "f043eeae-efb7-4c75-b591-c1ad8c5b6808"
+      "trace_id": "d5b247c1-46ab-4593-bb0f-668401588082"
     },
     "tool_name": "search_customer",
     "trace": {
@@ -47,7 +47,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 470.252,
+          "latency_ms": 363.34,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -96,17 +96,17 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[search_customer]",
-          "timestamp": "2026-05-16T22:17:37.982805+00:00",
+          "timestamp": "2026-05-16T22:44:28.955999+00:00",
           "tool_name": "initialize",
-          "trace_id": "4d1faa95-25a0-40f5-b1ed-38b665844a62",
-          "workflow_id": "ebad431d-13d8-44b0-8185-6161f7e5ffb0"
+          "trace_id": "99503435-ffc6-436d-9e97-2b83996731cf",
+          "workflow_id": "e4b4ff19-7850-4f62-af7f-5b6a73122008"
         },
         {
           "error": "Unknown customer: cust_001",
           "input_arguments": {
             "customer_id": "cust_001"
           },
-          "latency_ms": 408.79,
+          "latency_ms": 379.088,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -125,7 +125,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown customer: cust_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown customer: cust_001\",\n  \"trace_id\": \"85f91818-6bdf-4760-9431-7547a56a208a\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown customer: cust_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown customer: cust_001\",\n  \"trace_id\": \"a147c350-4c1d-48e5-965a-b3389ca778bc\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -136,7 +136,7 @@
                 "message": "Unknown customer: cust_001",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "85f91818-6bdf-4760-9431-7547a56a208a"
+                "trace_id": "a147c350-4c1d-48e5-965a-b3389ca778bc"
               }
             }
           },
@@ -147,13 +147,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[search_customer]",
-          "timestamp": "2026-05-16T22:17:38.391916+00:00",
+          "timestamp": "2026-05-16T22:44:29.335400+00:00",
           "tool_name": "search_customer",
-          "trace_id": "f043eeae-efb7-4c75-b591-c1ad8c5b6808",
-          "workflow_id": "ebad431d-13d8-44b0-8185-6161f7e5ffb0"
+          "trace_id": "d5b247c1-46ab-4593-bb0f-668401588082",
+          "workflow_id": "e4b4ff19-7850-4f62-af7f-5b6a73122008"
         }
       ],
-      "workflow_id": "ebad431d-13d8-44b0-8185-6161f7e5ffb0"
+      "workflow_id": "e4b4ff19-7850-4f62-af7f-5b6a73122008"
     }
   }
 }

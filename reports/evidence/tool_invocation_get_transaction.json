@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:17:39.176406+00:00",
+  "captured_at": "2026-05-16T22:44:30.107293+00:00",
   "evidence_type": "test_evidence",
   "name": "tool_invocation_get_transaction",
   "payload": {
@@ -11,11 +11,11 @@
         "transaction_id": "txn_001"
       },
       "error": null,
-      "latency_ms": 345.794,
+      "latency_ms": 355.784,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown transaction: txn_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown transaction: txn_001\",\n  \"trace_id\": \"4173f0e2-736a-487c-9ff2-9c28fda4ba5d\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown transaction: txn_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown transaction: txn_001\",\n  \"trace_id\": \"8c108bc5-c1a0-40fd-86a6-17546268816f\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -26,13 +26,13 @@
           "message": "Unknown transaction: txn_001",
           "ok": false,
           "retryable": false,
-          "trace_id": "4173f0e2-736a-487c-9ff2-9c28fda4ba5d"
+          "trace_id": "8c108bc5-c1a0-40fd-86a6-17546268816f"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:17:38.830218+00:00",
+      "timestamp": "2026-05-16T22:44:29.751069+00:00",
       "tool_name": "get_transaction",
-      "trace_id": "cabbe686-6227-40e1-a585-242469333a8f"
+      "trace_id": "27b4550f-a7c3-430b-a81b-e0800f414635"
     },
     "tool_name": "get_transaction",
     "trace": {
@@ -47,7 +47,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 416.527,
+          "latency_ms": 394.341,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -96,17 +96,17 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[get_transaction]",
-          "timestamp": "2026-05-16T22:17:38.830059+00:00",
+          "timestamp": "2026-05-16T22:44:29.750968+00:00",
           "tool_name": "initialize",
-          "trace_id": "5081763e-d3fe-47b3-9885-ef7011f01451",
-          "workflow_id": "2672c799-e31c-4428-ac76-63b96c1cc149"
+          "trace_id": "41e3517f-b52a-4aea-9c2c-c2694e6a7a5f",
+          "workflow_id": "ef341632-e009-4893-bd51-0c199984e66b"
         },
         {
           "error": "Unknown transaction: txn_001",
           "input_arguments": {
             "transaction_id": "txn_001"
           },
-          "latency_ms": 345.63,
+          "latency_ms": 355.48,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -125,7 +125,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown transaction: txn_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown transaction: txn_001\",\n  \"trace_id\": \"4173f0e2-736a-487c-9ff2-9c28fda4ba5d\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown transaction: txn_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown transaction: txn_001\",\n  \"trace_id\": \"8c108bc5-c1a0-40fd-86a6-17546268816f\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -136,7 +136,7 @@
                 "message": "Unknown transaction: txn_001",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "4173f0e2-736a-487c-9ff2-9c28fda4ba5d"
+                "trace_id": "8c108bc5-c1a0-40fd-86a6-17546268816f"
               }
             }
           },
@@ -147,13 +147,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[get_transaction]",
-          "timestamp": "2026-05-16T22:17:39.175986+00:00",
+          "timestamp": "2026-05-16T22:44:30.106734+00:00",
           "tool_name": "get_transaction",
-          "trace_id": "cabbe686-6227-40e1-a585-242469333a8f",
-          "workflow_id": "2672c799-e31c-4428-ac76-63b96c1cc149"
+          "trace_id": "27b4550f-a7c3-430b-a81b-e0800f414635",
+          "workflow_id": "ef341632-e009-4893-bd51-0c199984e66b"
         }
       ],
-      "workflow_id": "2672c799-e31c-4428-ac76-63b96c1cc149"
+      "workflow_id": "ef341632-e009-4893-bd51-0c199984e66b"
     }
   }
 }

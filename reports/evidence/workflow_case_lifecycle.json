@@ -1,10 +1,10 @@
 {
-  "captured_at": "2026-05-16T22:18:15.739888+00:00",
+  "captured_at": "2026-05-16T22:45:05.276453+00:00",
   "evidence_type": "test_evidence",
   "name": "workflow_case_lifecycle",
   "payload": {
     "metadata": {
-      "case_id": "case_0010",
+      "case_id": "case_0024",
       "initial_status": "OPEN",
       "risk_level": "CRITICAL",
       "transaction_id": "txn_multi_signal_001",
@@ -42,10 +42,10 @@
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 369.84,
+          "latency_ms": 377.494,
           "success": true,
-          "timestamp": "2026-05-16T22:18:13.123392+00:00",
-          "trace_id": "593d2b8a-10a8-473a-837d-df75976375ed"
+          "timestamp": "2026-05-16T22:45:02.859611+00:00",
+          "trace_id": "f7fdbd8f-f1a3-42b9-a01f-4b8dcec1096b"
         },
         "tool_name": "get_transaction"
       },
@@ -144,10 +144,10 @@
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 404.104,
+          "latency_ms": 323.607,
           "success": true,
-          "timestamp": "2026-05-16T22:18:13.493277+00:00",
-          "trace_id": "cbdba628-1382-4e54-9ac0-5af792fc3111"
+          "timestamp": "2026-05-16T22:45:03.237225+00:00",
+          "trace_id": "35316789-02d4-43c4-b4d0-67a89e788f56"
         },
         "tool_name": "score_transaction_risk"
       },
@@ -158,12 +158,12 @@
         },
         "name": "create_fraud_case",
         "structured_content": {
-          "case_id": "case_0010",
-          "created_at": "2026-05-16T22:18:14.209156Z",
+          "case_id": "case_0024",
+          "created_at": "2026-05-16T22:45:03.826126Z",
           "customer_id": "cust_pep_001",
           "data": {
-            "case_id": "case_0010",
-            "created_at": "2026-05-16T22:18:14.209156Z",
+            "case_id": "case_0024",
+            "created_at": "2026-05-16T22:45:03.826126Z",
             "customer_id": "cust_pep_001",
             "notes": [
               "Risk level: critical"
@@ -184,55 +184,55 @@
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 378.729,
+          "latency_ms": 364.506,
           "success": true,
-          "timestamp": "2026-05-16T22:18:13.897543+00:00",
-          "trace_id": "c12a5da2-ba64-423d-98da-a1a5bc1b6744"
+          "timestamp": "2026-05-16T22:45:03.560940+00:00",
+          "trace_id": "510965d1-fb1e-472d-ace7-837922270cda"
         },
         "tool_name": "create_fraud_case"
       },
       {
         "arguments": {
-          "case_id": "case_0010",
+          "case_id": "case_0024",
           "role": "investigator_manager"
         },
         "name": "get_initial_case_status",
         "structured_content": {
           "assigned_to": "fraud_operations",
-          "case_id": "case_0010",
+          "case_id": "case_0024",
           "data": {
             "assigned_to": "fraud_operations",
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "status": "open",
-            "updated_at": "2026-05-16T22:18:14.209156+00:00"
+            "updated_at": "2026-05-16T22:45:03.826126+00:00"
           },
           "ok": true,
           "status": "open",
-          "updated_at": "2026-05-16T22:18:14.209156+00:00"
+          "updated_at": "2026-05-16T22:45:03.826126+00:00"
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 361.771,
+          "latency_ms": 343.637,
           "success": true,
-          "timestamp": "2026-05-16T22:18:14.276481+00:00",
-          "trace_id": "bf7c2084-94bb-45dc-92b9-9a1c35f1181d"
+          "timestamp": "2026-05-16T22:45:03.925486+00:00",
+          "trace_id": "e93c8610-2c32-4fff-a47a-7751ed171c58"
         },
         "tool_name": "get_case_status"
       },
       {
         "arguments": {
-          "case_id": "case_0010",
+          "case_id": "case_0024",
           "reason": "Escalated by lifecycle workflow validation",
           "role": "investigator_manager"
         },
         "name": "escalate_case",
         "structured_content": {
-          "case_id": "case_0010",
-          "created_at": "2026-05-16T22:18:14.209156Z",
+          "case_id": "case_0024",
+          "created_at": "2026-05-16T22:45:03.826126Z",
           "customer_id": "cust_pep_001",
           "data": {
-            "case_id": "case_0010",
-            "created_at": "2026-05-16T22:18:14.209156Z",
+            "case_id": "case_0024",
+            "created_at": "2026-05-16T22:45:03.826126Z",
             "customer_id": "cust_pep_001",
             "escalation_reason": "Escalated by lifecycle workflow validation",
             "notes": [
@@ -243,7 +243,7 @@
             "risk_score": 100,
             "status": "escalated",
             "transaction_id": "txn_multi_signal_001",
-            "updated_at": "2026-05-16T22:18:14.906203+00:00"
+            "updated_at": "2026-05-16T22:45:04.542993+00:00"
           },
           "escalation_reason": "Escalated by lifecycle workflow validation",
           "notes": [
@@ -255,56 +255,56 @@
           "risk_score": 100,
           "status": "escalated",
           "transaction_id": "txn_multi_signal_001",
-          "updated_at": "2026-05-16T22:18:14.906203+00:00"
+          "updated_at": "2026-05-16T22:45:04.542993+00:00"
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 333.282,
+          "latency_ms": 361.034,
           "success": true,
-          "timestamp": "2026-05-16T22:18:14.638398+00:00",
-          "trace_id": "694e4a40-97ff-4753-b8b9-056902f1d34c"
+          "timestamp": "2026-05-16T22:45:04.269176+00:00",
+          "trace_id": "19896fda-23c4-4cf0-b838-1a0e1b7ac4f5"
         },
         "tool_name": "escalate_case"
       },
       {
         "arguments": {
-          "case_id": "case_0010",
+          "case_id": "case_0024",
           "role": "investigator_manager"
         },
         "name": "get_updated_case_status",
         "structured_content": {
           "assigned_to": "fraud_operations",
-          "case_id": "case_0010",
+          "case_id": "case_0024",
           "data": {
             "assigned_to": "fraud_operations",
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "status": "escalated",
-            "updated_at": "2026-05-16T22:18:14.209156+00:00"
+            "updated_at": "2026-05-16T22:45:03.826126+00:00"
           },
           "ok": true,
           "status": "escalated",
-          "updated_at": "2026-05-16T22:18:14.209156+00:00"
+          "updated_at": "2026-05-16T22:45:03.826126+00:00"
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 345.542,
+          "latency_ms": 321.858,
           "success": true,
-          "timestamp": "2026-05-16T22:18:14.971740+00:00",
-          "trace_id": "b0131c85-fead-4294-abbb-733b5e33cc02"
+          "timestamp": "2026-05-16T22:45:04.630260+00:00",
+          "trace_id": "6193b5d5-b631-4395-95f7-481c83065515"
         },
         "tool_name": "get_case_status"
       },
       {
         "arguments": {
-          "case_id": "case_0010",
+          "case_id": "case_0024",
           "role": "investigator_manager"
         },
         "name": "generate_investigation_summary",
         "structured_content": {
-          "case_id": "case_0010",
+          "case_id": "case_0024",
           "customer_id": "cust_pep_001",
           "data": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "customer_id": "cust_pep_001",
             "escalation_reason": "Escalated by lifecycle workflow validation",
             "findings": [
@@ -316,7 +316,7 @@
               "unusual_hour",
               "new_beneficiary"
             ],
-            "generated_at": "2026-05-16T22:18:15.658003+00:00",
+            "generated_at": "2026-05-16T22:45:05.207657+00:00",
             "recommended_action": "ESCALATE",
             "risk_level": "critical",
             "risk_score": 100,
@@ -358,7 +358,7 @@
               }
             ],
             "status": "escalated",
-            "summary": "Case case_0010 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
+            "summary": "Case case_0024 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
             "transaction_id": "txn_multi_signal_001"
           },
           "escalation_reason": "Escalated by lifecycle workflow validation",
@@ -371,7 +371,7 @@
             "unusual_hour",
             "new_beneficiary"
           ],
-          "generated_at": "2026-05-16T22:18:15.658003+00:00",
+          "generated_at": "2026-05-16T22:45:05.207657+00:00",
           "ok": true,
           "recommended_action": "ESCALATE",
           "risk_level": "critical",
@@ -414,15 +414,15 @@
             }
           ],
           "status": "escalated",
-          "summary": "Case case_0010 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
+          "summary": "Case case_0024 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
           "transaction_id": "txn_multi_signal_001"
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 418.702,
+          "latency_ms": 323.254,
           "success": true,
-          "timestamp": "2026-05-16T22:18:15.317372+00:00",
-          "trace_id": "7e3c41c3-5d14-44b7-bfcd-edb0fc042ce7"
+          "timestamp": "2026-05-16T22:45:04.952189+00:00",
+          "trace_id": "9f1787e7-2406-4527-9fd9-da95d61a6fa0"
         },
         "tool_name": "generate_investigation_summary"
       }
@@ -439,7 +439,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 432.717,
+          "latency_ms": 377.256,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -488,10 +488,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:13.123245+00:00",
+          "timestamp": "2026-05-16T22:45:02.859478+00:00",
           "tool_name": "initialize",
-          "trace_id": "f62ea518-073d-42b9-af47-e3d1bf646c4f",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "74a4d90f-3cf4-4e6e-95d5-0277e39fba80",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         },
         {
           "error": null,
@@ -499,7 +499,7 @@
             "role": "investigator_manager",
             "transaction_id": "txn_multi_signal_001"
           },
-          "latency_ms": 369.751,
+          "latency_ms": 377.233,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -558,10 +558,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:13.493224+00:00",
+          "timestamp": "2026-05-16T22:45:03.237064+00:00",
           "tool_name": "get_transaction",
-          "trace_id": "593d2b8a-10a8-473a-837d-df75976375ed",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "f7fdbd8f-f1a3-42b9-a01f-4b8dcec1096b",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         },
         {
           "error": null,
@@ -569,7 +569,7 @@
             "role": "investigator_manager",
             "transaction_id": "txn_multi_signal_001"
           },
-          "latency_ms": 403.56,
+          "latency_ms": 323.292,
           "method": "tools/call",
           "request": {
             "id": 3,
@@ -692,10 +692,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:13.897316+00:00",
+          "timestamp": "2026-05-16T22:45:03.560792+00:00",
           "tool_name": "score_transaction_risk",
-          "trace_id": "cbdba628-1382-4e54-9ac0-5af792fc3111",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "35316789-02d4-43c4-b4d0-67a89e788f56",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         },
         {
           "error": null,
@@ -703,7 +703,7 @@
             "role": "investigator_manager",
             "transaction_id": "txn_multi_signal_001"
           },
-          "latency_ms": 378.299,
+          "latency_ms": 364.42,
           "method": "tools/call",
           "request": {
             "id": 4,
@@ -723,18 +723,18 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0010\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"open\",\n  \"notes\": [\n    \"Risk level: critical\"\n  ],\n  \"created_at\": \"2026-05-16T22:18:14.209156Z\",\n  \"data\": {\n    \"case_id\": \"case_0010\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"open\",\n    \"notes\": [\n      \"Risk level: critical\"\n    ],\n    \"created_at\": \"2026-05-16T22:18:14.209156Z\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0024\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"open\",\n  \"notes\": [\n    \"Risk level: critical\"\n  ],\n  \"created_at\": \"2026-05-16T22:45:03.826126Z\",\n  \"data\": {\n    \"case_id\": \"case_0024\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"open\",\n    \"notes\": [\n      \"Risk level: critical\"\n    ],\n    \"created_at\": \"2026-05-16T22:45:03.826126Z\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
-                "case_id": "case_0010",
-                "created_at": "2026-05-16T22:18:14.209156Z",
+                "case_id": "case_0024",
+                "created_at": "2026-05-16T22:45:03.826126Z",
                 "customer_id": "cust_pep_001",
                 "data": {
-                  "case_id": "case_0010",
-                  "created_at": "2026-05-16T22:18:14.209156Z",
+                  "case_id": "case_0024",
+                  "created_at": "2026-05-16T22:45:03.826126Z",
                   "customer_id": "cust_pep_001",
                   "notes": [
                     "Risk level: critical"
@@ -756,7 +756,7 @@
             }
           },
           "response_summary": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "customer_id": "cust_pep_001",
             "ok": true,
             "risk_score": 100,
@@ -766,18 +766,18 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:14.276215+00:00",
+          "timestamp": "2026-05-16T22:45:03.925427+00:00",
           "tool_name": "create_fraud_case",
-          "trace_id": "c12a5da2-ba64-423d-98da-a1a5bc1b6744",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "510965d1-fb1e-472d-ace7-837922270cda",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         },
         {
           "error": null,
           "input_arguments": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "role": "investigator_manager"
           },
-          "latency_ms": 361.491,
+          "latency_ms": 343.532,
           "method": "tools/call",
           "request": {
             "id": 5,
@@ -785,7 +785,7 @@
             "method": "tools/call",
             "params": {
               "arguments": {
-                "case_id": "case_0010",
+                "case_id": "case_0024",
                 "role": "investigator_manager"
               },
               "name": "get_case_status"
@@ -797,47 +797,47 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0010\",\n  \"status\": \"open\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:18:14.209156+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0010\",\n    \"status\": \"open\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:18:14.209156+00:00\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0024\",\n  \"status\": \"open\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:45:03.826126+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0024\",\n    \"status\": \"open\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:45:03.826126+00:00\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
                 "assigned_to": "fraud_operations",
-                "case_id": "case_0010",
+                "case_id": "case_0024",
                 "data": {
                   "assigned_to": "fraud_operations",
-                  "case_id": "case_0010",
+                  "case_id": "case_0024",
                   "status": "open",
-                  "updated_at": "2026-05-16T22:18:14.209156+00:00"
+                  "updated_at": "2026-05-16T22:45:03.826126+00:00"
                 },
                 "ok": true,
                 "status": "open",
-                "updated_at": "2026-05-16T22:18:14.209156+00:00"
+                "updated_at": "2026-05-16T22:45:03.826126+00:00"
               }
             }
           },
           "response_summary": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "ok": true,
             "status": "open"
           },
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:14.638212+00:00",
+          "timestamp": "2026-05-16T22:45:04.269097+00:00",
           "tool_name": "get_case_status",
-          "trace_id": "bf7c2084-94bb-45dc-92b9-9a1c35f1181d",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "e93c8610-2c32-4fff-a47a-7751ed171c58",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         },
         {
           "error": null,
           "input_arguments": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "reason": "Escalated by lifecycle workflow validation",
             "role": "investigator_manager"
           },
-          "latency_ms": 333.091,
+          "latency_ms": 360.867,
           "method": "tools/call",
           "request": {
             "id": 6,
@@ -845,7 +845,7 @@
             "method": "tools/call",
             "params": {
               "arguments": {
-                "case_id": "case_0010",
+                "case_id": "case_0024",
                 "reason": "Escalated by lifecycle workflow validation",
                 "role": "investigator_manager"
               },
@@ -858,18 +858,18 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0010\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"escalated\",\n  \"notes\": [\n    \"Risk level: critical\",\n    \"Escalated by lifecycle workflow validation\"\n  ],\n  \"created_at\": \"2026-05-16T22:18:14.209156Z\",\n  \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n  \"updated_at\": \"2026-05-16T22:18:14.906203+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0010\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"escalated\",\n    \"notes\": [\n      \"Risk level: critical\",\n      \"Escalated by lifecycle workflow validation\"\n    ],\n    \"created_at\": \"2026-05-16T22:18:14.209156Z\",\n    \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n    \"updated_at\": \"2026-05-16T22:18:14.906203+00:00\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0024\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"escalated\",\n  \"notes\": [\n    \"Risk level: critical\",\n    \"Escalated by lifecycle workflow validation\"\n  ],\n  \"created_at\": \"2026-05-16T22:45:03.826126Z\",\n  \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n  \"updated_at\": \"2026-05-16T22:45:04.542993+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0024\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"escalated\",\n    \"notes\": [\n      \"Risk level: critical\",\n      \"Escalated by lifecycle workflow validation\"\n    ],\n    \"created_at\": \"2026-05-16T22:45:03.826126Z\",\n    \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n    \"updated_at\": \"2026-05-16T22:45:04.542993+00:00\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
-                "case_id": "case_0010",
-                "created_at": "2026-05-16T22:18:14.209156Z",
+                "case_id": "case_0024",
+                "created_at": "2026-05-16T22:45:03.826126Z",
                 "customer_id": "cust_pep_001",
                 "data": {
-                  "case_id": "case_0010",
-                  "created_at": "2026-05-16T22:18:14.209156Z",
+                  "case_id": "case_0024",
+                  "created_at": "2026-05-16T22:45:03.826126Z",
                   "customer_id": "cust_pep_001",
                   "escalation_reason": "Escalated by lifecycle workflow validation",
                   "notes": [
@@ -880,7 +880,7 @@
                   "risk_score": 100,
                   "status": "escalated",
                   "transaction_id": "txn_multi_signal_001",
-                  "updated_at": "2026-05-16T22:18:14.906203+00:00"
+                  "updated_at": "2026-05-16T22:45:04.542993+00:00"
                 },
                 "escalation_reason": "Escalated by lifecycle workflow validation",
                 "notes": [
@@ -892,12 +892,12 @@
                 "risk_score": 100,
                 "status": "escalated",
                 "transaction_id": "txn_multi_signal_001",
-                "updated_at": "2026-05-16T22:18:14.906203+00:00"
+                "updated_at": "2026-05-16T22:45:04.542993+00:00"
               }
             }
           },
           "response_summary": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "customer_id": "cust_pep_001",
             "ok": true,
             "risk_score": 100,
@@ -907,18 +907,18 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:14.971661+00:00",
+          "timestamp": "2026-05-16T22:45:04.630184+00:00",
           "tool_name": "escalate_case",
-          "trace_id": "694e4a40-97ff-4753-b8b9-056902f1d34c",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "19896fda-23c4-4cf0-b838-1a0e1b7ac4f5",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         },
         {
           "error": null,
           "input_arguments": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "role": "investigator_manager"
           },
-          "latency_ms": 345.375,
+          "latency_ms": 321.318,
           "method": "tools/call",
           "request": {
             "id": 7,
@@ -926,7 +926,7 @@
             "method": "tools/call",
             "params": {
               "arguments": {
-                "case_id": "case_0010",
+                "case_id": "case_0024",
                 "role": "investigator_manager"
               },
               "name": "get_case_status"
@@ -938,46 +938,46 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0010\",\n  \"status\": \"escalated\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:18:14.209156+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0010\",\n    \"status\": \"escalated\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:18:14.209156+00:00\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0024\",\n  \"status\": \"escalated\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:45:03.826126+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0024\",\n    \"status\": \"escalated\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:45:03.826126+00:00\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
                 "assigned_to": "fraud_operations",
-                "case_id": "case_0010",
+                "case_id": "case_0024",
                 "data": {
                   "assigned_to": "fraud_operations",
-                  "case_id": "case_0010",
+                  "case_id": "case_0024",
                   "status": "escalated",
-                  "updated_at": "2026-05-16T22:18:14.209156+00:00"
+                  "updated_at": "2026-05-16T22:45:03.826126+00:00"
                 },
                 "ok": true,
                 "status": "escalated",
-                "updated_at": "2026-05-16T22:18:14.209156+00:00"
+                "updated_at": "2026-05-16T22:45:03.826126+00:00"
               }
             }
           },
           "response_summary": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "ok": true,
             "status": "escalated"
           },
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:15.317240+00:00",
+          "timestamp": "2026-05-16T22:45:04.952093+00:00",
           "tool_name": "get_case_status",
-          "trace_id": "b0131c85-fead-4294-abbb-733b5e33cc02",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "6193b5d5-b631-4395-95f7-481c83065515",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         },
         {
           "error": null,
           "input_arguments": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "role": "investigator_manager"
           },
-          "latency_ms": 417.988,
+          "latency_ms": 323.097,
           "method": "tools/call",
           "request": {
             "id": 8,
@@ -985,7 +985,7 @@
             "method": "tools/call",
             "params": {
               "arguments": {
-                "case_id": "case_0010",
+                "case_id": "case_0024",
                 "role": "investigator_manager"
               },
               "name": "generate_investigation_summary"
@@ -997,16 +997,16 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0010\",\n  \"status\": \"escalated\",\n  \"customer_id\": \"cust_pep_001\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"risk_level\": \"critical\",\n  \"risk_score\": 100,\n  \"signals\": [\n    {\n      \"code\": \"high_amount\",\n      \"description\": \"Transaction amount is greater than 3x customer average\",\n      \"score_impact\": 25\n    },\n    {\n      \"code\": \"high_risk_country\",\n      \"description\": \"Destination country is high risk\",\n      \"score_impact\": 25\n    },\n    {\n      \"code\": \"pep_customer\",\n      \"description\": \"Customer is politically exposed\",\n      \"score_impact\": 20\n    },\n    {\n      \"code\": \"amount_over_10000\",\n      \"description\": \"Transaction amount is over 10000\",\n      \"score_impact\": 15\n    },\n    {\n      \"code\": \"high_value_online_transaction\",\n      \"description\": \"Online transaction amount is over 5000\",\n      \"score_impact\": 10\n    },\n    {\n      \"code\": \"unusual_hour\",\n      \"description\": \"Transaction occurred between 00:00 and 05:00\",\n      \"score_impact\": 10\n    },\n    {\n      \"code\": \"new_beneficiary\",\n      \"description\": \"Beneficiary appears to be new\",\n      \"score_impact\": 15\n    }\n  ],\n  \"recommended_action\": \"ESCALATE\",\n  \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n  \"summary\": \"Case case_0010 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.\",\n  \"findings\": [\n    \"high_amount\",\n    \"high_risk_country\",\n    \"pep_customer\",\n    \"amount_over_10000\",\n    \"high_value_online_transaction\",\n    \"unusual_hour\",\n    \"new_beneficiary\"\n  ],\n  \"generated_at\": \"2026-05-16T22:18:15.658003+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0010\",\n    \"status\": \"escalated\",\n    \"customer_id\": \"cust_pep_001\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"risk_level\": \"critical\",\n    \"risk_score\": 100,\n    \"signals\": [\n      {\n        \"code\": \"high_amount\",\n        \"description\": \"Transaction amount is greater than 3x customer average\",\n        \"score_impact\": 25\n      },\n      {\n        \"code\": \"high_risk_country\",\n        \"description\": \"Destination country is high risk\",\n        \"score_impact\": 25\n      },\n      {\n        \"code\": \"pep_customer\",\n        \"description\": \"Customer is politically exposed\",\n        \"score_impact\": 20\n      },\n      {\n        \"code\": \"amount_over_10000\",\n        \"description\": \"Transaction amount is over 10000\",\n        \"score_impact\": 15\n      },\n      {\n        \"code\": \"high_value_online_transaction\",\n        \"description\": \"Online transaction amount is over 5000\",\n        \"score_impact\": 10\n      },\n      {\n        \"code\": \"unusual_hour\",\n        \"description\": \"Transaction occurred between 00:00 and 05:00\",\n        \"score_impact\": 10\n      },\n      {\n        \"code\": \"new_beneficiary\",\n        \"description\": \"Beneficiary appears to be new\",\n        \"score_impact\": 15\n      }\n    ],\n    \"recommended_action\": \"ESCALATE\",\n    \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n    \"summary\": \"Case case_0010 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.\",\n    \"findings\": [\n      \"high_amount\",\n      \"high_risk_country\",\n      \"pep_customer\",\n      \"amount_over_10000\",\n      \"high_value_online_transaction\",\n      \"unusual_hour\",\n      \"new_beneficiary\"\n    ],\n    \"generated_at\": \"2026-05-16T22:18:15.658003+00:00\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0024\",\n  \"status\": \"escalated\",\n  \"customer_id\": \"cust_pep_001\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"risk_level\": \"critical\",\n  \"risk_score\": 100,\n  \"signals\": [\n    {\n      \"code\": \"high_amount\",\n      \"description\": \"Transaction amount is greater than 3x customer average\",\n      \"score_impact\": 25\n    },\n    {\n      \"code\": \"high_risk_country\",\n      \"description\": \"Destination country is high risk\",\n      \"score_impact\": 25\n    },\n    {\n      \"code\": \"pep_customer\",\n      \"description\": \"Customer is politically exposed\",\n      \"score_impact\": 20\n    },\n    {\n      \"code\": \"amount_over_10000\",\n      \"description\": \"Transaction amount is over 10000\",\n      \"score_impact\": 15\n    },\n    {\n      \"code\": \"high_value_online_transaction\",\n      \"description\": \"Online transaction amount is over 5000\",\n      \"score_impact\": 10\n    },\n    {\n      \"code\": \"unusual_hour\",\n      \"description\": \"Transaction occurred between 00:00 and 05:00\",\n      \"score_impact\": 10\n    },\n    {\n      \"code\": \"new_beneficiary\",\n      \"description\": \"Beneficiary appears to be new\",\n      \"score_impact\": 15\n    }\n  ],\n  \"recommended_action\": \"ESCALATE\",\n  \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n  \"summary\": \"Case case_0024 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.\",\n  \"findings\": [\n    \"high_amount\",\n    \"high_risk_country\",\n    \"pep_customer\",\n    \"amount_over_10000\",\n    \"high_value_online_transaction\",\n    \"unusual_hour\",\n    \"new_beneficiary\"\n  ],\n  \"generated_at\": \"2026-05-16T22:45:05.207657+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0024\",\n    \"status\": \"escalated\",\n    \"customer_id\": \"cust_pep_001\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"risk_level\": \"critical\",\n    \"risk_score\": 100,\n    \"signals\": [\n      {\n        \"code\": \"high_amount\",\n        \"description\": \"Transaction amount is greater than 3x customer average\",\n        \"score_impact\": 25\n      },\n      {\n        \"code\": \"high_risk_country\",\n        \"description\": \"Destination country is high risk\",\n        \"score_impact\": 25\n      },\n      {\n        \"code\": \"pep_customer\",\n        \"description\": \"Customer is politically exposed\",\n        \"score_impact\": 20\n      },\n      {\n        \"code\": \"amount_over_10000\",\n        \"description\": \"Transaction amount is over 10000\",\n        \"score_impact\": 15\n      },\n      {\n        \"code\": \"high_value_online_transaction\",\n        \"description\": \"Online transaction amount is over 5000\",\n        \"score_impact\": 10\n      },\n      {\n        \"code\": \"unusual_hour\",\n        \"description\": \"Transaction occurred between 00:00 and 05:00\",\n        \"score_impact\": 10\n      },\n      {\n        \"code\": \"new_beneficiary\",\n        \"description\": \"Beneficiary appears to be new\",\n        \"score_impact\": 15\n      }\n    ],\n    \"recommended_action\": \"ESCALATE\",\n    \"escalation_reason\": \"Escalated by lifecycle workflow validation\",\n    \"summary\": \"Case case_0024 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.\",\n    \"findings\": [\n      \"high_amount\",\n      \"high_risk_country\",\n      \"pep_customer\",\n      \"amount_over_10000\",\n      \"high_value_online_transaction\",\n      \"unusual_hour\",\n      \"new_beneficiary\"\n    ],\n    \"generated_at\": \"2026-05-16T22:45:05.207657+00:00\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
-                "case_id": "case_0010",
+                "case_id": "case_0024",
                 "customer_id": "cust_pep_001",
                 "data": {
-                  "case_id": "case_0010",
+                  "case_id": "case_0024",
                   "customer_id": "cust_pep_001",
                   "escalation_reason": "Escalated by lifecycle workflow validation",
                   "findings": [
@@ -1018,7 +1018,7 @@
                     "unusual_hour",
                     "new_beneficiary"
                   ],
-                  "generated_at": "2026-05-16T22:18:15.658003+00:00",
+                  "generated_at": "2026-05-16T22:45:05.207657+00:00",
                   "recommended_action": "ESCALATE",
                   "risk_level": "critical",
                   "risk_score": 100,
@@ -1060,7 +1060,7 @@
                     }
                   ],
                   "status": "escalated",
-                  "summary": "Case case_0010 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
+                  "summary": "Case case_0024 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
                   "transaction_id": "txn_multi_signal_001"
                 },
                 "escalation_reason": "Escalated by lifecycle workflow validation",
@@ -1073,7 +1073,7 @@
                   "unusual_hour",
                   "new_beneficiary"
                 ],
-                "generated_at": "2026-05-16T22:18:15.658003+00:00",
+                "generated_at": "2026-05-16T22:45:05.207657+00:00",
                 "ok": true,
                 "recommended_action": "ESCALATE",
                 "risk_level": "critical",
@@ -1116,13 +1116,13 @@
                   }
                 ],
                 "status": "escalated",
-                "summary": "Case case_0010 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
+                "summary": "Case case_0024 for transaction txn_multi_signal_001 is ESCALATED. The transaction was flagged as CRITICAL risk with score 100. Available signals: high_amount, high_risk_country, pep_customer, amount_over_10000, high_value_online_transaction, unusual_hour, new_beneficiary. The case was escalated for senior review: Escalated by lifecycle workflow validation.",
                 "transaction_id": "txn_multi_signal_001"
               }
             }
           },
           "response_summary": {
-            "case_id": "case_0010",
+            "case_id": "case_0024",
             "customer_id": "cust_pep_001",
             "ok": true,
             "risk_level": "critical",
@@ -1133,13 +1133,13 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_case_lifecycle.py::test_fraud_case_lifecycle_workflow",
-          "timestamp": "2026-05-16T22:18:15.736016+00:00",
+          "timestamp": "2026-05-16T22:45:05.275436+00:00",
           "tool_name": "generate_investigation_summary",
-          "trace_id": "7e3c41c3-5d14-44b7-bfcd-edb0fc042ce7",
-          "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+          "trace_id": "9f1787e7-2406-4527-9fd9-da95d61a6fa0",
+          "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
         }
       ],
-      "workflow_id": "c28ff579-b0fc-436a-905e-df80f1f8bb5a"
+      "workflow_id": "990f1507-5cf3-4563-bb9d-6ac1fda6f386"
     }
   }
 }

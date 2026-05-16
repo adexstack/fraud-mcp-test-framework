@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:17:41.145024+00:00",
+  "captured_at": "2026-05-16T22:44:31.884116+00:00",
   "evidence_type": "test_evidence",
   "name": "tool_invocation_create_fraud_case",
   "payload": {
@@ -11,11 +11,11 @@
         "transaction_id": "txn_001"
       },
       "error": null,
-      "latency_ms": 349.481,
+      "latency_ms": 315.465,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"trace_id\": \"5fd955b0-0587-4ddd-8fe2-f51907412ba2\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"trace_id\": \"16b3e9ba-b3d5-4ce8-aa98-00c8924df896\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -26,13 +26,13 @@
           "message": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
           "ok": false,
           "retryable": false,
-          "trace_id": "5fd955b0-0587-4ddd-8fe2-f51907412ba2"
+          "trace_id": "16b3e9ba-b3d5-4ce8-aa98-00c8924df896"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:17:40.795419+00:00",
+      "timestamp": "2026-05-16T22:44:31.568286+00:00",
       "tool_name": "create_fraud_case",
-      "trace_id": "c7759f73-dbab-4f4b-adaf-7b8035981282"
+      "trace_id": "46fa2f61-72d3-4718-a627-461a52f17f1e"
     },
     "tool_name": "create_fraud_case",
     "trace": {
@@ -47,7 +47,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 745.916,
+          "latency_ms": 355.644,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -96,17 +96,17 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[create_fraud_case]",
-          "timestamp": "2026-05-16T22:17:40.795318+00:00",
+          "timestamp": "2026-05-16T22:44:31.568224+00:00",
           "tool_name": "initialize",
-          "trace_id": "c4f5901a-c68a-4c01-bf67-b3e66a2932ad",
-          "workflow_id": "63ad7097-2fce-40ed-86e2-a8207ef1457e"
+          "trace_id": "5449775e-ac3b-40c2-a1a3-3b8f3696a9d8",
+          "workflow_id": "def9fe3a-c7af-49a7-b4da-974b64815deb"
         },
         {
           "error": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
           "input_arguments": {
             "transaction_id": "txn_001"
           },
-          "latency_ms": 349.41,
+          "latency_ms": 315.297,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -125,7 +125,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"trace_id\": \"5fd955b0-0587-4ddd-8fe2-f51907412ba2\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"trace_id\": \"16b3e9ba-b3d5-4ce8-aa98-00c8924df896\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -136,7 +136,7 @@
                 "message": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "5fd955b0-0587-4ddd-8fe2-f51907412ba2"
+                "trace_id": "16b3e9ba-b3d5-4ce8-aa98-00c8924df896"
               }
             }
           },
@@ -147,13 +147,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[create_fraud_case]",
-          "timestamp": "2026-05-16T22:17:41.144887+00:00",
+          "timestamp": "2026-05-16T22:44:31.883727+00:00",
           "tool_name": "create_fraud_case",
-          "trace_id": "c7759f73-dbab-4f4b-adaf-7b8035981282",
-          "workflow_id": "63ad7097-2fce-40ed-86e2-a8207ef1457e"
+          "trace_id": "46fa2f61-72d3-4718-a627-461a52f17f1e",
+          "workflow_id": "def9fe3a-c7af-49a7-b4da-974b64815deb"
         }
       ],
-      "workflow_id": "63ad7097-2fce-40ed-86e2-a8207ef1457e"
+      "workflow_id": "def9fe3a-c7af-49a7-b4da-974b64815deb"
     }
   }
 }

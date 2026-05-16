@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:18:05.518011+00:00",
+  "captured_at": "2026-05-16T22:44:55.602577+00:00",
   "evidence_type": "test_evidence",
   "name": "rbac_analyst_l1_create_fraud_case",
   "payload": {
@@ -13,11 +13,11 @@
         "transaction_id": "txn_low_risk_001"
       },
       "error": null,
-      "latency_ms": 345.131,
+      "latency_ms": 382.111,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"trace_id\": \"ec38f949-34d1-448d-b08d-fc4108982170\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"trace_id\": \"9c6b5fb0-bb71-42d4-baab-13bf97190a06\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -28,13 +28,13 @@
           "message": "Permission denied: role 'analyst_l1' cannot call create_fraud_case",
           "ok": false,
           "retryable": false,
-          "trace_id": "ec38f949-34d1-448d-b08d-fc4108982170"
+          "trace_id": "9c6b5fb0-bb71-42d4-baab-13bf97190a06"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:18:05.172522+00:00",
+      "timestamp": "2026-05-16T22:44:55.219373+00:00",
       "tool_name": "create_fraud_case",
-      "trace_id": "f70ded44-7558-4f4c-8bf8-9bae1b2e6ba6"
+      "trace_id": "8a54a86b-0c51-45cd-a038-79ff22497b40"
     },
     "trace": {
       "rpc": [
@@ -48,7 +48,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 454.039,
+          "latency_ms": 402.683,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -97,10 +97,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/security/test_rbac_boundaries.py::test_read_only_users_cannot_mutate_state[create_fraud_case-analyst_l1]",
-          "timestamp": "2026-05-16T22:18:05.172378+00:00",
+          "timestamp": "2026-05-16T22:44:55.219217+00:00",
           "tool_name": "initialize",
-          "trace_id": "567748a1-e75d-4ed6-83ed-1689519fe878",
-          "workflow_id": "05945fff-3215-422f-b636-71ceda7d13a7"
+          "trace_id": "d5dd03f5-708b-4e25-ad81-b24c0fcbc9ab",
+          "workflow_id": "e1efd6fd-292c-4c36-86cd-c6d3ca27204b"
         },
         {
           "error": "Permission denied: role 'analyst_l1' cannot call create_fraud_case",
@@ -108,7 +108,7 @@
             "role": "analyst_l1",
             "transaction_id": "txn_low_risk_001"
           },
-          "latency_ms": 344.978,
+          "latency_ms": 381.789,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -128,7 +128,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"trace_id\": \"ec38f949-34d1-448d-b08d-fc4108982170\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call create_fraud_case\",\n  \"trace_id\": \"9c6b5fb0-bb71-42d4-baab-13bf97190a06\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -139,7 +139,7 @@
                 "message": "Permission denied: role 'analyst_l1' cannot call create_fraud_case",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "ec38f949-34d1-448d-b08d-fc4108982170"
+                "trace_id": "9c6b5fb0-bb71-42d4-baab-13bf97190a06"
               }
             }
           },
@@ -150,13 +150,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/security/test_rbac_boundaries.py::test_read_only_users_cannot_mutate_state[create_fraud_case-analyst_l1]",
-          "timestamp": "2026-05-16T22:18:05.517626+00:00",
+          "timestamp": "2026-05-16T22:44:55.601431+00:00",
           "tool_name": "create_fraud_case",
-          "trace_id": "f70ded44-7558-4f4c-8bf8-9bae1b2e6ba6",
-          "workflow_id": "05945fff-3215-422f-b636-71ceda7d13a7"
+          "trace_id": "8a54a86b-0c51-45cd-a038-79ff22497b40",
+          "workflow_id": "e1efd6fd-292c-4c36-86cd-c6d3ca27204b"
         }
       ],
-      "workflow_id": "05945fff-3215-422f-b636-71ceda7d13a7"
+      "workflow_id": "e1efd6fd-292c-4c36-86cd-c6d3ca27204b"
     }
   }
 }

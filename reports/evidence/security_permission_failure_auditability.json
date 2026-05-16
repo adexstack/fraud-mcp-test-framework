@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:18:12.672809+00:00",
+  "captured_at": "2026-05-16T22:45:02.455039+00:00",
   "evidence_type": "test_evidence",
   "name": "security_permission_failure_auditability",
   "payload": {
@@ -13,11 +13,11 @@
         "transaction_id": "txn_low_risk_001"
       },
       "error": null,
-      "latency_ms": 322.427,
+      "latency_ms": 356.571,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"trace_id\": \"57c13358-c028-4dc8-852e-36a4a3b8bf5f\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"trace_id\": \"c951d583-3ff8-494f-a499-72913a87cb69\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -28,13 +28,13 @@
           "message": "Permission denied: role 'auditor' cannot call create_fraud_case",
           "ok": false,
           "retryable": false,
-          "trace_id": "57c13358-c028-4dc8-852e-36a4a3b8bf5f"
+          "trace_id": "c951d583-3ff8-494f-a499-72913a87cb69"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:18:12.350008+00:00",
+      "timestamp": "2026-05-16T22:45:02.097607+00:00",
       "tool_name": "create_fraud_case",
-      "trace_id": "c89f7461-1931-4bb3-a871-9e93e40b29ef"
+      "trace_id": "82ba27ae-18e8-4731-affe-194044bbc08c"
     },
     "trace": {
       "rpc": [
@@ -48,7 +48,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 396.479,
+          "latency_ms": 432.881,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -97,10 +97,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/security/test_security_boundaries.py::test_permission_failure_is_structured_and_auditable",
-          "timestamp": "2026-05-16T22:18:12.349941+00:00",
+          "timestamp": "2026-05-16T22:45:02.097462+00:00",
           "tool_name": "initialize",
-          "trace_id": "20a14c86-d042-4490-9d53-7f22b15959f1",
-          "workflow_id": "04f708f9-bde7-4a58-a706-3a46f05dcb95"
+          "trace_id": "a319a34f-b828-4770-adda-9f4fba9836cb",
+          "workflow_id": "c009b98c-81c8-4243-a100-61638a3adbf7"
         },
         {
           "error": "Permission denied: role 'auditor' cannot call create_fraud_case",
@@ -108,7 +108,7 @@
             "role": "auditor",
             "transaction_id": "txn_low_risk_001"
           },
-          "latency_ms": 322.237,
+          "latency_ms": 356.26,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -128,7 +128,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"trace_id\": \"57c13358-c028-4dc8-852e-36a4a3b8bf5f\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"trace_id\": \"c951d583-3ff8-494f-a499-72913a87cb69\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -139,7 +139,7 @@
                 "message": "Permission denied: role 'auditor' cannot call create_fraud_case",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "57c13358-c028-4dc8-852e-36a4a3b8bf5f"
+                "trace_id": "c951d583-3ff8-494f-a499-72913a87cb69"
               }
             }
           },
@@ -150,13 +150,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/security/test_security_boundaries.py::test_permission_failure_is_structured_and_auditable",
-          "timestamp": "2026-05-16T22:18:12.672399+00:00",
+          "timestamp": "2026-05-16T22:45:02.454179+00:00",
           "tool_name": "create_fraud_case",
-          "trace_id": "c89f7461-1931-4bb3-a871-9e93e40b29ef",
-          "workflow_id": "04f708f9-bde7-4a58-a706-3a46f05dcb95"
+          "trace_id": "82ba27ae-18e8-4731-affe-194044bbc08c",
+          "workflow_id": "c009b98c-81c8-4243-a100-61638a3adbf7"
         }
       ],
-      "workflow_id": "04f708f9-bde7-4a58-a706-3a46f05dcb95"
+      "workflow_id": "c009b98c-81c8-4243-a100-61638a3adbf7"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:18:11.148832+00:00",
+  "captured_at": "2026-05-16T22:45:00.801305+00:00",
   "evidence_type": "test_evidence",
   "name": "security_missing_role_escalate_case",
   "payload": {
@@ -13,11 +13,11 @@
         "reason": "RBAC boundary validation"
       },
       "error": null,
-      "latency_ms": 353.153,
+      "latency_ms": 325.23,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"trace_id\": \"b104ff25-97de-4070-8f14-a1877c910da7\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"trace_id\": \"4c6dbc13-b7a6-40a4-879d-254489d4596b\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -28,13 +28,13 @@
           "message": "Permission denied: role 'least_privilege' cannot call escalate_case",
           "ok": false,
           "retryable": false,
-          "trace_id": "b104ff25-97de-4070-8f14-a1877c910da7"
+          "trace_id": "4c6dbc13-b7a6-40a4-879d-254489d4596b"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:18:10.795078+00:00",
+      "timestamp": "2026-05-16T22:45:00.475460+00:00",
       "tool_name": "escalate_case",
-      "trace_id": "0295c522-468c-48ac-b7ed-ebf337d33c59"
+      "trace_id": "21e1bb2b-acae-4db0-ace2-8b119990393c"
     },
     "trace": {
       "rpc": [
@@ -48,7 +48,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 445.167,
+          "latency_ms": 378.326,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -97,10 +97,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/security/test_security_boundaries.py::test_missing_role_is_rejected_or_treated_as_least_privilege",
-          "timestamp": "2026-05-16T22:18:10.794971+00:00",
+          "timestamp": "2026-05-16T22:45:00.475298+00:00",
           "tool_name": "initialize",
-          "trace_id": "2f267aaf-50d2-4688-a218-98d9c8423bc0",
-          "workflow_id": "03389481-9046-4633-9a40-f6879c23f1df"
+          "trace_id": "d2fd0ccb-f8be-45a9-a922-41b3dbb72fbc",
+          "workflow_id": "5d9b813f-409d-4cce-87c0-b96a82926cde"
         },
         {
           "error": "Permission denied: role 'least_privilege' cannot call escalate_case",
@@ -108,7 +108,7 @@
             "case_id": "case_security_boundary_001",
             "reason": "RBAC boundary validation"
           },
-          "latency_ms": 352.895,
+          "latency_ms": 325.0,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -128,7 +128,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"trace_id\": \"b104ff25-97de-4070-8f14-a1877c910da7\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call escalate_case\",\n  \"trace_id\": \"4c6dbc13-b7a6-40a4-879d-254489d4596b\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -139,7 +139,7 @@
                 "message": "Permission denied: role 'least_privilege' cannot call escalate_case",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "b104ff25-97de-4070-8f14-a1877c910da7"
+                "trace_id": "4c6dbc13-b7a6-40a4-879d-254489d4596b"
               }
             }
           },
@@ -150,13 +150,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/security/test_security_boundaries.py::test_missing_role_is_rejected_or_treated_as_least_privilege",
-          "timestamp": "2026-05-16T22:18:11.148187+00:00",
+          "timestamp": "2026-05-16T22:45:00.800661+00:00",
           "tool_name": "escalate_case",
-          "trace_id": "0295c522-468c-48ac-b7ed-ebf337d33c59",
-          "workflow_id": "03389481-9046-4633-9a40-f6879c23f1df"
+          "trace_id": "21e1bb2b-acae-4db0-ace2-8b119990393c",
+          "workflow_id": "5d9b813f-409d-4cce-87c0-b96a82926cde"
         }
       ],
-      "workflow_id": "03389481-9046-4633-9a40-f6879c23f1df"
+      "workflow_id": "5d9b813f-409d-4cce-87c0-b96a82926cde"
     }
   }
 }

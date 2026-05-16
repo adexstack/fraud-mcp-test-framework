@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:17:08.649491+00:00",
+  "captured_at": "2026-05-16T22:44:00.787340+00:00",
   "evidence_type": "test_evidence",
   "name": "tool_discovery",
   "payload": {
@@ -350,7 +350,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 418.479,
+          "latency_ms": 746.388,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -399,15 +399,15 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/connection/test_tool_discovery.py::test_mcp_tool_discovery",
-          "timestamp": "2026-05-16T22:17:08.297251+00:00",
+          "timestamp": "2026-05-16T22:44:00.461001+00:00",
           "tool_name": "initialize",
-          "trace_id": "261bea88-7a2d-4f3a-b6e8-aae1864e3529",
-          "workflow_id": "a364acb7-e990-414d-9942-feeadbb3fb36"
+          "trace_id": "fcc6ef5e-2e9d-43b1-8523-4a84d8e519f1",
+          "workflow_id": "b57191e4-e6ae-44ad-9629-9164f2aba6bb"
         },
         {
           "error": null,
           "input_arguments": {},
-          "latency_ms": 348.814,
+          "latency_ms": 323.847,
           "method": "tools/list",
           "request": {
             "id": 2,
@@ -624,13 +624,13 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/connection/test_tool_discovery.py::test_mcp_tool_discovery",
-          "timestamp": "2026-05-16T22:17:08.647151+00:00",
+          "timestamp": "2026-05-16T22:44:00.785712+00:00",
           "tool_name": "tools/list",
-          "trace_id": "271fdc8f-f2a8-4c7d-97b0-fb09a94be596",
-          "workflow_id": "a364acb7-e990-414d-9942-feeadbb3fb36"
+          "trace_id": "4d57cad6-ec63-42b1-b235-05f5de4846d1",
+          "workflow_id": "b57191e4-e6ae-44ad-9629-9164f2aba6bb"
         }
       ],
-      "workflow_id": "a364acb7-e990-414d-9942-feeadbb3fb36"
+      "workflow_id": "b57191e4-e6ae-44ad-9629-9164f2aba6bb"
     }
   }
 }

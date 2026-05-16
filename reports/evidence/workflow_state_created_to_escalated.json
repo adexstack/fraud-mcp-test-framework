@@ -1,10 +1,10 @@
 {
-  "captured_at": "2026-05-16T22:18:23.544041+00:00",
+  "captured_at": "2026-05-16T22:45:13.620995+00:00",
   "evidence_type": "test_evidence",
   "name": "workflow_state_created_to_escalated",
   "payload": {
     "metadata": {
-      "case_id": "case_0013",
+      "case_id": "case_0027",
       "escalated_status": "ESCALATED",
       "initial_status": "OPEN",
       "transaction_id": "txn_multi_signal_001"
@@ -41,10 +41,10 @@
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 359.382,
+          "latency_ms": 341.61,
           "success": true,
-          "timestamp": "2026-05-16T22:18:21.777949+00:00",
-          "trace_id": "6c6c1d8b-2e3a-4121-bab3-465c97c9d580"
+          "timestamp": "2026-05-16T22:45:11.856889+00:00",
+          "trace_id": "0763824f-c561-4a7b-a99f-c467946b320a"
         },
         "tool_name": "get_transaction"
       },
@@ -143,10 +143,10 @@
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 366.499,
+          "latency_ms": 339.433,
           "success": true,
-          "timestamp": "2026-05-16T22:18:22.137366+00:00",
-          "trace_id": "6d51f6a7-92ee-4175-a80e-14f816f5bf05"
+          "timestamp": "2026-05-16T22:45:12.198650+00:00",
+          "trace_id": "77e81fab-8e83-4861-b43b-3375b9adc405"
         },
         "tool_name": "score_transaction_risk"
       },
@@ -157,12 +157,12 @@
         },
         "name": "create_fraud_case",
         "structured_content": {
-          "case_id": "case_0013",
-          "created_at": "2026-05-16T22:18:22.787726Z",
+          "case_id": "case_0027",
+          "created_at": "2026-05-16T22:45:12.846334Z",
           "customer_id": "cust_pep_001",
           "data": {
-            "case_id": "case_0013",
-            "created_at": "2026-05-16T22:18:22.787726Z",
+            "case_id": "case_0027",
+            "created_at": "2026-05-16T22:45:12.846334Z",
             "customer_id": "cust_pep_001",
             "notes": [
               "Risk level: critical"
@@ -183,55 +183,55 @@
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 356.731,
+          "latency_ms": 375.195,
           "success": true,
-          "timestamp": "2026-05-16T22:18:22.504032+00:00",
-          "trace_id": "0d9e2f22-1d30-4834-8014-4f881aea82f5"
+          "timestamp": "2026-05-16T22:45:12.538172+00:00",
+          "trace_id": "ecba00b6-1ad1-4fa4-b4fb-0fca0954d024"
         },
         "tool_name": "create_fraud_case"
       },
       {
         "arguments": {
-          "case_id": "case_0013",
+          "case_id": "case_0027",
           "role": "investigator_manager"
         },
         "name": "get_initial_case_status",
         "structured_content": {
           "assigned_to": "fraud_operations",
-          "case_id": "case_0013",
+          "case_id": "case_0027",
           "data": {
             "assigned_to": "fraud_operations",
-            "case_id": "case_0013",
+            "case_id": "case_0027",
             "status": "open",
-            "updated_at": "2026-05-16T22:18:22.787726+00:00"
+            "updated_at": "2026-05-16T22:45:12.846334+00:00"
           },
           "ok": true,
           "status": "open",
-          "updated_at": "2026-05-16T22:18:22.787726+00:00"
+          "updated_at": "2026-05-16T22:45:12.846334+00:00"
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 347.624,
+          "latency_ms": 339.864,
           "success": true,
-          "timestamp": "2026-05-16T22:18:22.860826+00:00",
-          "trace_id": "9c704639-047c-4725-898f-7ab44eb4f1a3"
+          "timestamp": "2026-05-16T22:45:12.913527+00:00",
+          "trace_id": "dd573f84-feca-4bb3-9544-17dd8db679e8"
         },
         "tool_name": "get_case_status"
       },
       {
         "arguments": {
-          "case_id": "case_0013",
+          "case_id": "case_0027",
           "reason": "State transition validation escalation",
           "role": "investigator_manager"
         },
         "name": "escalate_case",
         "structured_content": {
-          "case_id": "case_0013",
-          "created_at": "2026-05-16T22:18:22.787726Z",
+          "case_id": "case_0027",
+          "created_at": "2026-05-16T22:45:12.846334Z",
           "customer_id": "cust_pep_001",
           "data": {
-            "case_id": "case_0013",
-            "created_at": "2026-05-16T22:18:22.787726Z",
+            "case_id": "case_0027",
+            "created_at": "2026-05-16T22:45:12.846334Z",
             "customer_id": "cust_pep_001",
             "escalation_reason": "State transition validation escalation",
             "notes": [
@@ -242,7 +242,7 @@
             "risk_score": 100,
             "status": "escalated",
             "transaction_id": "txn_multi_signal_001",
-            "updated_at": "2026-05-16T22:18:23.468830+00:00"
+            "updated_at": "2026-05-16T22:45:13.550892+00:00"
           },
           "escalation_reason": "State transition validation escalation",
           "notes": [
@@ -254,14 +254,14 @@
           "risk_score": 100,
           "status": "escalated",
           "transaction_id": "txn_multi_signal_001",
-          "updated_at": "2026-05-16T22:18:23.468830+00:00"
+          "updated_at": "2026-05-16T22:45:13.550892+00:00"
         },
         "tool_call_result": {
           "error": null,
-          "latency_ms": 332.03,
+          "latency_ms": 365.231,
           "success": true,
-          "timestamp": "2026-05-16T22:18:23.208583+00:00",
-          "trace_id": "cd512c36-632e-49a9-a14c-ce46b2d40041"
+          "timestamp": "2026-05-16T22:45:13.253583+00:00",
+          "trace_id": "d55acc84-137e-46b1-abe0-f0bba6d25fc3"
         },
         "tool_name": "escalate_case"
       }
@@ -278,7 +278,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 380.365,
+          "latency_ms": 766.788,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -327,10 +327,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_state_transitions.py::test_case_can_move_from_created_to_escalated",
-          "timestamp": "2026-05-16T22:18:21.777904+00:00",
+          "timestamp": "2026-05-16T22:45:11.856764+00:00",
           "tool_name": "initialize",
-          "trace_id": "c927429d-2c34-4291-afa6-76de99afda07",
-          "workflow_id": "72265efb-2e9c-4d4e-a07c-b1509113e813"
+          "trace_id": "311c96fa-44f2-40d0-84d2-a785bca5fc1e",
+          "workflow_id": "e097000b-ca32-43a9-ba01-fb12f02d5f6a"
         },
         {
           "error": null,
@@ -338,7 +338,7 @@
             "role": "investigator_manager",
             "transaction_id": "txn_multi_signal_001"
           },
-          "latency_ms": 359.233,
+          "latency_ms": 341.231,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -397,10 +397,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_state_transitions.py::test_case_can_move_from_created_to_escalated",
-          "timestamp": "2026-05-16T22:18:22.137304+00:00",
+          "timestamp": "2026-05-16T22:45:12.198451+00:00",
           "tool_name": "get_transaction",
-          "trace_id": "6c6c1d8b-2e3a-4121-bab3-465c97c9d580",
-          "workflow_id": "72265efb-2e9c-4d4e-a07c-b1509113e813"
+          "trace_id": "0763824f-c561-4a7b-a99f-c467946b320a",
+          "workflow_id": "e097000b-ca32-43a9-ba01-fb12f02d5f6a"
         },
         {
           "error": null,
@@ -408,7 +408,7 @@
             "role": "investigator_manager",
             "transaction_id": "txn_multi_signal_001"
           },
-          "latency_ms": 365.922,
+          "latency_ms": 338.927,
           "method": "tools/call",
           "request": {
             "id": 3,
@@ -531,10 +531,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_state_transitions.py::test_case_can_move_from_created_to_escalated",
-          "timestamp": "2026-05-16T22:18:22.503790+00:00",
+          "timestamp": "2026-05-16T22:45:12.538052+00:00",
           "tool_name": "score_transaction_risk",
-          "trace_id": "6d51f6a7-92ee-4175-a80e-14f816f5bf05",
-          "workflow_id": "72265efb-2e9c-4d4e-a07c-b1509113e813"
+          "trace_id": "77e81fab-8e83-4861-b43b-3375b9adc405",
+          "workflow_id": "e097000b-ca32-43a9-ba01-fb12f02d5f6a"
         },
         {
           "error": null,
@@ -542,7 +542,7 @@
             "role": "investigator_manager",
             "transaction_id": "txn_multi_signal_001"
           },
-          "latency_ms": 356.5,
+          "latency_ms": 374.798,
           "method": "tools/call",
           "request": {
             "id": 4,
@@ -562,18 +562,18 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0013\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"open\",\n  \"notes\": [\n    \"Risk level: critical\"\n  ],\n  \"created_at\": \"2026-05-16T22:18:22.787726Z\",\n  \"data\": {\n    \"case_id\": \"case_0013\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"open\",\n    \"notes\": [\n      \"Risk level: critical\"\n    ],\n    \"created_at\": \"2026-05-16T22:18:22.787726Z\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0027\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"open\",\n  \"notes\": [\n    \"Risk level: critical\"\n  ],\n  \"created_at\": \"2026-05-16T22:45:12.846334Z\",\n  \"data\": {\n    \"case_id\": \"case_0027\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"open\",\n    \"notes\": [\n      \"Risk level: critical\"\n    ],\n    \"created_at\": \"2026-05-16T22:45:12.846334Z\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
-                "case_id": "case_0013",
-                "created_at": "2026-05-16T22:18:22.787726Z",
+                "case_id": "case_0027",
+                "created_at": "2026-05-16T22:45:12.846334Z",
                 "customer_id": "cust_pep_001",
                 "data": {
-                  "case_id": "case_0013",
-                  "created_at": "2026-05-16T22:18:22.787726Z",
+                  "case_id": "case_0027",
+                  "created_at": "2026-05-16T22:45:12.846334Z",
                   "customer_id": "cust_pep_001",
                   "notes": [
                     "Risk level: critical"
@@ -595,7 +595,7 @@
             }
           },
           "response_summary": {
-            "case_id": "case_0013",
+            "case_id": "case_0027",
             "customer_id": "cust_pep_001",
             "ok": true,
             "risk_score": 100,
@@ -605,18 +605,18 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_state_transitions.py::test_case_can_move_from_created_to_escalated",
-          "timestamp": "2026-05-16T22:18:22.860741+00:00",
+          "timestamp": "2026-05-16T22:45:12.913321+00:00",
           "tool_name": "create_fraud_case",
-          "trace_id": "0d9e2f22-1d30-4834-8014-4f881aea82f5",
-          "workflow_id": "72265efb-2e9c-4d4e-a07c-b1509113e813"
+          "trace_id": "ecba00b6-1ad1-4fa4-b4fb-0fca0954d024",
+          "workflow_id": "e097000b-ca32-43a9-ba01-fb12f02d5f6a"
         },
         {
           "error": null,
           "input_arguments": {
-            "case_id": "case_0013",
+            "case_id": "case_0027",
             "role": "investigator_manager"
           },
-          "latency_ms": 347.404,
+          "latency_ms": 339.382,
           "method": "tools/call",
           "request": {
             "id": 5,
@@ -624,7 +624,7 @@
             "method": "tools/call",
             "params": {
               "arguments": {
-                "case_id": "case_0013",
+                "case_id": "case_0027",
                 "role": "investigator_manager"
               },
               "name": "get_case_status"
@@ -636,47 +636,47 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0013\",\n  \"status\": \"open\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:18:22.787726+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0013\",\n    \"status\": \"open\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:18:22.787726+00:00\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0027\",\n  \"status\": \"open\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:45:12.846334+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0027\",\n    \"status\": \"open\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:45:12.846334+00:00\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
                 "assigned_to": "fraud_operations",
-                "case_id": "case_0013",
+                "case_id": "case_0027",
                 "data": {
                   "assigned_to": "fraud_operations",
-                  "case_id": "case_0013",
+                  "case_id": "case_0027",
                   "status": "open",
-                  "updated_at": "2026-05-16T22:18:22.787726+00:00"
+                  "updated_at": "2026-05-16T22:45:12.846334+00:00"
                 },
                 "ok": true,
                 "status": "open",
-                "updated_at": "2026-05-16T22:18:22.787726+00:00"
+                "updated_at": "2026-05-16T22:45:12.846334+00:00"
               }
             }
           },
           "response_summary": {
-            "case_id": "case_0013",
+            "case_id": "case_0027",
             "ok": true,
             "status": "open"
           },
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_state_transitions.py::test_case_can_move_from_created_to_escalated",
-          "timestamp": "2026-05-16T22:18:23.208411+00:00",
+          "timestamp": "2026-05-16T22:45:13.253338+00:00",
           "tool_name": "get_case_status",
-          "trace_id": "9c704639-047c-4725-898f-7ab44eb4f1a3",
-          "workflow_id": "72265efb-2e9c-4d4e-a07c-b1509113e813"
+          "trace_id": "dd573f84-feca-4bb3-9544-17dd8db679e8",
+          "workflow_id": "e097000b-ca32-43a9-ba01-fb12f02d5f6a"
         },
         {
           "error": null,
           "input_arguments": {
-            "case_id": "case_0013",
+            "case_id": "case_0027",
             "reason": "State transition validation escalation",
             "role": "investigator_manager"
           },
-          "latency_ms": 331.542,
+          "latency_ms": 364.944,
           "method": "tools/call",
           "request": {
             "id": 6,
@@ -684,7 +684,7 @@
             "method": "tools/call",
             "params": {
               "arguments": {
-                "case_id": "case_0013",
+                "case_id": "case_0027",
                 "reason": "State transition validation escalation",
                 "role": "investigator_manager"
               },
@@ -697,18 +697,18 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0013\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"escalated\",\n  \"notes\": [\n    \"Risk level: critical\",\n    \"State transition validation escalation\"\n  ],\n  \"created_at\": \"2026-05-16T22:18:22.787726Z\",\n  \"escalation_reason\": \"State transition validation escalation\",\n  \"updated_at\": \"2026-05-16T22:18:23.468830+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0013\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"escalated\",\n    \"notes\": [\n      \"Risk level: critical\",\n      \"State transition validation escalation\"\n    ],\n    \"created_at\": \"2026-05-16T22:18:22.787726Z\",\n    \"escalation_reason\": \"State transition validation escalation\",\n    \"updated_at\": \"2026-05-16T22:18:23.468830+00:00\"\n  }\n}",
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0027\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"escalated\",\n  \"notes\": [\n    \"Risk level: critical\",\n    \"State transition validation escalation\"\n  ],\n  \"created_at\": \"2026-05-16T22:45:12.846334Z\",\n  \"escalation_reason\": \"State transition validation escalation\",\n  \"updated_at\": \"2026-05-16T22:45:13.550892+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0027\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"escalated\",\n    \"notes\": [\n      \"Risk level: critical\",\n      \"State transition validation escalation\"\n    ],\n    \"created_at\": \"2026-05-16T22:45:12.846334Z\",\n    \"escalation_reason\": \"State transition validation escalation\",\n    \"updated_at\": \"2026-05-16T22:45:13.550892+00:00\"\n  }\n}",
                   "type": "text"
                 }
               ],
               "isError": false,
               "structuredContent": {
-                "case_id": "case_0013",
-                "created_at": "2026-05-16T22:18:22.787726Z",
+                "case_id": "case_0027",
+                "created_at": "2026-05-16T22:45:12.846334Z",
                 "customer_id": "cust_pep_001",
                 "data": {
-                  "case_id": "case_0013",
-                  "created_at": "2026-05-16T22:18:22.787726Z",
+                  "case_id": "case_0027",
+                  "created_at": "2026-05-16T22:45:12.846334Z",
                   "customer_id": "cust_pep_001",
                   "escalation_reason": "State transition validation escalation",
                   "notes": [
@@ -719,7 +719,7 @@
                   "risk_score": 100,
                   "status": "escalated",
                   "transaction_id": "txn_multi_signal_001",
-                  "updated_at": "2026-05-16T22:18:23.468830+00:00"
+                  "updated_at": "2026-05-16T22:45:13.550892+00:00"
                 },
                 "escalation_reason": "State transition validation escalation",
                 "notes": [
@@ -731,12 +731,12 @@
                 "risk_score": 100,
                 "status": "escalated",
                 "transaction_id": "txn_multi_signal_001",
-                "updated_at": "2026-05-16T22:18:23.468830+00:00"
+                "updated_at": "2026-05-16T22:45:13.550892+00:00"
               }
             }
           },
           "response_summary": {
-            "case_id": "case_0013",
+            "case_id": "case_0027",
             "customer_id": "cust_pep_001",
             "ok": true,
             "risk_score": 100,
@@ -746,13 +746,13 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/workflows/test_state_transitions.py::test_case_can_move_from_created_to_escalated",
-          "timestamp": "2026-05-16T22:18:23.540588+00:00",
+          "timestamp": "2026-05-16T22:45:13.618779+00:00",
           "tool_name": "escalate_case",
-          "trace_id": "cd512c36-632e-49a9-a14c-ce46b2d40041",
-          "workflow_id": "72265efb-2e9c-4d4e-a07c-b1509113e813"
+          "trace_id": "d55acc84-137e-46b1-abe0-f0bba6d25fc3",
+          "workflow_id": "e097000b-ca32-43a9-ba01-fb12f02d5f6a"
         }
       ],
-      "workflow_id": "72265efb-2e9c-4d4e-a07c-b1509113e813"
+      "workflow_id": "e097000b-ca32-43a9-ba01-fb12f02d5f6a"
     }
   }
 }

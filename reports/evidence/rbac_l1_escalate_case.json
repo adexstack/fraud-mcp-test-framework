@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-05-16T22:18:08.805363+00:00",
+  "captured_at": "2026-05-16T22:44:58.577291+00:00",
   "evidence_type": "test_evidence",
   "name": "rbac_l1_escalate_case",
   "payload": {
@@ -14,11 +14,11 @@
         "role": "analyst_l1"
       },
       "error": null,
-      "latency_ms": 342.039,
+      "latency_ms": 333.07,
       "response": {
         "content": [
           {
-            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"trace_id\": \"c455431f-6f71-430a-953f-6d6a985aa94a\",\n  \"retryable\": false\n}",
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"trace_id\": \"b6ed75c4-bced-4d02-a97a-12e2b48d1ce1\",\n  \"retryable\": false\n}",
             "type": "text"
           }
         ],
@@ -29,13 +29,13 @@
           "message": "Permission denied: role 'analyst_l1' cannot call escalate_case",
           "ok": false,
           "retryable": false,
-          "trace_id": "c455431f-6f71-430a-953f-6d6a985aa94a"
+          "trace_id": "b6ed75c4-bced-4d02-a97a-12e2b48d1ce1"
         }
       },
       "success": true,
-      "timestamp": "2026-05-16T22:18:08.458416+00:00",
+      "timestamp": "2026-05-16T22:44:58.240654+00:00",
       "tool_name": "escalate_case",
-      "trace_id": "63ddbc2d-b3c7-4f1b-9070-2d62bb656cbd"
+      "trace_id": "8543665d-aa59-44df-9715-40050552dd64"
     },
     "trace": {
       "rpc": [
@@ -49,7 +49,7 @@
             },
             "protocolVersion": "2024-11-05"
           },
-          "latency_ms": 425.761,
+          "latency_ms": 447.237,
           "method": "initialize",
           "request": {
             "id": 1,
@@ -98,10 +98,10 @@
           "status_code": 200,
           "success": true,
           "test_name": "tests/security/test_rbac_boundaries.py::test_l1_cannot_escalate_cases",
-          "timestamp": "2026-05-16T22:18:08.458294+00:00",
+          "timestamp": "2026-05-16T22:44:58.240565+00:00",
           "tool_name": "initialize",
-          "trace_id": "3fb61ce4-3e4e-4f2a-a2a0-758904de84e5",
-          "workflow_id": "8d79dc85-8166-4292-9122-ad15ff1515c6"
+          "trace_id": "a514968b-566b-4735-a637-18f5efd69c59",
+          "workflow_id": "f2dd78e1-9e87-4705-af81-5cd96d53fa03"
         },
         {
           "error": "Permission denied: role 'analyst_l1' cannot call escalate_case",
@@ -110,7 +110,7 @@
             "reason": "RBAC boundary validation",
             "role": "analyst_l1"
           },
-          "latency_ms": 341.763,
+          "latency_ms": 332.799,
           "method": "tools/call",
           "request": {
             "id": 2,
@@ -131,7 +131,7 @@
             "result": {
               "content": [
                 {
-                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"trace_id\": \"c455431f-6f71-430a-953f-6d6a985aa94a\",\n  \"retryable\": false\n}",
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"trace_id\": \"b6ed75c4-bced-4d02-a97a-12e2b48d1ce1\",\n  \"retryable\": false\n}",
                   "type": "text"
                 }
               ],
@@ -142,7 +142,7 @@
                 "message": "Permission denied: role 'analyst_l1' cannot call escalate_case",
                 "ok": false,
                 "retryable": false,
-                "trace_id": "c455431f-6f71-430a-953f-6d6a985aa94a"
+                "trace_id": "b6ed75c4-bced-4d02-a97a-12e2b48d1ce1"
               }
             }
           },
@@ -153,13 +153,13 @@
           "status_code": 200,
           "success": false,
           "test_name": "tests/security/test_rbac_boundaries.py::test_l1_cannot_escalate_cases",
-          "timestamp": "2026-05-16T22:18:08.800407+00:00",
+          "timestamp": "2026-05-16T22:44:58.573648+00:00",
           "tool_name": "escalate_case",
-          "trace_id": "63ddbc2d-b3c7-4f1b-9070-2d62bb656cbd",
-          "workflow_id": "8d79dc85-8166-4292-9122-ad15ff1515c6"
+          "trace_id": "8543665d-aa59-44df-9715-40050552dd64",
+          "workflow_id": "f2dd78e1-9e87-4705-af81-5cd96d53fa03"
         }
       ],
-      "workflow_id": "8d79dc85-8166-4292-9122-ad15ff1515c6"
+      "workflow_id": "f2dd78e1-9e87-4705-af81-5cd96d53fa03"
     }
   }
 }
