@@ -1,0 +1,159 @@
+{
+  "captured_at": "2026-05-16T22:17:39.176406+00:00",
+  "evidence_type": "test_evidence",
+  "name": "tool_invocation_get_transaction",
+  "payload": {
+    "arguments": {
+      "transaction_id": "txn_001"
+    },
+    "result": {
+      "arguments": {
+        "transaction_id": "txn_001"
+      },
+      "error": null,
+      "latency_ms": 345.794,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown transaction: txn_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown transaction: txn_001\",\n  \"trace_id\": \"4173f0e2-736a-487c-9ff2-9c28fda4ba5d\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Unknown transaction: txn_001",
+          "error_code": "DOMAIN_ERROR",
+          "message": "Unknown transaction: txn_001",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "4173f0e2-736a-487c-9ff2-9c28fda4ba5d"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:17:38.830218+00:00",
+      "tool_name": "get_transaction",
+      "trace_id": "cabbe686-6227-40e1-a585-242469333a8f"
+    },
+    "tool_name": "get_transaction",
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 416.527,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[get_transaction]",
+          "timestamp": "2026-05-16T22:17:38.830059+00:00",
+          "tool_name": "initialize",
+          "trace_id": "5081763e-d3fe-47b3-9885-ef7011f01451",
+          "workflow_id": "2672c799-e31c-4428-ac76-63b96c1cc149"
+        },
+        {
+          "error": "Unknown transaction: txn_001",
+          "input_arguments": {
+            "transaction_id": "txn_001"
+          },
+          "latency_ms": 345.63,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "transaction_id": "txn_001"
+              },
+              "name": "get_transaction"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown transaction: txn_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown transaction: txn_001\",\n  \"trace_id\": \"4173f0e2-736a-487c-9ff2-9c28fda4ba5d\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Unknown transaction: txn_001",
+                "error_code": "DOMAIN_ERROR",
+                "message": "Unknown transaction: txn_001",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "4173f0e2-736a-487c-9ff2-9c28fda4ba5d"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Unknown transaction: txn_001",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[get_transaction]",
+          "timestamp": "2026-05-16T22:17:39.175986+00:00",
+          "tool_name": "get_transaction",
+          "trace_id": "cabbe686-6227-40e1-a585-242469333a8f",
+          "workflow_id": "2672c799-e31c-4428-ac76-63b96c1cc149"
+        }
+      ],
+      "workflow_id": "2672c799-e31c-4428-ac76-63b96c1cc149"
+    }
+  }
+}

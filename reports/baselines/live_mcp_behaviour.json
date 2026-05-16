@@ -1,0 +1,148 @@
+{
+  "known_risk_outcomes": {
+    "high_amount": {
+      "recommended_action": "APPROVE",
+      "risk_level": "low",
+      "risk_score": 25,
+      "status": "available",
+      "transaction_id": "txn_high_amount_001"
+    },
+    "high_risk_destination_country": {
+      "recommended_action": "APPROVE",
+      "risk_level": "low",
+      "risk_score": 25,
+      "status": "available",
+      "transaction_id": "txn_high_risk_country_001"
+    },
+    "low_risk": {
+      "recommended_action": "APPROVE",
+      "risk_level": "low",
+      "risk_score": 0,
+      "status": "available",
+      "transaction_id": "txn_low_risk_001"
+    },
+    "multiple_risk_signals": {
+      "recommended_action": "BLOCK",
+      "risk_level": "critical",
+      "risk_score": 100,
+      "status": "available",
+      "transaction_id": "txn_multi_signal_001"
+    },
+    "new_beneficiary": {
+      "recommended_action": "APPROVE",
+      "risk_level": "low",
+      "risk_score": 15,
+      "status": "available",
+      "transaction_id": "txn_new_beneficiary_001"
+    },
+    "pep_customer": {
+      "recommended_action": "APPROVE",
+      "risk_level": "low",
+      "risk_score": 20,
+      "status": "available",
+      "transaction_id": "txn_pep_customer_001"
+    },
+    "unusual_transaction_hour": {
+      "recommended_action": "APPROVE",
+      "risk_level": "low",
+      "risk_score": 10,
+      "status": "available",
+      "transaction_id": "txn_unusual_hour_001"
+    }
+  },
+  "known_workflow_outcomes": {
+    "created_to_escalated": {
+      "case_id_present": false,
+      "escalated_status": null,
+      "initial_status": null,
+      "risk_level": "critical",
+      "status": "available",
+      "transaction_id": "txn_multi_signal_001"
+    }
+  },
+  "latency_policy": {
+    "threshold_ms": 30000.0
+  },
+  "latency_threshold_ms": 30000.0,
+  "tool_inventory": [
+    {
+      "description": "Create a fraud case from a transaction.",
+      "input_properties": {
+        "role": "string",
+        "transaction_id": "string"
+      },
+      "input_required": [
+        "transaction_id"
+      ],
+      "name": "create_fraud_case"
+    },
+    {
+      "description": "Escalate an existing fraud case.",
+      "input_properties": {
+        "case_id": "string",
+        "reason": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "case_id",
+        "reason"
+      ],
+      "name": "escalate_case"
+    },
+    {
+      "description": "Generate a fraud investigation summary.",
+      "input_properties": {
+        "case_id": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "case_id"
+      ],
+      "name": "generate_investigation_summary"
+    },
+    {
+      "description": "Get the status of a fraud case.",
+      "input_properties": {
+        "case_id": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "case_id"
+      ],
+      "name": "get_case_status"
+    },
+    {
+      "description": "Fetch a transaction by id.",
+      "input_properties": {
+        "role": "string",
+        "transaction_id": "string"
+      },
+      "input_required": [
+        "transaction_id"
+      ],
+      "name": "get_transaction"
+    },
+    {
+      "description": "Score fraud risk for a stored transaction.",
+      "input_properties": {
+        "role": "string",
+        "transaction_id": "string"
+      },
+      "input_required": [
+        "transaction_id"
+      ],
+      "name": "score_transaction_risk"
+    },
+    {
+      "description": "Search for a customer by id.",
+      "input_properties": {
+        "customer_id": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "customer_id"
+      ],
+      "name": "search_customer"
+    }
+  ]
+}

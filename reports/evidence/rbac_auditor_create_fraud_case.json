@@ -1,0 +1,162 @@
+{
+  "captured_at": "2026-05-16T22:18:09.564776+00:00",
+  "evidence_type": "test_evidence",
+  "name": "rbac_auditor_create_fraud_case",
+  "payload": {
+    "metadata": {
+      "role": "auditor",
+      "tool_name": "create_fraud_case"
+    },
+    "result": {
+      "arguments": {
+        "role": "auditor",
+        "transaction_id": "txn_low_risk_001"
+      },
+      "error": null,
+      "latency_ms": 344.738,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"trace_id\": \"327b51b5-e45d-42a0-beb2-ba6229766c4d\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Permission denied: role 'auditor' cannot call create_fraud_case",
+          "error_code": "RBAC_DENIED",
+          "message": "Permission denied: role 'auditor' cannot call create_fraud_case",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "327b51b5-e45d-42a0-beb2-ba6229766c4d"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:18:09.219407+00:00",
+      "tool_name": "create_fraud_case",
+      "trace_id": "33de3d47-512f-49d7-be2c-940d72d18ed5"
+    },
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 396.885,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/security/test_rbac_boundaries.py::test_auditor_cannot_create_or_escalate_cases[create_fraud_case]",
+          "timestamp": "2026-05-16T22:18:09.219227+00:00",
+          "tool_name": "initialize",
+          "trace_id": "b3fddfbb-ad93-428c-a652-d0d0ff734113",
+          "workflow_id": "9339a19d-a94b-4951-af68-d6ff2ca3cf6f"
+        },
+        {
+          "error": "Permission denied: role 'auditor' cannot call create_fraud_case",
+          "input_arguments": {
+            "role": "auditor",
+            "transaction_id": "txn_low_risk_001"
+          },
+          "latency_ms": 344.44,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "role": "auditor",
+                "transaction_id": "txn_low_risk_001"
+              },
+              "name": "create_fraud_case"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call create_fraud_case\",\n  \"trace_id\": \"327b51b5-e45d-42a0-beb2-ba6229766c4d\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Permission denied: role 'auditor' cannot call create_fraud_case",
+                "error_code": "RBAC_DENIED",
+                "message": "Permission denied: role 'auditor' cannot call create_fraud_case",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "327b51b5-e45d-42a0-beb2-ba6229766c4d"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Permission denied: role 'auditor' cannot call create_fraud_case",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/security/test_rbac_boundaries.py::test_auditor_cannot_create_or_escalate_cases[create_fraud_case]",
+          "timestamp": "2026-05-16T22:18:09.564103+00:00",
+          "tool_name": "create_fraud_case",
+          "trace_id": "33de3d47-512f-49d7-be2c-940d72d18ed5",
+          "workflow_id": "9339a19d-a94b-4951-af68-d6ff2ca3cf6f"
+        }
+      ],
+      "workflow_id": "9339a19d-a94b-4951-af68-d6ff2ca3cf6f"
+    }
+  }
+}

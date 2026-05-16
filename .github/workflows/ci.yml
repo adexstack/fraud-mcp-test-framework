@@ -1,0 +1,125 @@
+name: Fraud MCP Test Framework CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  offline-tests:
+    name: Unit and Offline Tests
+    runs-on: ubuntu-latest
+    env:
+      MCP_SERVER_URL: ""
+      MCP_TRANSPORT: streamable-http
+      MCP_AUTH_TOKEN: ""
+      MCP_TIMEOUT_SECONDS: "30"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Ruff
+        run: uv run ruff check .
+
+      - name: Mypy
+        run: uv run mypy src/fraud_mcp_tests --ignore-missing-imports
+
+      - name: Unit/offline pytest
+        run: >
+          uv run pytest -m "not live"
+          --html=reports/pytest-offline.html
+          --self-contained-html
+
+      - name: Connection marker
+        run: >
+          uv run pytest -m connection
+          --html=reports/pytest-connection.html
+          --self-contained-html
+
+      - name: Contract marker
+        run: >
+          uv run pytest -m contract
+          --html=reports/pytest-contract.html
+          --self-contained-html
+
+      - name: Safety marker
+        run: >
+          uv run pytest -m safety
+          --html=reports/pytest-safety.html
+          --self-contained-html
+
+      - name: Workflow marker
+        run: >
+          uv run pytest -m workflow
+          --html=reports/pytest-workflow.html
+          --self-contained-html
+
+      - name: Governance marker
+        run: >
+          uv run pytest -m governance
+          --html=reports/pytest-governance.html
+          --self-contained-html
+
+      - name: Upload offline reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraud-mcp-offline-reports
+          path: reports/
+          if-no-files-found: ignore
+
+  live-mcp-tests:
+    name: Live MCP Integration Tests
+    runs-on: ubuntu-latest
+    if: ${{ secrets.MCP_SERVER_URL != '' }}
+    env:
+      MCP_SERVER_URL: ${{ secrets.MCP_SERVER_URL }}
+      MCP_TRANSPORT: ${{ vars.MCP_TRANSPORT || 'streamable-http' }}
+      MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
+      MCP_TIMEOUT_SECONDS: ${{ vars.MCP_TIMEOUT_SECONDS || '30' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Live MCP integration pytest
+        run: >
+          uv run pytest -m live
+          --html=reports/pytest-live-mcp.html
+          --self-contained-html
+
+      - name: Upload live MCP reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraud-mcp-live-reports
+          path: reports/
+          if-no-files-found: ignore

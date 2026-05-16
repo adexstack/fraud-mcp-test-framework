@@ -1,0 +1,109 @@
+[
+  {
+    "transaction_id": "txn_low_risk_001",
+    "customer_id": "cust_low_risk_001",
+    "scenario": "low_risk",
+    "description": "Domestic low-value payment to an established beneficiary during normal hours.",
+    "expected_risk_level": "LOW",
+    "expected_recommended_action": "APPROVE",
+    "risk_score_bounds": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  {
+    "transaction_id": "txn_high_amount_001",
+    "customer_id": "cust_low_risk_001",
+    "scenario": "high_amount",
+    "description": "Large payment amount compared with the low-risk baseline.",
+    "expected_score_greater_than": "txn_low_risk_001",
+    "expected_signals": [
+      "high_amount"
+    ],
+    "risk_score_bounds": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  {
+    "transaction_id": "txn_high_risk_country_001",
+    "customer_id": "cust_low_risk_001",
+    "scenario": "high_risk_destination_country",
+    "description": "Payment to a destination country classified as high risk.",
+    "expected_score_greater_than": "txn_low_risk_001",
+    "expected_signals": [
+      "high_risk_country"
+    ],
+    "risk_score_bounds": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  {
+    "transaction_id": "txn_pep_customer_001",
+    "customer_id": "cust_pep_001",
+    "scenario": "pep_customer",
+    "description": "Payment from a politically exposed customer.",
+    "expected_score_greater_than": "txn_low_risk_001",
+    "expected_signals": [
+      "pep_customer"
+    ],
+    "risk_score_bounds": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  {
+    "transaction_id": "txn_new_beneficiary_001",
+    "customer_id": "cust_low_risk_001",
+    "scenario": "new_beneficiary",
+    "description": "Payment to a newly added beneficiary.",
+    "expected_score_greater_than": "txn_low_risk_001",
+    "expected_signals": [
+      "new_beneficiary"
+    ],
+    "risk_score_bounds": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  {
+    "transaction_id": "txn_unusual_hour_001",
+    "customer_id": "cust_low_risk_001",
+    "scenario": "unusual_transaction_hour",
+    "description": "Payment initiated outside the customer's normal activity window.",
+    "expected_score_greater_than": "txn_low_risk_001",
+    "expected_signals": [
+      "unusual_hour"
+    ],
+    "risk_score_bounds": {
+      "min": 0,
+      "max": 100
+    }
+  },
+  {
+    "transaction_id": "txn_multi_signal_001",
+    "customer_id": "cust_pep_001",
+    "scenario": "multiple_risk_signals",
+    "description": "High amount payment by a PEP customer to a high-risk country and new beneficiary.",
+    "expected_risk_levels": [
+      "HIGH",
+      "CRITICAL"
+    ],
+    "expected_recommended_actions": [
+      "REVIEW",
+      "ESCALATE",
+      "BLOCK"
+    ],
+    "expected_signals": [
+      "high_amount",
+      "high_risk_country",
+      "pep_customer",
+      "new_beneficiary"
+    ],
+    "risk_score_bounds": {
+      "min": 0,
+      "max": 100
+    }
+  }
+]

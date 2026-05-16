@@ -1,0 +1,159 @@
+{
+  "captured_at": "2026-05-16T22:17:41.145024+00:00",
+  "evidence_type": "test_evidence",
+  "name": "tool_invocation_create_fraud_case",
+  "payload": {
+    "arguments": {
+      "transaction_id": "txn_001"
+    },
+    "result": {
+      "arguments": {
+        "transaction_id": "txn_001"
+      },
+      "error": null,
+      "latency_ms": 349.481,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"trace_id\": \"5fd955b0-0587-4ddd-8fe2-f51907412ba2\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
+          "error_code": "RBAC_DENIED",
+          "message": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "5fd955b0-0587-4ddd-8fe2-f51907412ba2"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:17:40.795419+00:00",
+      "tool_name": "create_fraud_case",
+      "trace_id": "c7759f73-dbab-4f4b-adaf-7b8035981282"
+    },
+    "tool_name": "create_fraud_case",
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 745.916,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[create_fraud_case]",
+          "timestamp": "2026-05-16T22:17:40.795318+00:00",
+          "tool_name": "initialize",
+          "trace_id": "c4f5901a-c68a-4c01-bf67-b3e66a2932ad",
+          "workflow_id": "63ad7097-2fce-40ed-86e2-a8207ef1457e"
+        },
+        {
+          "error": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
+          "input_arguments": {
+            "transaction_id": "txn_001"
+          },
+          "latency_ms": 349.41,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "transaction_id": "txn_001"
+              },
+              "name": "create_fraud_case"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'least_privilege' cannot call create_fraud_case\",\n  \"trace_id\": \"5fd955b0-0587-4ddd-8fe2-f51907412ba2\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
+                "error_code": "RBAC_DENIED",
+                "message": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "5fd955b0-0587-4ddd-8fe2-f51907412ba2"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Permission denied: role 'least_privilege' cannot call create_fraud_case",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[create_fraud_case]",
+          "timestamp": "2026-05-16T22:17:41.144887+00:00",
+          "tool_name": "create_fraud_case",
+          "trace_id": "c7759f73-dbab-4f4b-adaf-7b8035981282",
+          "workflow_id": "63ad7097-2fce-40ed-86e2-a8207ef1457e"
+        }
+      ],
+      "workflow_id": "63ad7097-2fce-40ed-86e2-a8207ef1457e"
+    }
+  }
+}

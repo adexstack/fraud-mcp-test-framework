@@ -1,0 +1,38 @@
+{
+  "captured_at": "2026-05-16T22:17:07.068784+00:00",
+  "evidence_type": "test_evidence",
+  "name": "connection_health_check",
+  "payload": {
+    "reachable": true,
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {},
+          "latency_ms": 809.972,
+          "method": "health_check",
+          "request": {
+            "method": "GET",
+            "url": "https://fraud-mcp-platform.onrender.com/mcp/"
+          },
+          "response": {
+            "text": "{\"jsonrpc\":\"2.0\",\"id\":\"server-error\",\"error\":{\"code\":-32600,\"message\":\"Bad Request: Missing session ID\"}}"
+          },
+          "response_summary": {
+            "fields": [
+              "text"
+            ]
+          },
+          "status_code": 400,
+          "success": true,
+          "test_name": "tests/connection/test_mcp_connection.py::test_mcp_server_is_reachable",
+          "timestamp": "2026-05-16T22:17:07.068433+00:00",
+          "tool_name": "health_check",
+          "trace_id": "14c4f94d-8588-4ea8-8ffa-7c960ffa82d3",
+          "workflow_id": "f74049a4-bbc2-41c3-a38a-43427597a3ea"
+        }
+      ],
+      "workflow_id": "f74049a4-bbc2-41c3-a38a-43427597a3ea"
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "captured_at": "2026-05-16T22:17:43.425545+00:00",
+  "evidence_type": "test_evidence",
+  "name": "tool_invocation_generate_investigation_summary",
+  "payload": {
+    "arguments": {
+      "case_id": "case_001"
+    },
+    "result": {
+      "arguments": {
+        "case_id": "case_001"
+      },
+      "error": null,
+      "latency_ms": 359.464,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown or incomplete evidence: Unknown case: case_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown or incomplete evidence: Unknown case: case_001\",\n  \"trace_id\": \"c1ed8208-fbef-44bf-88ef-b8dcbfb0e982\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Unknown or incomplete evidence: Unknown case: case_001",
+          "error_code": "DOMAIN_ERROR",
+          "message": "Unknown or incomplete evidence: Unknown case: case_001",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "c1ed8208-fbef-44bf-88ef-b8dcbfb0e982"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:17:43.064981+00:00",
+      "tool_name": "generate_investigation_summary",
+      "trace_id": "e4e09991-88dc-4231-b556-094de10a1a33"
+    },
+    "tool_name": "generate_investigation_summary",
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 429.87,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[generate_investigation_summary]",
+          "timestamp": "2026-05-16T22:17:43.064873+00:00",
+          "tool_name": "initialize",
+          "trace_id": "84a3dc8f-3bfe-406c-aa84-5645335f70fd",
+          "workflow_id": "f3926691-007e-4ddf-9616-9f3392dfcf0f"
+        },
+        {
+          "error": "Unknown or incomplete evidence: Unknown case: case_001",
+          "input_arguments": {
+            "case_id": "case_001"
+          },
+          "latency_ms": 359.097,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_001"
+              },
+              "name": "generate_investigation_summary"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown or incomplete evidence: Unknown case: case_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown or incomplete evidence: Unknown case: case_001\",\n  \"trace_id\": \"c1ed8208-fbef-44bf-88ef-b8dcbfb0e982\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Unknown or incomplete evidence: Unknown case: case_001",
+                "error_code": "DOMAIN_ERROR",
+                "message": "Unknown or incomplete evidence: Unknown case: case_001",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "c1ed8208-fbef-44bf-88ef-b8dcbfb0e982"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Unknown or incomplete evidence: Unknown case: case_001",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[generate_investigation_summary]",
+          "timestamp": "2026-05-16T22:17:43.424385+00:00",
+          "tool_name": "generate_investigation_summary",
+          "trace_id": "e4e09991-88dc-4231-b556-094de10a1a33",
+          "workflow_id": "f3926691-007e-4ddf-9616-9f3392dfcf0f"
+        }
+      ],
+      "workflow_id": "f3926691-007e-4ddf-9616-9f3392dfcf0f"
+    }
+  }
+}

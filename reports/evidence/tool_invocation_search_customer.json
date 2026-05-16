@@ -1,0 +1,159 @@
+{
+  "captured_at": "2026-05-16T22:17:38.392836+00:00",
+  "evidence_type": "test_evidence",
+  "name": "tool_invocation_search_customer",
+  "payload": {
+    "arguments": {
+      "customer_id": "cust_001"
+    },
+    "result": {
+      "arguments": {
+        "customer_id": "cust_001"
+      },
+      "error": null,
+      "latency_ms": 409.068,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown customer: cust_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown customer: cust_001\",\n  \"trace_id\": \"85f91818-6bdf-4760-9431-7547a56a208a\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Unknown customer: cust_001",
+          "error_code": "DOMAIN_ERROR",
+          "message": "Unknown customer: cust_001",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "85f91818-6bdf-4760-9431-7547a56a208a"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:17:37.982889+00:00",
+      "tool_name": "search_customer",
+      "trace_id": "f043eeae-efb7-4c75-b591-c1ad8c5b6808"
+    },
+    "tool_name": "search_customer",
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 470.252,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[search_customer]",
+          "timestamp": "2026-05-16T22:17:37.982805+00:00",
+          "tool_name": "initialize",
+          "trace_id": "4d1faa95-25a0-40f5-b1ed-38b665844a62",
+          "workflow_id": "ebad431d-13d8-44b0-8185-6161f7e5ffb0"
+        },
+        {
+          "error": "Unknown customer: cust_001",
+          "input_arguments": {
+            "customer_id": "cust_001"
+          },
+          "latency_ms": 408.79,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "customer_id": "cust_001"
+              },
+              "name": "search_customer"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown customer: cust_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown customer: cust_001\",\n  \"trace_id\": \"85f91818-6bdf-4760-9431-7547a56a208a\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Unknown customer: cust_001",
+                "error_code": "DOMAIN_ERROR",
+                "message": "Unknown customer: cust_001",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "85f91818-6bdf-4760-9431-7547a56a208a"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Unknown customer: cust_001",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[search_customer]",
+          "timestamp": "2026-05-16T22:17:38.391916+00:00",
+          "tool_name": "search_customer",
+          "trace_id": "f043eeae-efb7-4c75-b591-c1ad8c5b6808",
+          "workflow_id": "ebad431d-13d8-44b0-8185-6161f7e5ffb0"
+        }
+      ],
+      "workflow_id": "ebad431d-13d8-44b0-8185-6161f7e5ffb0"
+    }
+  }
+}

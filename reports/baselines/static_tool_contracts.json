@@ -1,0 +1,298 @@
+{
+  "expected_tool_inventory": [
+    {
+      "expected_response_fields": [
+        "customer_id",
+        "matched_records",
+        "match_confidence"
+      ],
+      "governance_criticality": "medium",
+      "name": "search_customer",
+      "optional_arguments": [
+        "role"
+      ],
+      "owner": "Fraud Operations",
+      "purpose": "Find a customer profile using known customer identifiers.",
+      "required_arguments": [
+        "customer_id"
+      ],
+      "risk_category": "customer_identification"
+    },
+    {
+      "expected_response_fields": [
+        "transaction_id",
+        "amount",
+        "currency",
+        "status",
+        "customer_id"
+      ],
+      "governance_criticality": "medium",
+      "name": "get_transaction",
+      "optional_arguments": [
+        "role"
+      ],
+      "owner": "Fraud Operations",
+      "purpose": "Retrieve transaction details needed for fraud investigation.",
+      "required_arguments": [
+        "transaction_id"
+      ],
+      "risk_category": "transaction_lookup"
+    },
+    {
+      "expected_response_fields": [
+        "transaction_id",
+        "risk_score",
+        "risk_level",
+        "signals",
+        "recommended_action"
+      ],
+      "governance_criticality": "high",
+      "name": "score_transaction_risk",
+      "optional_arguments": [
+        "role"
+      ],
+      "owner": "Financial Crime Analytics",
+      "purpose": "Score a transaction for suspected fraud risk.",
+      "required_arguments": [
+        "transaction_id"
+      ],
+      "risk_category": "fraud_risk_scoring"
+    },
+    {
+      "expected_response_fields": [
+        "case_id",
+        "transaction_id",
+        "customer_id",
+        "status",
+        "priority",
+        "created_at"
+      ],
+      "governance_criticality": "high",
+      "name": "create_fraud_case",
+      "optional_arguments": [
+        "role"
+      ],
+      "owner": "Fraud Case Management",
+      "purpose": "Create a fraud investigation case from a suspicious transaction.",
+      "required_arguments": [
+        "transaction_id"
+      ],
+      "risk_category": "case_management"
+    },
+    {
+      "expected_response_fields": [
+        "case_id",
+        "status",
+        "assigned_to",
+        "updated_at"
+      ],
+      "governance_criticality": "medium",
+      "name": "get_case_status",
+      "optional_arguments": [
+        "role"
+      ],
+      "owner": "Fraud Case Management",
+      "purpose": "Retrieve the current status and assignment of a fraud case.",
+      "required_arguments": [
+        "case_id"
+      ],
+      "risk_category": "case_management"
+    },
+    {
+      "expected_response_fields": [
+        "case_id",
+        "status",
+        "escalation_reason",
+        "updated_at"
+      ],
+      "governance_criticality": "high",
+      "name": "escalate_case",
+      "optional_arguments": [
+        "role"
+      ],
+      "owner": "Fraud Operations",
+      "purpose": "Escalate a fraud case for urgent review or specialist handling.",
+      "required_arguments": [
+        "case_id",
+        "reason"
+      ],
+      "risk_category": "case_escalation"
+    },
+    {
+      "expected_response_fields": [
+        "case_id",
+        "summary",
+        "findings",
+        "generated_at"
+      ],
+      "governance_criticality": "high",
+      "name": "generate_investigation_summary",
+      "optional_arguments": [
+        "role"
+      ],
+      "owner": "Fraud Governance",
+      "purpose": "Generate a concise investigation summary for audit and review.",
+      "required_arguments": [
+        "case_id"
+      ],
+      "risk_category": "investigation_reporting"
+    }
+  ],
+  "tool_schema_contracts": {
+    "create_fraud_case": {
+      "input_properties": {
+        "role": "string",
+        "transaction_id": "string"
+      },
+      "input_required": [
+        "transaction_id"
+      ],
+      "output_properties": {
+        "case_id": "string",
+        "created_at": "string",
+        "customer_id": "string",
+        "priority": "string",
+        "status": "string",
+        "transaction_id": "string"
+      },
+      "output_required": [
+        "case_id",
+        "transaction_id",
+        "customer_id",
+        "status",
+        "priority",
+        "created_at"
+      ]
+    },
+    "escalate_case": {
+      "input_properties": {
+        "case_id": "string",
+        "reason": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "case_id",
+        "reason"
+      ],
+      "output_properties": {
+        "case_id": "string",
+        "escalation_reason": "string",
+        "status": "string",
+        "updated_at": "string"
+      },
+      "output_required": [
+        "case_id",
+        "status",
+        "escalation_reason",
+        "updated_at"
+      ]
+    },
+    "generate_investigation_summary": {
+      "input_properties": {
+        "case_id": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "case_id"
+      ],
+      "output_properties": {
+        "case_id": "string",
+        "findings": "array",
+        "generated_at": "string",
+        "summary": "string"
+      },
+      "output_required": [
+        "case_id",
+        "summary",
+        "findings",
+        "generated_at"
+      ]
+    },
+    "get_case_status": {
+      "input_properties": {
+        "case_id": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "case_id"
+      ],
+      "output_properties": {
+        "assigned_to": "string",
+        "case_id": "string",
+        "status": "string",
+        "updated_at": "string"
+      },
+      "output_required": [
+        "case_id",
+        "status",
+        "assigned_to",
+        "updated_at"
+      ]
+    },
+    "get_transaction": {
+      "input_properties": {
+        "role": "string",
+        "transaction_id": "string"
+      },
+      "input_required": [
+        "transaction_id"
+      ],
+      "output_properties": {
+        "amount": "number",
+        "currency": "string",
+        "customer_id": "string",
+        "status": "string",
+        "transaction_id": "string"
+      },
+      "output_required": [
+        "transaction_id",
+        "amount",
+        "currency",
+        "status",
+        "customer_id"
+      ]
+    },
+    "score_transaction_risk": {
+      "input_properties": {
+        "role": "string",
+        "transaction_id": "string"
+      },
+      "input_required": [
+        "transaction_id"
+      ],
+      "output_properties": {
+        "recommended_action": "string",
+        "risk_level": "string",
+        "risk_score": "number",
+        "signals": "array",
+        "transaction_id": "string"
+      },
+      "output_required": [
+        "transaction_id",
+        "risk_score",
+        "risk_level",
+        "signals",
+        "recommended_action"
+      ]
+    },
+    "search_customer": {
+      "input_properties": {
+        "customer_id": "string",
+        "role": "string"
+      },
+      "input_required": [
+        "customer_id"
+      ],
+      "output_properties": {
+        "customer_id": "string",
+        "match_confidence": "number",
+        "matched_records": "array"
+      },
+      "output_required": [
+        "customer_id",
+        "matched_records",
+        "match_confidence"
+      ]
+    }
+  }
+}

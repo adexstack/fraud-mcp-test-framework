@@ -1,0 +1,236 @@
+{
+  "captured_at": "2026-05-16T22:18:21.376355+00:00",
+  "evidence_type": "test_evidence",
+  "name": "workflow_wrong_order_safety",
+  "payload": {
+    "metadata": {
+      "invalid_case_id": "case_missing_summary_001"
+    },
+    "steps": [
+      {
+        "arguments": {
+          "case_id": "case_missing_summary_001",
+          "role": "investigator_manager"
+        },
+        "name": "summary_without_case",
+        "structured_content": {
+          "error": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
+          "error_code": "DOMAIN_ERROR",
+          "message": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "72c8a60b-c018-4ae2-bc11-21b11c0d2247"
+        },
+        "tool_call_result": {
+          "error": null,
+          "latency_ms": 373.747,
+          "success": true,
+          "timestamp": "2026-05-16T22:18:20.639345+00:00",
+          "trace_id": "850244ea-0041-443b-83af-29d8f40bcc87"
+        },
+        "tool_name": "generate_investigation_summary"
+      },
+      {
+        "arguments": {
+          "case_id": "case_missing_summary_001",
+          "reason": "Wrong-order workflow validation",
+          "role": "investigator_manager"
+        },
+        "name": "escalation_without_case",
+        "structured_content": {
+          "error": "Unknown case: case_missing_summary_001",
+          "error_code": "DOMAIN_ERROR",
+          "message": "Unknown case: case_missing_summary_001",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "869f45ef-de45-497d-b889-28787dc53341"
+        },
+        "tool_call_result": {
+          "error": null,
+          "latency_ms": 362.037,
+          "success": true,
+          "timestamp": "2026-05-16T22:18:21.013282+00:00",
+          "trace_id": "3ca9f0c7-b10e-44ef-8aa9-26d043e5f60a"
+        },
+        "tool_name": "escalate_case"
+      }
+    ],
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 439.128,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_tool_calls_in_wrong_order_are_handled_safely",
+          "timestamp": "2026-05-16T22:18:20.639144+00:00",
+          "tool_name": "initialize",
+          "trace_id": "bccc07c4-30bb-4073-9adf-8f952b7f048e",
+          "workflow_id": "945018be-6628-4e28-b997-7f695cb3ce67"
+        },
+        {
+          "error": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
+          "input_arguments": {
+            "case_id": "case_missing_summary_001",
+            "role": "investigator_manager"
+          },
+          "latency_ms": 373.345,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_missing_summary_001",
+                "role": "investigator_manager"
+              },
+              "name": "generate_investigation_summary"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown or incomplete evidence: Unknown case: case_missing_summary_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown or incomplete evidence: Unknown case: case_missing_summary_001\",\n  \"trace_id\": \"72c8a60b-c018-4ae2-bc11-21b11c0d2247\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
+                "error_code": "DOMAIN_ERROR",
+                "message": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "72c8a60b-c018-4ae2-bc11-21b11c0d2247"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Unknown or incomplete evidence: Unknown case: case_missing_summary_001",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_tool_calls_in_wrong_order_are_handled_safely",
+          "timestamp": "2026-05-16T22:18:21.013041+00:00",
+          "tool_name": "generate_investigation_summary",
+          "trace_id": "850244ea-0041-443b-83af-29d8f40bcc87",
+          "workflow_id": "945018be-6628-4e28-b997-7f695cb3ce67"
+        },
+        {
+          "error": "Unknown case: case_missing_summary_001",
+          "input_arguments": {
+            "case_id": "case_missing_summary_001",
+            "reason": "Wrong-order workflow validation",
+            "role": "investigator_manager"
+          },
+          "latency_ms": 361.714,
+          "method": "tools/call",
+          "request": {
+            "id": 3,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_missing_summary_001",
+                "reason": "Wrong-order workflow validation",
+                "role": "investigator_manager"
+              },
+              "name": "escalate_case"
+            }
+          },
+          "response": {
+            "id": 3,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown case: case_missing_summary_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown case: case_missing_summary_001\",\n  \"trace_id\": \"869f45ef-de45-497d-b889-28787dc53341\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Unknown case: case_missing_summary_001",
+                "error_code": "DOMAIN_ERROR",
+                "message": "Unknown case: case_missing_summary_001",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "869f45ef-de45-497d-b889-28787dc53341"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Unknown case: case_missing_summary_001",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_tool_calls_in_wrong_order_are_handled_safely",
+          "timestamp": "2026-05-16T22:18:21.375271+00:00",
+          "tool_name": "escalate_case",
+          "trace_id": "3ca9f0c7-b10e-44ef-8aa9-26d043e5f60a",
+          "workflow_id": "945018be-6628-4e28-b997-7f695cb3ce67"
+        }
+      ],
+      "workflow_id": "945018be-6628-4e28-b997-7f695cb3ce67"
+    }
+  }
+}

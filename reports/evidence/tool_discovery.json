@@ -1,0 +1,636 @@
+{
+  "captured_at": "2026-05-16T22:17:08.649491+00:00",
+  "evidence_type": "test_evidence",
+  "name": "tool_discovery",
+  "payload": {
+    "discovered_tools": [
+      {
+        "description": "Search for a customer by id.",
+        "inputSchema": {
+          "properties": {
+            "customer_id": {
+              "title": "Customer Id",
+              "type": "string"
+            },
+            "role": {
+              "default": "",
+              "title": "Role",
+              "type": "string"
+            }
+          },
+          "required": [
+            "customer_id"
+          ],
+          "title": "search_customerArguments",
+          "type": "object"
+        },
+        "name": "search_customer",
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "search_customerDictOutput",
+          "type": "object"
+        }
+      },
+      {
+        "description": "Fetch a transaction by id.",
+        "inputSchema": {
+          "properties": {
+            "role": {
+              "default": "",
+              "title": "Role",
+              "type": "string"
+            },
+            "transaction_id": {
+              "title": "Transaction Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "transaction_id"
+          ],
+          "title": "get_transactionArguments",
+          "type": "object"
+        },
+        "name": "get_transaction",
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "get_transactionDictOutput",
+          "type": "object"
+        }
+      },
+      {
+        "description": "Score fraud risk for a stored transaction.",
+        "inputSchema": {
+          "properties": {
+            "role": {
+              "default": "",
+              "title": "Role",
+              "type": "string"
+            },
+            "transaction_id": {
+              "title": "Transaction Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "transaction_id"
+          ],
+          "title": "score_transaction_riskArguments",
+          "type": "object"
+        },
+        "name": "score_transaction_risk",
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "score_transaction_riskDictOutput",
+          "type": "object"
+        }
+      },
+      {
+        "description": "Create a fraud case from a transaction.",
+        "inputSchema": {
+          "properties": {
+            "role": {
+              "default": "",
+              "title": "Role",
+              "type": "string"
+            },
+            "transaction_id": {
+              "title": "Transaction Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "transaction_id"
+          ],
+          "title": "create_fraud_caseArguments",
+          "type": "object"
+        },
+        "name": "create_fraud_case",
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "create_fraud_caseDictOutput",
+          "type": "object"
+        }
+      },
+      {
+        "description": "Get the status of a fraud case.",
+        "inputSchema": {
+          "properties": {
+            "case_id": {
+              "title": "Case Id",
+              "type": "string"
+            },
+            "role": {
+              "default": "",
+              "title": "Role",
+              "type": "string"
+            }
+          },
+          "required": [
+            "case_id"
+          ],
+          "title": "get_case_statusArguments",
+          "type": "object"
+        },
+        "name": "get_case_status",
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "get_case_statusDictOutput",
+          "type": "object"
+        }
+      },
+      {
+        "description": "Escalate an existing fraud case.",
+        "inputSchema": {
+          "properties": {
+            "case_id": {
+              "title": "Case Id",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "role": {
+              "default": "",
+              "title": "Role",
+              "type": "string"
+            }
+          },
+          "required": [
+            "case_id",
+            "reason"
+          ],
+          "title": "escalate_caseArguments",
+          "type": "object"
+        },
+        "name": "escalate_case",
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "escalate_caseDictOutput",
+          "type": "object"
+        }
+      },
+      {
+        "description": "Generate a fraud investigation summary.",
+        "inputSchema": {
+          "properties": {
+            "case_id": {
+              "title": "Case Id",
+              "type": "string"
+            },
+            "role": {
+              "default": "",
+              "title": "Role",
+              "type": "string"
+            }
+          },
+          "required": [
+            "case_id"
+          ],
+          "title": "generate_investigation_summaryArguments",
+          "type": "object"
+        },
+        "name": "generate_investigation_summary",
+        "outputSchema": {
+          "additionalProperties": true,
+          "title": "generate_investigation_summaryDictOutput",
+          "type": "object"
+        }
+      }
+    ],
+    "expected_tools": [
+      {
+        "expected_response_fields": [
+          "customer_id",
+          "matched_records",
+          "match_confidence"
+        ],
+        "governance_criticality": "medium",
+        "name": "search_customer",
+        "optional_arguments": [
+          "role"
+        ],
+        "owner": "Fraud Operations",
+        "purpose": "Find a customer profile using known customer identifiers.",
+        "required_arguments": [
+          "customer_id"
+        ],
+        "risk_category": "customer_identification"
+      },
+      {
+        "expected_response_fields": [
+          "transaction_id",
+          "amount",
+          "currency",
+          "status",
+          "customer_id"
+        ],
+        "governance_criticality": "medium",
+        "name": "get_transaction",
+        "optional_arguments": [
+          "role"
+        ],
+        "owner": "Fraud Operations",
+        "purpose": "Retrieve transaction details needed for fraud investigation.",
+        "required_arguments": [
+          "transaction_id"
+        ],
+        "risk_category": "transaction_lookup"
+      },
+      {
+        "expected_response_fields": [
+          "transaction_id",
+          "risk_score",
+          "risk_level",
+          "signals",
+          "recommended_action"
+        ],
+        "governance_criticality": "high",
+        "name": "score_transaction_risk",
+        "optional_arguments": [
+          "role"
+        ],
+        "owner": "Financial Crime Analytics",
+        "purpose": "Score a transaction for suspected fraud risk.",
+        "required_arguments": [
+          "transaction_id"
+        ],
+        "risk_category": "fraud_risk_scoring"
+      },
+      {
+        "expected_response_fields": [
+          "case_id",
+          "transaction_id",
+          "customer_id",
+          "status",
+          "priority",
+          "created_at"
+        ],
+        "governance_criticality": "high",
+        "name": "create_fraud_case",
+        "optional_arguments": [
+          "role"
+        ],
+        "owner": "Fraud Case Management",
+        "purpose": "Create a fraud investigation case from a suspicious transaction.",
+        "required_arguments": [
+          "transaction_id"
+        ],
+        "risk_category": "case_management"
+      },
+      {
+        "expected_response_fields": [
+          "case_id",
+          "status",
+          "assigned_to",
+          "updated_at"
+        ],
+        "governance_criticality": "medium",
+        "name": "get_case_status",
+        "optional_arguments": [
+          "role"
+        ],
+        "owner": "Fraud Case Management",
+        "purpose": "Retrieve the current status and assignment of a fraud case.",
+        "required_arguments": [
+          "case_id"
+        ],
+        "risk_category": "case_management"
+      },
+      {
+        "expected_response_fields": [
+          "case_id",
+          "status",
+          "escalation_reason",
+          "updated_at"
+        ],
+        "governance_criticality": "high",
+        "name": "escalate_case",
+        "optional_arguments": [
+          "role"
+        ],
+        "owner": "Fraud Operations",
+        "purpose": "Escalate a fraud case for urgent review or specialist handling.",
+        "required_arguments": [
+          "case_id",
+          "reason"
+        ],
+        "risk_category": "case_escalation"
+      },
+      {
+        "expected_response_fields": [
+          "case_id",
+          "summary",
+          "findings",
+          "generated_at"
+        ],
+        "governance_criticality": "high",
+        "name": "generate_investigation_summary",
+        "optional_arguments": [
+          "role"
+        ],
+        "owner": "Fraud Governance",
+        "purpose": "Generate a concise investigation summary for audit and review.",
+        "required_arguments": [
+          "case_id"
+        ],
+        "risk_category": "investigation_reporting"
+      }
+    ],
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 418.479,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/connection/test_tool_discovery.py::test_mcp_tool_discovery",
+          "timestamp": "2026-05-16T22:17:08.297251+00:00",
+          "tool_name": "initialize",
+          "trace_id": "261bea88-7a2d-4f3a-b6e8-aae1864e3529",
+          "workflow_id": "a364acb7-e990-414d-9942-feeadbb3fb36"
+        },
+        {
+          "error": null,
+          "input_arguments": {},
+          "latency_ms": 348.814,
+          "method": "tools/list",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/list"
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "tools": [
+                {
+                  "description": "Search for a customer by id.",
+                  "inputSchema": {
+                    "properties": {
+                      "customer_id": {
+                        "title": "Customer Id",
+                        "type": "string"
+                      },
+                      "role": {
+                        "default": "",
+                        "title": "Role",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "customer_id"
+                    ],
+                    "title": "search_customerArguments",
+                    "type": "object"
+                  },
+                  "name": "search_customer",
+                  "outputSchema": {
+                    "additionalProperties": true,
+                    "title": "search_customerDictOutput",
+                    "type": "object"
+                  }
+                },
+                {
+                  "description": "Fetch a transaction by id.",
+                  "inputSchema": {
+                    "properties": {
+                      "role": {
+                        "default": "",
+                        "title": "Role",
+                        "type": "string"
+                      },
+                      "transaction_id": {
+                        "title": "Transaction Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "transaction_id"
+                    ],
+                    "title": "get_transactionArguments",
+                    "type": "object"
+                  },
+                  "name": "get_transaction",
+                  "outputSchema": {
+                    "additionalProperties": true,
+                    "title": "get_transactionDictOutput",
+                    "type": "object"
+                  }
+                },
+                {
+                  "description": "Score fraud risk for a stored transaction.",
+                  "inputSchema": {
+                    "properties": {
+                      "role": {
+                        "default": "",
+                        "title": "Role",
+                        "type": "string"
+                      },
+                      "transaction_id": {
+                        "title": "Transaction Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "transaction_id"
+                    ],
+                    "title": "score_transaction_riskArguments",
+                    "type": "object"
+                  },
+                  "name": "score_transaction_risk",
+                  "outputSchema": {
+                    "additionalProperties": true,
+                    "title": "score_transaction_riskDictOutput",
+                    "type": "object"
+                  }
+                },
+                {
+                  "description": "Create a fraud case from a transaction.",
+                  "inputSchema": {
+                    "properties": {
+                      "role": {
+                        "default": "",
+                        "title": "Role",
+                        "type": "string"
+                      },
+                      "transaction_id": {
+                        "title": "Transaction Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "transaction_id"
+                    ],
+                    "title": "create_fraud_caseArguments",
+                    "type": "object"
+                  },
+                  "name": "create_fraud_case",
+                  "outputSchema": {
+                    "additionalProperties": true,
+                    "title": "create_fraud_caseDictOutput",
+                    "type": "object"
+                  }
+                },
+                {
+                  "description": "Get the status of a fraud case.",
+                  "inputSchema": {
+                    "properties": {
+                      "case_id": {
+                        "title": "Case Id",
+                        "type": "string"
+                      },
+                      "role": {
+                        "default": "",
+                        "title": "Role",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "case_id"
+                    ],
+                    "title": "get_case_statusArguments",
+                    "type": "object"
+                  },
+                  "name": "get_case_status",
+                  "outputSchema": {
+                    "additionalProperties": true,
+                    "title": "get_case_statusDictOutput",
+                    "type": "object"
+                  }
+                },
+                {
+                  "description": "Escalate an existing fraud case.",
+                  "inputSchema": {
+                    "properties": {
+                      "case_id": {
+                        "title": "Case Id",
+                        "type": "string"
+                      },
+                      "reason": {
+                        "title": "Reason",
+                        "type": "string"
+                      },
+                      "role": {
+                        "default": "",
+                        "title": "Role",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "case_id",
+                      "reason"
+                    ],
+                    "title": "escalate_caseArguments",
+                    "type": "object"
+                  },
+                  "name": "escalate_case",
+                  "outputSchema": {
+                    "additionalProperties": true,
+                    "title": "escalate_caseDictOutput",
+                    "type": "object"
+                  }
+                },
+                {
+                  "description": "Generate a fraud investigation summary.",
+                  "inputSchema": {
+                    "properties": {
+                      "case_id": {
+                        "title": "Case Id",
+                        "type": "string"
+                      },
+                      "role": {
+                        "default": "",
+                        "title": "Role",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "case_id"
+                    ],
+                    "title": "generate_investigation_summaryArguments",
+                    "type": "object"
+                  },
+                  "name": "generate_investigation_summary",
+                  "outputSchema": {
+                    "additionalProperties": true,
+                    "title": "generate_investigation_summaryDictOutput",
+                    "type": "object"
+                  }
+                }
+              ]
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "tools"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/connection/test_tool_discovery.py::test_mcp_tool_discovery",
+          "timestamp": "2026-05-16T22:17:08.647151+00:00",
+          "tool_name": "tools/list",
+          "trace_id": "271fdc8f-f2a8-4c7d-97b0-fb09a94be596",
+          "workflow_id": "a364acb7-e990-414d-9942-feeadbb3fb36"
+        }
+      ],
+      "workflow_id": "a364acb7-e990-414d-9942-feeadbb3fb36"
+    }
+  }
+}

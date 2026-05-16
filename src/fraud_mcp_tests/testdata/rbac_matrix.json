@@ -1,0 +1,103 @@
+{
+  "role_context_strategy": "tool_arguments",
+  "role_context_argument": "role",
+  "roles": {
+    "analyst_l1": {
+      "allowed_tools": [
+        "search_customer",
+        "get_transaction",
+        "score_transaction_risk"
+      ],
+      "denied_tools": [
+        "create_fraud_case",
+        "escalate_case"
+      ]
+    },
+    "analyst_l2": {
+      "allowed_tools": [
+        "search_customer",
+        "get_transaction",
+        "score_transaction_risk",
+        "create_fraud_case",
+        "get_case_status",
+        "generate_investigation_summary"
+      ],
+      "denied_tools": [
+        "escalate_case"
+      ]
+    },
+    "analyst_l3": {
+      "allowed_tools": [
+        "search_customer",
+        "get_transaction",
+        "score_transaction_risk",
+        "create_fraud_case",
+        "get_case_status",
+        "escalate_case",
+        "generate_investigation_summary"
+      ],
+      "denied_tools": []
+    },
+    "investigator_manager": {
+      "allowed_tools": [
+        "search_customer",
+        "get_transaction",
+        "score_transaction_risk",
+        "create_fraud_case",
+        "get_case_status",
+        "escalate_case",
+        "generate_investigation_summary"
+      ],
+      "denied_tools": []
+    },
+    "auditor": {
+      "allowed_tools": [
+        "search_customer",
+        "get_transaction",
+        "score_transaction_risk",
+        "get_case_status",
+        "generate_investigation_summary"
+      ],
+      "denied_tools": [
+        "create_fraud_case",
+        "escalate_case"
+      ]
+    }
+  },
+  "permission_denied_indicators": [
+    "permission denied",
+    "forbidden",
+    "unauthorized",
+    "not authorized",
+    "access denied",
+    "rbac",
+    "role",
+    "least privilege"
+  ],
+  "security_test_payloads": {
+    "search_customer": {
+      "customer_id": "cust_low_risk_001"
+    },
+    "get_transaction": {
+      "transaction_id": "txn_low_risk_001"
+    },
+    "score_transaction_risk": {
+      "transaction_id": "txn_low_risk_001"
+    },
+    "create_fraud_case": {
+      "transaction_id": "txn_low_risk_001"
+    },
+    "get_case_status": {
+      "case_id": "case_security_boundary_001"
+    },
+    "escalate_case": {
+      "case_id": "case_security_boundary_001",
+      "reason": "RBAC boundary validation"
+    },
+    "generate_investigation_summary": {
+      "case_id": "case_security_boundary_001"
+    }
+  },
+  "invalid_role": "external_attacker",
+  "missing_role_expected": "reject_or_least_privilege"
+}

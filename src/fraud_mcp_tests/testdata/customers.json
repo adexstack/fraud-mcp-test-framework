@@ -1,0 +1,15 @@
+[
+  {
+    "customer_id": "cust_low_risk_001",
+    "scenario": "standard retail customer",
+    "pep": false,
+    "expected_risk_modifier": "none"
+  },
+  {
+    "customer_id": "cust_pep_001",
+    "scenario": "politically exposed person",
+    "pep": true,
+    "expected_risk_modifier": "increase"
+  }
+]
+

@@ -1,0 +1,714 @@
+{
+  "captured_at": "2026-05-16T22:18:17.945576+00:00",
+  "evidence_type": "test_evidence",
+  "name": "workflow_repeated_status_consistency",
+  "payload": {
+    "metadata": {
+      "case_id": "case_0011",
+      "transaction_id": "txn_multi_signal_001"
+    },
+    "steps": [
+      {
+        "arguments": {
+          "role": "investigator_manager",
+          "transaction_id": "txn_multi_signal_001"
+        },
+        "name": "get_transaction",
+        "structured_content": {
+          "amount": 12000.0,
+          "beneficiary_id": "NEW-BEN-MULTI-001",
+          "channel": "online",
+          "currency": "USD",
+          "customer_id": "cust_pep_001",
+          "data": {
+            "amount": 12000.0,
+            "beneficiary_id": "NEW-BEN-MULTI-001",
+            "channel": "online",
+            "currency": "USD",
+            "customer_id": "cust_pep_001",
+            "destination_country": "IR",
+            "status": "pending",
+            "timestamp": "2026-05-15T02:15:00Z",
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "destination_country": "IR",
+          "ok": true,
+          "status": "pending",
+          "timestamp": "2026-05-15T02:15:00Z",
+          "transaction_id": "txn_multi_signal_001"
+        },
+        "tool_call_result": {
+          "error": null,
+          "latency_ms": 333.772,
+          "success": true,
+          "timestamp": "2026-05-16T22:18:16.189215+00:00",
+          "trace_id": "4ea91e3f-8c26-4e0f-9700-17f428a59015"
+        },
+        "tool_name": "get_transaction"
+      },
+      {
+        "arguments": {
+          "role": "investigator_manager",
+          "transaction_id": "txn_multi_signal_001"
+        },
+        "name": "score_transaction_risk",
+        "structured_content": {
+          "data": {
+            "recommended_action": "BLOCK",
+            "risk_level": "critical",
+            "risk_score": 100,
+            "signals": [
+              {
+                "code": "high_amount",
+                "description": "Transaction amount is greater than 3x customer average",
+                "score_impact": 25
+              },
+              {
+                "code": "high_risk_country",
+                "description": "Destination country is high risk",
+                "score_impact": 25
+              },
+              {
+                "code": "pep_customer",
+                "description": "Customer is politically exposed",
+                "score_impact": 20
+              },
+              {
+                "code": "amount_over_10000",
+                "description": "Transaction amount is over 10000",
+                "score_impact": 15
+              },
+              {
+                "code": "high_value_online_transaction",
+                "description": "Online transaction amount is over 5000",
+                "score_impact": 10
+              },
+              {
+                "code": "unusual_hour",
+                "description": "Transaction occurred between 00:00 and 05:00",
+                "score_impact": 10
+              },
+              {
+                "code": "new_beneficiary",
+                "description": "Beneficiary appears to be new",
+                "score_impact": 15
+              }
+            ],
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "ok": true,
+          "recommended_action": "BLOCK",
+          "risk_level": "critical",
+          "risk_score": 100,
+          "signals": [
+            {
+              "code": "high_amount",
+              "description": "Transaction amount is greater than 3x customer average",
+              "score_impact": 25
+            },
+            {
+              "code": "high_risk_country",
+              "description": "Destination country is high risk",
+              "score_impact": 25
+            },
+            {
+              "code": "pep_customer",
+              "description": "Customer is politically exposed",
+              "score_impact": 20
+            },
+            {
+              "code": "amount_over_10000",
+              "description": "Transaction amount is over 10000",
+              "score_impact": 15
+            },
+            {
+              "code": "high_value_online_transaction",
+              "description": "Online transaction amount is over 5000",
+              "score_impact": 10
+            },
+            {
+              "code": "unusual_hour",
+              "description": "Transaction occurred between 00:00 and 05:00",
+              "score_impact": 10
+            },
+            {
+              "code": "new_beneficiary",
+              "description": "Beneficiary appears to be new",
+              "score_impact": 15
+            }
+          ],
+          "transaction_id": "txn_multi_signal_001"
+        },
+        "tool_call_result": {
+          "error": null,
+          "latency_ms": 356.376,
+          "success": true,
+          "timestamp": "2026-05-16T22:18:16.523129+00:00",
+          "trace_id": "723de837-f981-47d4-81cd-24d545df3579"
+        },
+        "tool_name": "score_transaction_risk"
+      },
+      {
+        "arguments": {
+          "role": "investigator_manager",
+          "transaction_id": "txn_multi_signal_001"
+        },
+        "name": "create_fraud_case",
+        "structured_content": {
+          "case_id": "case_0011",
+          "created_at": "2026-05-16T22:18:17.177038Z",
+          "customer_id": "cust_pep_001",
+          "data": {
+            "case_id": "case_0011",
+            "created_at": "2026-05-16T22:18:17.177038Z",
+            "customer_id": "cust_pep_001",
+            "notes": [
+              "Risk level: critical"
+            ],
+            "priority": "urgent",
+            "risk_score": 100,
+            "status": "open",
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "notes": [
+            "Risk level: critical"
+          ],
+          "ok": true,
+          "priority": "urgent",
+          "risk_score": 100,
+          "status": "open",
+          "transaction_id": "txn_multi_signal_001"
+        },
+        "tool_call_result": {
+          "error": null,
+          "latency_ms": 358.229,
+          "success": true,
+          "timestamp": "2026-05-16T22:18:16.879681+00:00",
+          "trace_id": "836d5e13-139d-47a5-a2f9-de66c2df0488"
+        },
+        "tool_name": "create_fraud_case"
+      },
+      {
+        "arguments": {
+          "case_id": "case_0011",
+          "role": "investigator_manager"
+        },
+        "name": "first_case_status_read",
+        "structured_content": {
+          "assigned_to": "fraud_operations",
+          "case_id": "case_0011",
+          "data": {
+            "assigned_to": "fraud_operations",
+            "case_id": "case_0011",
+            "status": "open",
+            "updated_at": "2026-05-16T22:18:17.177038+00:00"
+          },
+          "ok": true,
+          "status": "open",
+          "updated_at": "2026-05-16T22:18:17.177038+00:00"
+        },
+        "tool_call_result": {
+          "error": null,
+          "latency_ms": 329.263,
+          "success": true,
+          "timestamp": "2026-05-16T22:18:17.237943+00:00",
+          "trace_id": "db60b752-5a9c-43f3-ac3e-4bbd02d4f8af"
+        },
+        "tool_name": "get_case_status"
+      },
+      {
+        "arguments": {
+          "case_id": "case_0011",
+          "role": "investigator_manager"
+        },
+        "name": "second_case_status_read",
+        "structured_content": {
+          "assigned_to": "fraud_operations",
+          "case_id": "case_0011",
+          "data": {
+            "assigned_to": "fraud_operations",
+            "case_id": "case_0011",
+            "status": "open",
+            "updated_at": "2026-05-16T22:18:17.177038+00:00"
+          },
+          "ok": true,
+          "status": "open",
+          "updated_at": "2026-05-16T22:18:17.177038+00:00"
+        },
+        "tool_call_result": {
+          "error": null,
+          "latency_ms": 376.481,
+          "success": true,
+          "timestamp": "2026-05-16T22:18:17.567330+00:00",
+          "trace_id": "bf3e8ba8-6e4e-4056-8f18-c33a3a450812"
+        },
+        "tool_name": "get_case_status"
+      }
+    ],
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 420.16,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_case_status_is_consistent_across_repeated_reads",
+          "timestamp": "2026-05-16T22:18:16.189074+00:00",
+          "tool_name": "initialize",
+          "trace_id": "aafb6694-115f-4c8c-9a7a-f6ae57d6a688",
+          "workflow_id": "19e3f549-d90d-41a9-903b-4a3432100739"
+        },
+        {
+          "error": null,
+          "input_arguments": {
+            "role": "investigator_manager",
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "latency_ms": 333.389,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "role": "investigator_manager",
+                "transaction_id": "txn_multi_signal_001"
+              },
+              "name": "get_transaction"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": true,\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"amount\": 12000.0,\n  \"currency\": \"USD\",\n  \"destination_country\": \"IR\",\n  \"beneficiary_id\": \"NEW-BEN-MULTI-001\",\n  \"timestamp\": \"2026-05-15T02:15:00Z\",\n  \"channel\": \"online\",\n  \"status\": \"pending\",\n  \"data\": {\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"amount\": 12000.0,\n    \"currency\": \"USD\",\n    \"destination_country\": \"IR\",\n    \"beneficiary_id\": \"NEW-BEN-MULTI-001\",\n    \"timestamp\": \"2026-05-15T02:15:00Z\",\n    \"channel\": \"online\",\n    \"status\": \"pending\"\n  }\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "amount": 12000.0,
+                "beneficiary_id": "NEW-BEN-MULTI-001",
+                "channel": "online",
+                "currency": "USD",
+                "customer_id": "cust_pep_001",
+                "data": {
+                  "amount": 12000.0,
+                  "beneficiary_id": "NEW-BEN-MULTI-001",
+                  "channel": "online",
+                  "currency": "USD",
+                  "customer_id": "cust_pep_001",
+                  "destination_country": "IR",
+                  "status": "pending",
+                  "timestamp": "2026-05-15T02:15:00Z",
+                  "transaction_id": "txn_multi_signal_001"
+                },
+                "destination_country": "IR",
+                "ok": true,
+                "status": "pending",
+                "timestamp": "2026-05-15T02:15:00Z",
+                "transaction_id": "txn_multi_signal_001"
+              }
+            }
+          },
+          "response_summary": {
+            "customer_id": "cust_pep_001",
+            "ok": true,
+            "status": "pending",
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_case_status_is_consistent_across_repeated_reads",
+          "timestamp": "2026-05-16T22:18:16.522945+00:00",
+          "tool_name": "get_transaction",
+          "trace_id": "4ea91e3f-8c26-4e0f-9700-17f428a59015",
+          "workflow_id": "19e3f549-d90d-41a9-903b-4a3432100739"
+        },
+        {
+          "error": null,
+          "input_arguments": {
+            "role": "investigator_manager",
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "latency_ms": 355.725,
+          "method": "tools/call",
+          "request": {
+            "id": 3,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "role": "investigator_manager",
+                "transaction_id": "txn_multi_signal_001"
+              },
+              "name": "score_transaction_risk"
+            }
+          },
+          "response": {
+            "id": 3,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": true,\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"risk_score\": 100,\n  \"risk_level\": \"critical\",\n  \"signals\": [\n    {\n      \"code\": \"high_amount\",\n      \"description\": \"Transaction amount is greater than 3x customer average\",\n      \"score_impact\": 25\n    },\n    {\n      \"code\": \"high_risk_country\",\n      \"description\": \"Destination country is high risk\",\n      \"score_impact\": 25\n    },\n    {\n      \"code\": \"pep_customer\",\n      \"description\": \"Customer is politically exposed\",\n      \"score_impact\": 20\n    },\n    {\n      \"code\": \"amount_over_10000\",\n      \"description\": \"Transaction amount is over 10000\",\n      \"score_impact\": 15\n    },\n    {\n      \"code\": \"high_value_online_transaction\",\n      \"description\": \"Online transaction amount is over 5000\",\n      \"score_impact\": 10\n    },\n    {\n      \"code\": \"unusual_hour\",\n      \"description\": \"Transaction occurred between 00:00 and 05:00\",\n      \"score_impact\": 10\n    },\n    {\n      \"code\": \"new_beneficiary\",\n      \"description\": \"Beneficiary appears to be new\",\n      \"score_impact\": 15\n    }\n  ],\n  \"recommended_action\": \"BLOCK\",\n  \"data\": {\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"risk_score\": 100,\n    \"risk_level\": \"critical\",\n    \"signals\": [\n      {\n        \"code\": \"high_amount\",\n        \"description\": \"Transaction amount is greater than 3x customer average\",\n        \"score_impact\": 25\n      },\n      {\n        \"code\": \"high_risk_country\",\n        \"description\": \"Destination country is high risk\",\n        \"score_impact\": 25\n      },\n      {\n        \"code\": \"pep_customer\",\n        \"description\": \"Customer is politically exposed\",\n        \"score_impact\": 20\n      },\n      {\n        \"code\": \"amount_over_10000\",\n        \"description\": \"Transaction amount is over 10000\",\n        \"score_impact\": 15\n      },\n      {\n        \"code\": \"high_value_online_transaction\",\n        \"description\": \"Online transaction amount is over 5000\",\n        \"score_impact\": 10\n      },\n      {\n        \"code\": \"unusual_hour\",\n        \"description\": \"Transaction occurred between 00:00 and 05:00\",\n        \"score_impact\": 10\n      },\n      {\n        \"code\": \"new_beneficiary\",\n        \"description\": \"Beneficiary appears to be new\",\n        \"score_impact\": 15\n      }\n    ],\n    \"recommended_action\": \"BLOCK\"\n  }\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "data": {
+                  "recommended_action": "BLOCK",
+                  "risk_level": "critical",
+                  "risk_score": 100,
+                  "signals": [
+                    {
+                      "code": "high_amount",
+                      "description": "Transaction amount is greater than 3x customer average",
+                      "score_impact": 25
+                    },
+                    {
+                      "code": "high_risk_country",
+                      "description": "Destination country is high risk",
+                      "score_impact": 25
+                    },
+                    {
+                      "code": "pep_customer",
+                      "description": "Customer is politically exposed",
+                      "score_impact": 20
+                    },
+                    {
+                      "code": "amount_over_10000",
+                      "description": "Transaction amount is over 10000",
+                      "score_impact": 15
+                    },
+                    {
+                      "code": "high_value_online_transaction",
+                      "description": "Online transaction amount is over 5000",
+                      "score_impact": 10
+                    },
+                    {
+                      "code": "unusual_hour",
+                      "description": "Transaction occurred between 00:00 and 05:00",
+                      "score_impact": 10
+                    },
+                    {
+                      "code": "new_beneficiary",
+                      "description": "Beneficiary appears to be new",
+                      "score_impact": 15
+                    }
+                  ],
+                  "transaction_id": "txn_multi_signal_001"
+                },
+                "ok": true,
+                "recommended_action": "BLOCK",
+                "risk_level": "critical",
+                "risk_score": 100,
+                "signals": [
+                  {
+                    "code": "high_amount",
+                    "description": "Transaction amount is greater than 3x customer average",
+                    "score_impact": 25
+                  },
+                  {
+                    "code": "high_risk_country",
+                    "description": "Destination country is high risk",
+                    "score_impact": 25
+                  },
+                  {
+                    "code": "pep_customer",
+                    "description": "Customer is politically exposed",
+                    "score_impact": 20
+                  },
+                  {
+                    "code": "amount_over_10000",
+                    "description": "Transaction amount is over 10000",
+                    "score_impact": 15
+                  },
+                  {
+                    "code": "high_value_online_transaction",
+                    "description": "Online transaction amount is over 5000",
+                    "score_impact": 10
+                  },
+                  {
+                    "code": "unusual_hour",
+                    "description": "Transaction occurred between 00:00 and 05:00",
+                    "score_impact": 10
+                  },
+                  {
+                    "code": "new_beneficiary",
+                    "description": "Beneficiary appears to be new",
+                    "score_impact": 15
+                  }
+                ],
+                "transaction_id": "txn_multi_signal_001"
+              }
+            }
+          },
+          "response_summary": {
+            "ok": true,
+            "risk_level": "critical",
+            "risk_score": 100,
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_case_status_is_consistent_across_repeated_reads",
+          "timestamp": "2026-05-16T22:18:16.879457+00:00",
+          "tool_name": "score_transaction_risk",
+          "trace_id": "723de837-f981-47d4-81cd-24d545df3579",
+          "workflow_id": "19e3f549-d90d-41a9-903b-4a3432100739"
+        },
+        {
+          "error": null,
+          "input_arguments": {
+            "role": "investigator_manager",
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "latency_ms": 358.117,
+          "method": "tools/call",
+          "request": {
+            "id": 4,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "role": "investigator_manager",
+                "transaction_id": "txn_multi_signal_001"
+              },
+              "name": "create_fraud_case"
+            }
+          },
+          "response": {
+            "id": 4,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0011\",\n  \"transaction_id\": \"txn_multi_signal_001\",\n  \"customer_id\": \"cust_pep_001\",\n  \"risk_score\": 100,\n  \"priority\": \"urgent\",\n  \"status\": \"open\",\n  \"notes\": [\n    \"Risk level: critical\"\n  ],\n  \"created_at\": \"2026-05-16T22:18:17.177038Z\",\n  \"data\": {\n    \"case_id\": \"case_0011\",\n    \"transaction_id\": \"txn_multi_signal_001\",\n    \"customer_id\": \"cust_pep_001\",\n    \"risk_score\": 100,\n    \"priority\": \"urgent\",\n    \"status\": \"open\",\n    \"notes\": [\n      \"Risk level: critical\"\n    ],\n    \"created_at\": \"2026-05-16T22:18:17.177038Z\"\n  }\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "case_id": "case_0011",
+                "created_at": "2026-05-16T22:18:17.177038Z",
+                "customer_id": "cust_pep_001",
+                "data": {
+                  "case_id": "case_0011",
+                  "created_at": "2026-05-16T22:18:17.177038Z",
+                  "customer_id": "cust_pep_001",
+                  "notes": [
+                    "Risk level: critical"
+                  ],
+                  "priority": "urgent",
+                  "risk_score": 100,
+                  "status": "open",
+                  "transaction_id": "txn_multi_signal_001"
+                },
+                "notes": [
+                  "Risk level: critical"
+                ],
+                "ok": true,
+                "priority": "urgent",
+                "risk_score": 100,
+                "status": "open",
+                "transaction_id": "txn_multi_signal_001"
+              }
+            }
+          },
+          "response_summary": {
+            "case_id": "case_0011",
+            "customer_id": "cust_pep_001",
+            "ok": true,
+            "risk_score": 100,
+            "status": "open",
+            "transaction_id": "txn_multi_signal_001"
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_case_status_is_consistent_across_repeated_reads",
+          "timestamp": "2026-05-16T22:18:17.237896+00:00",
+          "tool_name": "create_fraud_case",
+          "trace_id": "836d5e13-139d-47a5-a2f9-de66c2df0488",
+          "workflow_id": "19e3f549-d90d-41a9-903b-4a3432100739"
+        },
+        {
+          "error": null,
+          "input_arguments": {
+            "case_id": "case_0011",
+            "role": "investigator_manager"
+          },
+          "latency_ms": 328.966,
+          "method": "tools/call",
+          "request": {
+            "id": 5,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_0011",
+                "role": "investigator_manager"
+              },
+              "name": "get_case_status"
+            }
+          },
+          "response": {
+            "id": 5,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0011\",\n  \"status\": \"open\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:18:17.177038+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0011\",\n    \"status\": \"open\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:18:17.177038+00:00\"\n  }\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "assigned_to": "fraud_operations",
+                "case_id": "case_0011",
+                "data": {
+                  "assigned_to": "fraud_operations",
+                  "case_id": "case_0011",
+                  "status": "open",
+                  "updated_at": "2026-05-16T22:18:17.177038+00:00"
+                },
+                "ok": true,
+                "status": "open",
+                "updated_at": "2026-05-16T22:18:17.177038+00:00"
+              }
+            }
+          },
+          "response_summary": {
+            "case_id": "case_0011",
+            "ok": true,
+            "status": "open"
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_case_status_is_consistent_across_repeated_reads",
+          "timestamp": "2026-05-16T22:18:17.567162+00:00",
+          "tool_name": "get_case_status",
+          "trace_id": "db60b752-5a9c-43f3-ac3e-4bbd02d4f8af",
+          "workflow_id": "19e3f549-d90d-41a9-903b-4a3432100739"
+        },
+        {
+          "error": null,
+          "input_arguments": {
+            "case_id": "case_0011",
+            "role": "investigator_manager"
+          },
+          "latency_ms": 376.146,
+          "method": "tools/call",
+          "request": {
+            "id": 6,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_0011",
+                "role": "investigator_manager"
+              },
+              "name": "get_case_status"
+            }
+          },
+          "response": {
+            "id": 6,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": true,\n  \"case_id\": \"case_0011\",\n  \"status\": \"open\",\n  \"assigned_to\": \"fraud_operations\",\n  \"updated_at\": \"2026-05-16T22:18:17.177038+00:00\",\n  \"data\": {\n    \"case_id\": \"case_0011\",\n    \"status\": \"open\",\n    \"assigned_to\": \"fraud_operations\",\n    \"updated_at\": \"2026-05-16T22:18:17.177038+00:00\"\n  }\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "assigned_to": "fraud_operations",
+                "case_id": "case_0011",
+                "data": {
+                  "assigned_to": "fraud_operations",
+                  "case_id": "case_0011",
+                  "status": "open",
+                  "updated_at": "2026-05-16T22:18:17.177038+00:00"
+                },
+                "ok": true,
+                "status": "open",
+                "updated_at": "2026-05-16T22:18:17.177038+00:00"
+              }
+            }
+          },
+          "response_summary": {
+            "case_id": "case_0011",
+            "ok": true,
+            "status": "open"
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/workflows/test_multi_step_investigation.py::test_case_status_is_consistent_across_repeated_reads",
+          "timestamp": "2026-05-16T22:18:17.943766+00:00",
+          "tool_name": "get_case_status",
+          "trace_id": "bf3e8ba8-6e4e-4056-8f18-c33a3a450812",
+          "workflow_id": "19e3f549-d90d-41a9-903b-4a3432100739"
+        }
+      ],
+      "workflow_id": "19e3f549-d90d-41a9-903b-4a3432100739"
+    }
+  }
+}

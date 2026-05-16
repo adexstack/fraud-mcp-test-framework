@@ -1,0 +1,165 @@
+{
+  "captured_at": "2026-05-16T22:18:08.805363+00:00",
+  "evidence_type": "test_evidence",
+  "name": "rbac_l1_escalate_case",
+  "payload": {
+    "metadata": {
+      "role": "analyst_l1",
+      "tool_name": "escalate_case"
+    },
+    "result": {
+      "arguments": {
+        "case_id": "case_security_boundary_001",
+        "reason": "RBAC boundary validation",
+        "role": "analyst_l1"
+      },
+      "error": null,
+      "latency_ms": 342.039,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"trace_id\": \"c455431f-6f71-430a-953f-6d6a985aa94a\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Permission denied: role 'analyst_l1' cannot call escalate_case",
+          "error_code": "RBAC_DENIED",
+          "message": "Permission denied: role 'analyst_l1' cannot call escalate_case",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "c455431f-6f71-430a-953f-6d6a985aa94a"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:18:08.458416+00:00",
+      "tool_name": "escalate_case",
+      "trace_id": "63ddbc2d-b3c7-4f1b-9070-2d62bb656cbd"
+    },
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 425.761,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/security/test_rbac_boundaries.py::test_l1_cannot_escalate_cases",
+          "timestamp": "2026-05-16T22:18:08.458294+00:00",
+          "tool_name": "initialize",
+          "trace_id": "3fb61ce4-3e4e-4f2a-a2a0-758904de84e5",
+          "workflow_id": "8d79dc85-8166-4292-9122-ad15ff1515c6"
+        },
+        {
+          "error": "Permission denied: role 'analyst_l1' cannot call escalate_case",
+          "input_arguments": {
+            "case_id": "case_security_boundary_001",
+            "reason": "RBAC boundary validation",
+            "role": "analyst_l1"
+          },
+          "latency_ms": 341.763,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_security_boundary_001",
+                "reason": "RBAC boundary validation",
+                "role": "analyst_l1"
+              },
+              "name": "escalate_case"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'analyst_l1' cannot call escalate_case\",\n  \"trace_id\": \"c455431f-6f71-430a-953f-6d6a985aa94a\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Permission denied: role 'analyst_l1' cannot call escalate_case",
+                "error_code": "RBAC_DENIED",
+                "message": "Permission denied: role 'analyst_l1' cannot call escalate_case",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "c455431f-6f71-430a-953f-6d6a985aa94a"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Permission denied: role 'analyst_l1' cannot call escalate_case",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/security/test_rbac_boundaries.py::test_l1_cannot_escalate_cases",
+          "timestamp": "2026-05-16T22:18:08.800407+00:00",
+          "tool_name": "escalate_case",
+          "trace_id": "63ddbc2d-b3c7-4f1b-9070-2d62bb656cbd",
+          "workflow_id": "8d79dc85-8166-4292-9122-ad15ff1515c6"
+        }
+      ],
+      "workflow_id": "8d79dc85-8166-4292-9122-ad15ff1515c6"
+    }
+  }
+}

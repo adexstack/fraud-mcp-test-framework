@@ -1,0 +1,162 @@
+{
+  "captured_at": "2026-05-16T22:18:11.938935+00:00",
+  "evidence_type": "test_evidence",
+  "name": "security_invalid_role_get_transaction",
+  "payload": {
+    "metadata": {
+      "role": "external_attacker",
+      "tool_name": "get_transaction"
+    },
+    "result": {
+      "arguments": {
+        "role": "external_attacker",
+        "transaction_id": "txn_low_risk_001"
+      },
+      "error": null,
+      "latency_ms": 375.054,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"trace_id\": \"80674df5-06ac-4c62-ab90-d5cf4c218773\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
+          "error_code": "RBAC_DENIED",
+          "message": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "80674df5-06ac-4c62-ab90-d5cf4c218773"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:18:11.563331+00:00",
+      "tool_name": "get_transaction",
+      "trace_id": "cb65f40c-7eda-4724-9f26-3698c67d9e76"
+    },
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 408.109,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/security/test_security_boundaries.py::test_invalid_role_is_rejected",
+          "timestamp": "2026-05-16T22:18:11.563297+00:00",
+          "tool_name": "initialize",
+          "trace_id": "57874b3b-c4ee-4c40-ab7b-5ca459ea5a44",
+          "workflow_id": "3a1e26eb-8c3e-483d-9f16-bba7875649ad"
+        },
+        {
+          "error": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
+          "input_arguments": {
+            "role": "external_attacker",
+            "transaction_id": "txn_low_risk_001"
+          },
+          "latency_ms": 374.858,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "role": "external_attacker",
+                "transaction_id": "txn_low_risk_001"
+              },
+              "name": "get_transaction"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: invalid role 'external_attacker' cannot call get_transaction\",\n  \"trace_id\": \"80674df5-06ac-4c62-ab90-d5cf4c218773\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
+                "error_code": "RBAC_DENIED",
+                "message": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "80674df5-06ac-4c62-ab90-d5cf4c218773"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Permission denied: invalid role 'external_attacker' cannot call get_transaction",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/security/test_security_boundaries.py::test_invalid_role_is_rejected",
+          "timestamp": "2026-05-16T22:18:11.938342+00:00",
+          "tool_name": "get_transaction",
+          "trace_id": "cb65f40c-7eda-4724-9f26-3698c67d9e76",
+          "workflow_id": "3a1e26eb-8c3e-483d-9f16-bba7875649ad"
+        }
+      ],
+      "workflow_id": "3a1e26eb-8c3e-483d-9f16-bba7875649ad"
+    }
+  }
+}

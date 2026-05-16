@@ -1,0 +1,172 @@
+{
+  "generated_at": "2026-05-16T22:17:32.124066+00:00",
+  "governance_metadata": {
+    "baseline_dir": "reports/baselines",
+    "framework": "fraud-mcp-test-framework",
+    "reports_dir": "reports",
+    "summary_version": "1.0"
+  },
+  "ptb": {
+    "core_business_rules_passing": {
+      "known_risk_outcomes": {
+        "high_amount": {
+          "recommended_action": "APPROVE",
+          "risk_level": "low",
+          "risk_score": 25,
+          "status": "available",
+          "transaction_id": "txn_high_amount_001"
+        },
+        "high_risk_destination_country": {
+          "recommended_action": "APPROVE",
+          "risk_level": "low",
+          "risk_score": 25,
+          "status": "available",
+          "transaction_id": "txn_high_risk_country_001"
+        },
+        "low_risk": {
+          "recommended_action": "APPROVE",
+          "risk_level": "low",
+          "risk_score": 0,
+          "status": "available",
+          "transaction_id": "txn_low_risk_001"
+        },
+        "multiple_risk_signals": {
+          "recommended_action": "BLOCK",
+          "risk_level": "critical",
+          "risk_score": 100,
+          "status": "available",
+          "transaction_id": "txn_multi_signal_001"
+        },
+        "new_beneficiary": {
+          "recommended_action": "APPROVE",
+          "risk_level": "low",
+          "risk_score": 15,
+          "status": "available",
+          "transaction_id": "txn_new_beneficiary_001"
+        },
+        "pep_customer": {
+          "recommended_action": "APPROVE",
+          "risk_level": "low",
+          "risk_score": 20,
+          "status": "available",
+          "transaction_id": "txn_pep_customer_001"
+        },
+        "unusual_transaction_hour": {
+          "recommended_action": "APPROVE",
+          "risk_level": "low",
+          "risk_score": 10,
+          "status": "available",
+          "transaction_id": "txn_unusual_hour_001"
+        }
+      },
+      "status": "passing"
+    },
+    "expected_tools_discoverable": {
+      "expected_tools": [
+        "search_customer",
+        "get_transaction",
+        "score_transaction_risk",
+        "create_fraud_case",
+        "get_case_status",
+        "escalate_case",
+        "generate_investigation_summary"
+      ],
+      "live_tools": [
+        "create_fraud_case",
+        "escalate_case",
+        "generate_investigation_summary",
+        "get_case_status",
+        "get_transaction",
+        "score_transaction_risk",
+        "search_customer"
+      ],
+      "status": "evidence_available"
+    },
+    "mcp_server_reachable": {
+      "evidence": "reports/evidence/connection_health_check.json",
+      "status": "evidence_available"
+    },
+    "negative_input_tests_passing": {
+      "status": "test_present",
+      "test_file": "tests/security/test_security_boundaries.py"
+    },
+    "rbac_security_tests_present": {
+      "status": "present",
+      "test_files": [
+        "tests/security/test_rbac_boundaries.py",
+        "tests/security/test_security_boundaries.py"
+      ]
+    },
+    "schema_contracts_valid": {
+      "contract_count": 7,
+      "status": "baseline_available"
+    },
+    "trace_capture_enabled": {
+      "evidence_jsonl": "reports/evidence.jsonl",
+      "status": "enabled"
+    }
+  },
+  "pto": {
+    "auditability_evidence_generated": {
+      "evidence_files": [
+        "connection_health_check.json",
+        "connection_initialize.json",
+        "rbac_analyst_l1_create_fraud_case.json",
+        "rbac_analyst_l1_escalate_case.json",
+        "rbac_auditor_create_fraud_case.json",
+        "rbac_auditor_escalate_case.json",
+        "rbac_l1_escalate_case.json",
+        "safety_escalated_case_summary.json",
+        "safety_incomplete_evidence_summary.json",
+        "security_invalid_role_get_transaction.json",
+        "security_missing_role_escalate_case.json",
+        "security_permission_failure_auditability.json",
+        "tool_discovery.json",
+        "tool_invocation_create_fraud_case.json",
+        "tool_invocation_escalate_case.json",
+        "tool_invocation_generate_investigation_summary.json",
+        "tool_invocation_get_case_status.json",
+        "tool_invocation_get_transaction.json",
+        "tool_invocation_score_transaction_risk.json",
+        "tool_invocation_search_customer.json",
+        "workflow_case_lifecycle.json",
+        "workflow_invalid_case_escalation.json",
+        "workflow_repeated_escalation.json",
+        "workflow_repeated_status_consistency.json",
+        "workflow_state_created_to_escalated.json",
+        "workflow_summary_latest_state.json",
+        "workflow_wrong_order_safety.json"
+      ],
+      "status": "available"
+    },
+    "end_to_end_workflow_tests_passing": {
+      "status": "passing",
+      "workflow_test_files": [
+        "tests/workflows/test_case_lifecycle.py",
+        "tests/workflows/test_multi_step_investigation.py",
+        "tests/workflows/test_state_transitions.py"
+      ]
+    },
+    "governance_metadata_available": {
+      "status": "available"
+    },
+    "latency_within_threshold": {
+      "status": "policy_available",
+      "threshold_ms": 30000.0
+    },
+    "no_critical_safety_failures": {
+      "status": "safety_tests_present",
+      "test_files": [
+        "tests/safety/test_hallucination_controls.py",
+        "tests/safety/test_policy_grounding.py"
+      ]
+    },
+    "regression_baseline_stable": {
+      "baselines": [
+        "reports/baselines/static_tool_contracts.json",
+        "reports/baselines/live_mcp_behaviour.json"
+      ],
+      "status": "baselines_available"
+    }
+  }
+}

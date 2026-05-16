@@ -1,0 +1,53 @@
+{
+  "state_transition_matrix": [
+    {
+      "from_status": "CREATED",
+      "tool": "escalate_case",
+      "to_status": "ESCALATED",
+      "allowed": true
+    },
+    {
+      "from_status": "ESCALATED",
+      "tool": "escalate_case",
+      "to_status": "ESCALATED",
+      "allowed": true,
+      "idempotent": true
+    },
+    {
+      "from_status": "UNKNOWN",
+      "tool": "escalate_case",
+      "to_status": null,
+      "allowed": false
+    },
+    {
+      "from_status": "NO_CASE",
+      "tool": "generate_investigation_summary",
+      "to_status": null,
+      "allowed": false
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "created_to_escalated",
+      "transaction_id": "txn_multi_signal_001",
+      "escalation_reason": "State transition validation escalation",
+      "expected_initial_statuses": [
+        "CREATED",
+        "OPEN",
+        "PENDING",
+        "PENDING_REVIEW",
+        "UNDER_REVIEW"
+      ],
+      "expected_escalated_status": "ESCALATED"
+    },
+    {
+      "name": "invalid_case_escalation",
+      "invalid_case_id": "case_missing_state_transition_001",
+      "escalation_reason": "Invalid case escalation should fail safely"
+    },
+    {
+      "name": "wrong_order_summary_without_case",
+      "invalid_case_id": "case_missing_summary_001"
+    }
+  ]
+}

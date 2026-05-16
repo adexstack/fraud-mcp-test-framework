@@ -1,0 +1,159 @@
+{
+  "captured_at": "2026-05-16T22:17:41.883919+00:00",
+  "evidence_type": "test_evidence",
+  "name": "tool_invocation_get_case_status",
+  "payload": {
+    "arguments": {
+      "case_id": "case_001"
+    },
+    "result": {
+      "arguments": {
+        "case_id": "case_001"
+      },
+      "error": null,
+      "latency_ms": 342.275,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown case: case_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown case: case_001\",\n  \"trace_id\": \"2a6e7a97-ca3c-476e-ae5a-05a6162e97bf\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Unknown case: case_001",
+          "error_code": "DOMAIN_ERROR",
+          "message": "Unknown case: case_001",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "2a6e7a97-ca3c-476e-ae5a-05a6162e97bf"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:17:41.541223+00:00",
+      "tool_name": "get_case_status",
+      "trace_id": "fbdcb893-e3f2-4996-8d2d-1325f5f79da9"
+    },
+    "tool_name": "get_case_status",
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 389.212,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[get_case_status]",
+          "timestamp": "2026-05-16T22:17:41.541064+00:00",
+          "tool_name": "initialize",
+          "trace_id": "ac984505-2ac9-4706-89cb-fca4ca252ea0",
+          "workflow_id": "89589954-1cef-4946-b49a-3acb4c21ea74"
+        },
+        {
+          "error": "Unknown case: case_001",
+          "input_arguments": {
+            "case_id": "case_001"
+          },
+          "latency_ms": 342.126,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_001"
+              },
+              "name": "get_case_status"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Unknown case: case_001\",\n  \"error_code\": \"DOMAIN_ERROR\",\n  \"message\": \"Unknown case: case_001\",\n  \"trace_id\": \"2a6e7a97-ca3c-476e-ae5a-05a6162e97bf\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Unknown case: case_001",
+                "error_code": "DOMAIN_ERROR",
+                "message": "Unknown case: case_001",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "2a6e7a97-ca3c-476e-ae5a-05a6162e97bf"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Unknown case: case_001",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/invocation/test_tool_invocation.py::test_each_expected_tool_can_be_called_with_minimal_payload[get_case_status]",
+          "timestamp": "2026-05-16T22:17:41.883477+00:00",
+          "tool_name": "get_case_status",
+          "trace_id": "fbdcb893-e3f2-4996-8d2d-1325f5f79da9",
+          "workflow_id": "89589954-1cef-4946-b49a-3acb4c21ea74"
+        }
+      ],
+      "workflow_id": "89589954-1cef-4946-b49a-3acb4c21ea74"
+    }
+  }
+}

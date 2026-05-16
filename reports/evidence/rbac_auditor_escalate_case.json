@@ -1,0 +1,165 @@
+{
+  "captured_at": "2026-05-16T22:18:10.334792+00:00",
+  "evidence_type": "test_evidence",
+  "name": "rbac_auditor_escalate_case",
+  "payload": {
+    "metadata": {
+      "role": "auditor",
+      "tool_name": "escalate_case"
+    },
+    "result": {
+      "arguments": {
+        "case_id": "case_security_boundary_001",
+        "reason": "RBAC boundary validation",
+        "role": "auditor"
+      },
+      "error": null,
+      "latency_ms": 344.239,
+      "response": {
+        "content": [
+          {
+            "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call escalate_case\",\n  \"trace_id\": \"b1a22bf5-c9c3-41d2-b4d7-6b385a631461\",\n  \"retryable\": false\n}",
+            "type": "text"
+          }
+        ],
+        "isError": false,
+        "structuredContent": {
+          "error": "Permission denied: role 'auditor' cannot call escalate_case",
+          "error_code": "RBAC_DENIED",
+          "message": "Permission denied: role 'auditor' cannot call escalate_case",
+          "ok": false,
+          "retryable": false,
+          "trace_id": "b1a22bf5-c9c3-41d2-b4d7-6b385a631461"
+        }
+      },
+      "success": true,
+      "timestamp": "2026-05-16T22:18:09.989565+00:00",
+      "tool_name": "escalate_case",
+      "trace_id": "e16d9416-e04a-4b11-9f5c-dbbf3434c47e"
+    },
+    "trace": {
+      "rpc": [
+        {
+          "error": null,
+          "input_arguments": {
+            "capabilities": {},
+            "clientInfo": {
+              "name": "fraud-mcp-test-framework",
+              "version": "0.1.0"
+            },
+            "protocolVersion": "2024-11-05"
+          },
+          "latency_ms": 406.6,
+          "method": "initialize",
+          "request": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "method": "initialize",
+            "params": {
+              "capabilities": {},
+              "clientInfo": {
+                "name": "fraud-mcp-test-framework",
+                "version": "0.1.0"
+              },
+              "protocolVersion": "2024-11-05"
+            }
+          },
+          "response": {
+            "id": 1,
+            "jsonrpc": "2.0",
+            "result": {
+              "capabilities": {
+                "experimental": {},
+                "prompts": {
+                  "listChanged": false
+                },
+                "resources": {
+                  "listChanged": false,
+                  "subscribe": false
+                },
+                "tools": {
+                  "listChanged": false
+                }
+              },
+              "protocolVersion": "2024-11-05",
+              "serverInfo": {
+                "name": "fraud-detection-mcp",
+                "version": "1.27.1"
+              }
+            }
+          },
+          "response_summary": {
+            "fields": [
+              "capabilities",
+              "protocolVersion",
+              "serverInfo"
+            ]
+          },
+          "status_code": 200,
+          "success": true,
+          "test_name": "tests/security/test_rbac_boundaries.py::test_auditor_cannot_create_or_escalate_cases[escalate_case]",
+          "timestamp": "2026-05-16T22:18:09.989502+00:00",
+          "tool_name": "initialize",
+          "trace_id": "6c0b3dfd-0161-4ec2-a7de-ac2ecd600848",
+          "workflow_id": "0cadc45f-951a-4ed4-adfe-6765d9f45bfa"
+        },
+        {
+          "error": "Permission denied: role 'auditor' cannot call escalate_case",
+          "input_arguments": {
+            "case_id": "case_security_boundary_001",
+            "reason": "RBAC boundary validation",
+            "role": "auditor"
+          },
+          "latency_ms": 343.837,
+          "method": "tools/call",
+          "request": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "method": "tools/call",
+            "params": {
+              "arguments": {
+                "case_id": "case_security_boundary_001",
+                "reason": "RBAC boundary validation",
+                "role": "auditor"
+              },
+              "name": "escalate_case"
+            }
+          },
+          "response": {
+            "id": 2,
+            "jsonrpc": "2.0",
+            "result": {
+              "content": [
+                {
+                  "text": "{\n  \"ok\": false,\n  \"error\": \"Permission denied: role 'auditor' cannot call escalate_case\",\n  \"error_code\": \"RBAC_DENIED\",\n  \"message\": \"Permission denied: role 'auditor' cannot call escalate_case\",\n  \"trace_id\": \"b1a22bf5-c9c3-41d2-b4d7-6b385a631461\",\n  \"retryable\": false\n}",
+                  "type": "text"
+                }
+              ],
+              "isError": false,
+              "structuredContent": {
+                "error": "Permission denied: role 'auditor' cannot call escalate_case",
+                "error_code": "RBAC_DENIED",
+                "message": "Permission denied: role 'auditor' cannot call escalate_case",
+                "ok": false,
+                "retryable": false,
+                "trace_id": "b1a22bf5-c9c3-41d2-b4d7-6b385a631461"
+              }
+            }
+          },
+          "response_summary": {
+            "error": "Permission denied: role 'auditor' cannot call escalate_case",
+            "ok": false
+          },
+          "status_code": 200,
+          "success": false,
+          "test_name": "tests/security/test_rbac_boundaries.py::test_auditor_cannot_create_or_escalate_cases[escalate_case]",
+          "timestamp": "2026-05-16T22:18:10.333742+00:00",
+          "tool_name": "escalate_case",
+          "trace_id": "e16d9416-e04a-4b11-9f5c-dbbf3434c47e",
+          "workflow_id": "0cadc45f-951a-4ed4-adfe-6765d9f45bfa"
+        }
+      ],
+      "workflow_id": "0cadc45f-951a-4ed4-adfe-6765d9f45bfa"
+    }
+  }
+}
