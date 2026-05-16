@@ -110,6 +110,20 @@ jobs:
       - name: Install dependencies
         run: uv sync --dev
 
+      - name: Wake up MCP server (Render cold start)
+        run: |
+          for i in $(seq 1 12); do
+            status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "$MCP_SERVER_URL" 2>/dev/null || echo "000")
+            if [ "$status" != "000" ] && [ "$status" -lt 500 ]; then
+              echo "Server responded with HTTP $status on attempt $i"
+              exit 0
+            fi
+            echo "Attempt $i: status=$status — retrying in 15s..."
+            sleep 15
+          done
+          echo "MCP server did not become ready after 3 minutes"
+          exit 1
+
       - name: Live MCP integration pytest
         run: >
           uv run pytest -m live
