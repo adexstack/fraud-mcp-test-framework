@@ -49,7 +49,7 @@ jobs:
 
       - name: Connection marker
         run: >
-          uv run pytest -m connection
+          uv run pytest -m "connection and not live"
           --html=reports/pytest-connection.html
           --self-contained-html
 

@@ -7,7 +7,6 @@ from fraud_mcp_tests.config import McpTestConfig
 from fraud_mcp_tests.mcp_client import McpClient
 
 
-@pytest.mark.connection
 @pytest.mark.live
 def test_mcp_server_is_reachable(mcp_client, evidence_writer, trace_recorder) -> None:
     reachable = mcp_client.health_check()
@@ -21,7 +20,6 @@ def test_mcp_server_is_reachable(mcp_client, evidence_writer, trace_recorder) ->
         {"reachable": reachable, "trace": trace_recorder.as_dict()},
     )
 
-@pytest.mark.connection
 @pytest.mark.live
 def test_mcp_server_initializes(mcp_client, evidence_writer, trace_recorder) -> None:
     result = mcp_client.initialize()
