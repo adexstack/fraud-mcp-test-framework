@@ -88,9 +88,9 @@ jobs:
   live-mcp-tests:
     name: Live MCP Integration Tests
     runs-on: ubuntu-latest
-    if: ${{ secrets.MCP_SERVER_URL != '' }}
+    if: ${{ vars.MCP_SERVER_URL != '' }}
     env:
-      MCP_SERVER_URL: ${{ secrets.MCP_SERVER_URL }}
+      MCP_SERVER_URL: ${{ vars.MCP_SERVER_URL }}
       MCP_TRANSPORT: ${{ vars.MCP_TRANSPORT || 'streamable-http' }}
       MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
       MCP_TIMEOUT_SECONDS: ${{ vars.MCP_TIMEOUT_SECONDS || '30' }}
