@@ -14,6 +14,12 @@ from fraud_mcp_tests.schemas.tool_contracts import TOOL_CONTRACTS
 
 
 GOVERNANCE_SUMMARY_PATH = REPORTS_DIR / "governance_summary.json"
+RAGAS_REPORTS_DIR = REPORTS_DIR / "ragas"
+RAGAS_INVESTIGATION_SUMMARY_REPORT = (
+    RAGAS_REPORTS_DIR / "investigation_summary_ragas.json"
+)
+RAGAS_POLICY_GROUNDING_REPORT = RAGAS_REPORTS_DIR / "policy_grounding_ragas.json"
+RAGAS_AGENT_WORKFLOW_REPORT = RAGAS_REPORTS_DIR / "agent_workflow_eval.json"
 
 
 def write_run_metadata(
@@ -47,6 +53,7 @@ def build_governance_summary() -> dict[str, Any]:
     live_baseline = _read_json(BASELINE_DIR / "live_mcp_behaviour.json")
     evidence_files = _evidence_files()
     test_files = _test_files()
+    ragas_evaluation = _ragas_evaluation_summary()
 
     return {
         "generated_at": datetime.now(UTC).isoformat(),
@@ -56,8 +63,9 @@ def build_governance_summary() -> dict[str, Any]:
             "reports_dir": str(REPORTS_DIR),
             "baseline_dir": str(BASELINE_DIR),
         },
+        "ragas_evaluation": ragas_evaluation,
         "ptb": _ptb_summary(static_baseline, live_baseline, evidence_files, test_files),
-        "pto": _pto_summary(live_baseline, evidence_files, test_files),
+        "pto": _pto_summary(live_baseline, evidence_files, test_files, ragas_evaluation),
     }
 
 
@@ -120,6 +128,7 @@ def _pto_summary(
     live_baseline: dict[str, Any],
     evidence_files: set[str],
     test_files: set[str],
+    ragas_evaluation: dict[str, Any],
 ) -> dict[str, Any]:
     return {
         "end_to_end_workflow_tests_passing": {
@@ -158,7 +167,94 @@ def _pto_summary(
         "governance_metadata_available": {
             "status": "available",
         },
+        "ragas_evaluation": ragas_evaluation,
     }
+
+
+def _ragas_evaluation_summary() -> dict[str, Any]:
+    investigation_results = _read_json_list(RAGAS_INVESTIGATION_SUMMARY_REPORT)
+    policy_results = _read_json_list(RAGAS_POLICY_GROUNDING_REPORT)
+    agent_workflow = _read_json(RAGAS_AGENT_WORKFLOW_REPORT)
+
+    enabled = bool(investigation_results or policy_results or agent_workflow)
+    investigation_summary_faithfulness = _metric_score(
+        investigation_results,
+        "faithfulness",
+    )
+    response_relevancy = _metric_score(
+        investigation_results,
+        "response_relevancy",
+    )
+    policy_grounding_passed = _results_passed(policy_results)
+    agent_workflow_f1 = _agent_workflow_f1(agent_workflow)
+
+    return {
+        "enabled": enabled,
+        "investigation_summary_faithfulness": investigation_summary_faithfulness,
+        "response_relevancy": response_relevancy,
+        "policy_grounding_passed": policy_grounding_passed,
+        "agent_workflow_f1": agent_workflow_f1,
+        "status": _ragas_status(
+            enabled=enabled,
+            investigation_results=investigation_results,
+            policy_results=policy_results,
+            agent_workflow=agent_workflow,
+        ),
+    }
+
+
+def _ragas_status(
+    enabled: bool,
+    investigation_results: list[dict[str, Any]],
+    policy_results: list[dict[str, Any]],
+    agent_workflow: dict[str, Any],
+) -> str:
+    if not enabled:
+        return "NOT_RUN"
+
+    checks = [
+        _results_passed(investigation_results),
+        _results_passed(policy_results),
+        _agent_workflow_passed(agent_workflow),
+    ]
+    if all(check is True for check in checks):
+        return "PASS"
+    if any(check is False for check in checks):
+        return "FAIL"
+    return "PARTIAL"
+
+
+def _metric_score(results: list[dict[str, Any]], metric_name: str) -> float | None:
+    for result in results:
+        if result.get("metric_name") != metric_name:
+            continue
+        score = result.get("score")
+        return float(score) if isinstance(score, int | float) else None
+    return None
+
+
+def _results_passed(results: list[dict[str, Any]]) -> bool | None:
+    if not results:
+        return None
+    return all(result.get("passed") is True for result in results)
+
+
+def _agent_workflow_f1(agent_workflow: dict[str, Any]) -> float | None:
+    fallback = agent_workflow.get("deterministic_local_fallback")
+    if not isinstance(fallback, dict):
+        return None
+
+    score = fallback.get("tool_call_f1")
+    return float(score) if isinstance(score, int | float) else None
+
+
+def _agent_workflow_passed(agent_workflow: dict[str, Any]) -> bool | None:
+    fallback = agent_workflow.get("deterministic_local_fallback")
+    if not isinstance(fallback, dict):
+        return None
+
+    passed = fallback.get("passed")
+    return passed if isinstance(passed, bool) else None
 
 
 def _scenario_status(outcomes: dict[str, Any]) -> str:
@@ -182,6 +278,15 @@ def _read_json(path: Path) -> dict[str, Any]:
     if not path.exists():
         return {}
     return json.loads(path.read_text())
+
+
+def _read_json_list(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    loaded = json.loads(path.read_text())
+    if not isinstance(loaded, list):
+        return []
+    return [item for item in loaded if isinstance(item, dict)]
 
 
 def _evidence_files() -> set[str]:

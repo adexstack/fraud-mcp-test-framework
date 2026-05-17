@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-16T22:44:23.407184+00:00",
+  "generated_at": "2026-05-17T17:06:16.038882+00:00",
   "governance_metadata": {
     "baseline_dir": "reports/baselines",
     "framework": "fraud-mcp-test-framework",
@@ -161,6 +161,14 @@
         "tests/safety/test_policy_grounding.py"
       ]
     },
+    "ragas_evaluation": {
+      "agent_workflow_f1": null,
+      "enabled": false,
+      "investigation_summary_faithfulness": null,
+      "policy_grounding_passed": null,
+      "response_relevancy": null,
+      "status": "NOT_RUN"
+    },
     "regression_baseline_stable": {
       "baselines": [
         "reports/baselines/static_tool_contracts.json",
@@ -168,5 +176,13 @@
       ],
       "status": "baselines_available"
     }
+  },
+  "ragas_evaluation": {
+    "agent_workflow_f1": null,
+    "enabled": false,
+    "investigation_summary_faithfulness": null,
+    "policy_grounding_passed": null,
+    "response_relevancy": null,
+    "status": "NOT_RUN"
   }
 }
