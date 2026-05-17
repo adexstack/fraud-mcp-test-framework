@@ -50,6 +50,11 @@ Supported transports in this first version:
 uv run pytest
 ```
 
+This runs the whole pytest collection. With `RAGAS_ENABLED=false`, RAGAS live
+evaluation tests are collected but skip cleanly. A normal local result may look
+like `142 passed, 4 skipped`: the skipped tests are the optional RAGAS
+LLM-as-judge tests waiting for explicit enablement.
+
 Useful marker selections:
 
 ```sh
@@ -58,6 +63,40 @@ uv run pytest -m discovery
 uv run pytest -m contract
 uv run pytest -m governance
 ```
+
+## Test Runbook
+
+Use these commands depending on what you are trying to prove.
+
+| Situation | Command | Expected result |
+| --- | --- | --- |
+| Quick deterministic CI safety net | `uv run pytest -m "not live and not ragas and not llm_eval" -ra` | Fastest core regression. No live MCP calls and no RAGAS judge calls. |
+| Normal local regression with RAGAS disabled | `uv run pytest -v` | Runs deterministic and live-marked tests against configured/default MCP settings; RAGAS tests skip with `RAGAS_ENABLED is not true`. |
+| Full non-RAGAS regression | `uv run pytest -m "not ragas and not llm_eval" -ra` | Recommended before commits. RAGAS tests are deselected, so optional LLM evaluation cannot affect the result. |
+| RAGAS unit/scaffold checks only | `uv run pytest tests/unit/test_config.py tests/ragas -ra` | Adapter/evaluator/config tests pass; live RAGAS tests skip unless explicitly enabled. |
+| Live MCP integration only | `uv run pytest -m "live and not ragas and not llm_eval" -ra` | Exercises the configured MCP server using normal pytest assertions. Requires `MCP_SERVER_URL` or skips where unavailable. |
+| Optional RAGAS evaluation | `RAGAS_ENABLED=true uv run pytest tests/ragas -m ragas -ra` | Runs LLM-as-judge evaluation. Also requires `OPENAI_API_KEY`; missing key skips clearly. |
+| Governance/PTB/PTO evidence | `uv run pytest tests/governance -ra` | Regenerates/validates governance evidence including the optional RAGAS evidence block. |
+| Lint | `uv run ruff check .` | Static style check should pass before commit. |
+
+Recommended day-to-day flow:
+
+1. Run `uv run pytest -m "not ragas and not llm_eval" -ra`.
+2. Run `uv run ruff check .`.
+3. For release evidence, run `uv run pytest tests/governance -ra`.
+4. For optional LLM quality evidence, set `RAGAS_ENABLED=true` and
+   `OPENAI_API_KEY`, then run `uv run pytest tests/ragas -m ragas -ra`.
+
+Interpreting common output:
+
+- `skipped ... RAGAS_ENABLED is not true`: expected when RAGAS is disabled.
+- `skipped ... OPENAI_API_KEY is not configured`: expected when RAGAS is enabled
+  but no judge model credential is available.
+- `deselected`: expected when using marker expressions such as
+  `-m "not ragas and not llm_eval"`.
+- Report files under `reports/evidence/` and `reports/governance_summary.json`
+  may be rewritten by live/governance runs. Review those diffs intentionally
+  before committing generated evidence.
 
 ## Test Pyramid
 
