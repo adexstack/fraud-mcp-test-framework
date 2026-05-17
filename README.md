@@ -58,6 +58,31 @@ uv run pytest -m contract
 uv run pytest -m governance
 ```
 
+## Test Pyramid
+
+Level 1 is deterministic pytest validation: fast, cheap checks for schemas,
+contracts, business rules, RBAC policy shape, latency capture logic, and local
+governance evidence. These should be the default CI safety net:
+
+```sh
+uv run pytest -m "not live and not ragas and not llm_eval"
+```
+
+Level 2 is live MCP integration validation. These tests exercise the configured
+MCP server through `MCP_SERVER_URL` and remain normal pytest assertions:
+
+```sh
+uv run pytest -m "live and not ragas and not llm_eval"
+```
+
+Level 3 is optional RAGAS evaluation. These are slower LLM-as-judge checks for
+generated MCP responses and agentic workflow quality, intended for release
+evidence and PTB/PTO support:
+
+```sh
+RAGAS_ENABLED=true uv run pytest -m ragas
+```
+
 ## Optional RAGAS Evaluations
 
 RAGAS tests live under `tests/ragas/` and are marked with `ragas` and
