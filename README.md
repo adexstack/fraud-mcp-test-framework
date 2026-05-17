@@ -73,7 +73,10 @@ Enable them explicitly with:
 RAGAS_ENABLED=true uv run pytest -m ragas
 ```
 
-RAGAS outputs should be written under `reports/ragas/`.
+The evaluator wrapper skips cleanly when `RAGAS_ENABLED=false`, when
+`OPENAI_API_KEY` is not configured, or when the installed RAGAS version does not
+expose a requested optional metric. RAGAS outputs should be written under
+`reports/ragas/`.
 
 ## Regression Baselines
 
