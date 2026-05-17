@@ -69,6 +69,12 @@ chunks. RAGAS is not used to test every MCP tool. Deterministic pytest checks
 still own contracts, schemas, workflows, RBAC, latency, and regression drift.
 RAGAS is disabled by default and is not part of the default fast regression path.
 
+Keep deterministic checks in normal pytest, including field presence such as
+`customer_id`, `transaction_id`, `risk_score`, and `case_id`; risk-score bounds;
+case status transitions; RBAC failure responses; latency thresholds; and schema
+validation. RAGAS sits above those checks as a qualitative evaluation layer for
+generated natural-language responses and agentic workflow quality.
+
 Example RAGAS row shape:
 
 ```json
