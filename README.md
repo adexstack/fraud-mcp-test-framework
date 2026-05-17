@@ -33,6 +33,7 @@ RAGAS_FAITHFULNESS_THRESHOLD=0.80
 RAGAS_RESPONSE_RELEVANCY_THRESHOLD=0.75
 RAGAS_FACTUAL_CORRECTNESS_THRESHOLD=0.75
 AGENT_TOOL_CALL_F1_THRESHOLD=0.90
+AGENT_GOAL_SUCCESS_THRESHOLD=0.85
 ```
 
 The framework defaults to the hosted streamable HTTP Fraud MCP endpoint above.
@@ -82,6 +83,12 @@ evidence and PTB/PTO support:
 ```sh
 RAGAS_ENABLED=true uv run pytest -m ragas
 ```
+
+Start RAGAS thresholds at realistic, non-flaky values: `0.80` for faithfulness,
+`0.75` for response relevancy and factual correctness, `0.90` for agent
+tool-call F1, and `0.85` for agent goal success. Deterministic workflow tests
+should still expect exact behaviour, such as an exact sequence match and local
+workflow F1 of `1.0`.
 
 ## RAGAS Evaluation Layer
 

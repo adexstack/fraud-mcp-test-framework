@@ -31,6 +31,7 @@ class McpTestConfig:
     ragas_response_relevancy_threshold: float = 0.75
     ragas_factual_correctness_threshold: float = 0.75
     agent_tool_call_f1_threshold: float = 0.90
+    agent_goal_success_threshold: float = 0.85
 
     @property
     def is_configured(self) -> bool:
@@ -87,6 +88,10 @@ def load_config(environ: Mapping[str, str] | None = None) -> McpTestConfig:
         agent_tool_call_f1_threshold=_parse_threshold(
             env.get("AGENT_TOOL_CALL_F1_THRESHOLD", "0.90"),
             "AGENT_TOOL_CALL_F1_THRESHOLD",
+        ),
+        agent_goal_success_threshold=_parse_threshold(
+            env.get("AGENT_GOAL_SUCCESS_THRESHOLD", "0.85"),
+            "AGENT_GOAL_SUCCESS_THRESHOLD",
         ),
     )
 
