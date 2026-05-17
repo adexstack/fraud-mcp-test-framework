@@ -83,22 +83,46 @@ evidence and PTB/PTO support:
 RAGAS_ENABLED=true uv run pytest -m ragas
 ```
 
-## Optional RAGAS Evaluations
+## RAGAS Evaluation Layer
 
-RAGAS tests live under `tests/ragas/` and are marked with `ragas` and
-`llm_eval`. They are optional LLM-as-judge evaluations for answer quality
-signals such as faithfulness, response relevancy, and factual correctness.
-RAGAS is used to evaluate generated MCP responses against tool-derived evidence
-contexts. Those `retrieved_contexts` are MCP tool outputs, not vector database
-chunks. RAGAS is not used to test every MCP tool. Deterministic pytest checks
-still own contracts, schemas, workflows, RBAC, latency, and regression drift.
-RAGAS is disabled by default and is not part of the default fast regression path.
+This framework includes an optional RAGAS-based evaluation layer for
+MCP-generated natural language responses.
+
+The deterministic pytest suite validates MCP contracts, tool invocation,
+business rules, state transitions, safety boundaries, RBAC, latency, and
+auditability.
+
+RAGAS is used only where LLM-style evaluation is appropriate, especially:
+
+- investigation summary faithfulness
+- response relevancy
+- policy grounding
+- factual consistency against MCP tool evidence
+- agentic workflow/tool-call quality where supported
+
+The RAGAS evaluation uses MCP tool outputs as grounding context. This allows
+generated summaries to be assessed against actual transaction, risk, case, and
+escalation evidence. Those `retrieved_contexts` are MCP tool outputs, not vector
+database chunks. RAGAS is not used to test every MCP tool.
+
+RAGAS tests are marked as:
+
+- `ragas`
+- `llm_eval`
+- `live`
+
+They are disabled by default for fast local and CI regression runs.
+
+To run:
+
+```bash
+RAGAS_ENABLED=true uv run pytest tests/ragas -m ragas
+```
 
 Keep deterministic checks in normal pytest, including field presence such as
 `customer_id`, `transaction_id`, `risk_score`, and `case_id`; risk-score bounds;
 case status transitions; RBAC failure responses; latency thresholds; and schema
-validation. RAGAS sits above those checks as a qualitative evaluation layer for
-generated natural-language responses and agentic workflow quality.
+validation. RAGAS sits above those checks as a qualitative evaluation layer.
 
 Example RAGAS row shape:
 
@@ -113,12 +137,6 @@ Example RAGAS row shape:
   ],
   "reference": "The summary should state the transaction risk level, case status, and escalation reason without claiming proven fraud."
 }
-```
-
-Enable them explicitly with:
-
-```sh
-RAGAS_ENABLED=true uv run pytest -m ragas
 ```
 
 The evaluator wrapper skips cleanly when `RAGAS_ENABLED=false`, when
