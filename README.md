@@ -63,9 +63,26 @@ uv run pytest -m governance
 RAGAS tests live under `tests/ragas/` and are marked with `ragas` and
 `llm_eval`. They are optional LLM-as-judge evaluations for answer quality
 signals such as faithfulness, response relevancy, and factual correctness.
-Deterministic pytest checks still own contracts, schemas, workflows, RBAC,
-latency, and regression drift. RAGAS is disabled by default and is not part of
-the default fast regression path.
+RAGAS is used to evaluate generated MCP responses against tool-derived evidence
+contexts. Those `retrieved_contexts` are MCP tool outputs, not vector database
+chunks. RAGAS is not used to test every MCP tool. Deterministic pytest checks
+still own contracts, schemas, workflows, RBAC, latency, and regression drift.
+RAGAS is disabled by default and is not part of the default fast regression path.
+
+Example RAGAS row shape:
+
+```json
+{
+  "user_input": "Summarise the fraud investigation for transaction TXN-CRIT-001",
+  "response": "The transaction TXN-CRIT-001 was assessed as CRITICAL...",
+  "retrieved_contexts": [
+    "Transaction TXN-CRIT-001 amount is 25000 GBP...",
+    "Risk assessment score is 95 with signals: high amount, PEP, new beneficiary...",
+    "Case CASE-001 status is ESCALATED..."
+  ],
+  "reference": "The summary should state the transaction risk level, case status, and escalation reason without claiming proven fraud."
+}
+```
 
 Enable them explicitly with:
 

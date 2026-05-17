@@ -110,7 +110,7 @@ def _run_ragas_evaluate(
 def _to_ragas_row(sample: Mapping[str, Any]) -> dict[str, Any]:
     user_input = str(sample.get("user_input", ""))
     response = str(sample.get("response", ""))
-    contexts = list(sample.get("contexts", []))
+    contexts = list(sample.get("retrieved_contexts", sample.get("contexts", [])))
     reference = sample.get("reference")
 
     row: dict[str, Any] = {

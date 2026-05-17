@@ -28,10 +28,12 @@ def test_build_investigation_summary_sample_with_reference() -> None:
     assert sample == {
         "user_input": "Summarise the fraud investigation for TXN-CRIT-001",
         "response": "TXN-CRIT-001 is high risk due to velocity and device signals.",
+        "retrieved_contexts": contexts,
         "contexts": contexts,
         "reference": "Mention high risk and cite available transaction evidence.",
     }
     assert sample["contexts"] is not contexts
+    assert sample["retrieved_contexts"] is not contexts
 
 
 def test_build_investigation_summary_sample_without_reference() -> None:
@@ -44,6 +46,7 @@ def test_build_investigation_summary_sample_without_reference() -> None:
     assert sample == {
         "user_input": "Summarise case CASE-001",
         "response": "CASE-001 requires manual review.",
+        "retrieved_contexts": ["CASE-001 status is escalated."],
         "contexts": ["CASE-001 status is escalated."],
     }
 
@@ -58,6 +61,9 @@ def test_build_policy_grounding_sample_wraps_policy_as_context() -> None:
     assert sample == {
         "user_input": "Can we call this confirmed fraud?",
         "response": "The evidence indicates elevated risk, not a final legal conclusion.",
+        "retrieved_contexts": [
+            "Summaries must avoid final legal or criminal conclusions."
+        ],
         "contexts": ["Summaries must avoid final legal or criminal conclusions."],
     }
 
@@ -71,6 +77,9 @@ def test_build_policy_grounding_sample_with_reference() -> None:
     )
 
     assert sample["contexts"] == ["Use observational language and preserve uncertainty."]
+    assert sample["retrieved_contexts"] == [
+        "Use observational language and preserve uncertainty."
+    ]
     assert sample["reference"] == "Use cautious, evidence-grounded wording."
 
 

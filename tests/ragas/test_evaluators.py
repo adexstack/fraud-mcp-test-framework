@@ -207,3 +207,41 @@ def test_write_ragas_report(tmp_path) -> None:
     write_ragas_report(results, output_path)
 
     assert json.loads(output_path.read_text(encoding="utf-8")) == results
+
+
+def test_ragas_row_uses_tool_evidence_as_retrieved_contexts() -> None:
+    row = evaluators._to_ragas_row(
+        {
+            "user_input": (
+                "Summarise the fraud investigation for transaction TXN-CRIT-001"
+            ),
+            "response": (
+                "The transaction TXN-CRIT-001 was assessed as CRITICAL."
+            ),
+            "retrieved_contexts": [
+                "Transaction TXN-CRIT-001 amount is 25000 GBP.",
+                "Risk assessment score is 95 with signals: high amount, PEP.",
+                "Case CASE-001 status is ESCALATED.",
+            ],
+            "reference": (
+                "The summary should state the transaction risk level, case status, "
+                "and escalation reason without claiming proven fraud."
+            ),
+        }
+    )
+
+    assert row["user_input"] == (
+        "Summarise the fraud investigation for transaction TXN-CRIT-001"
+    )
+    assert row["response"] == (
+        "The transaction TXN-CRIT-001 was assessed as CRITICAL."
+    )
+    assert row["retrieved_contexts"] == [
+        "Transaction TXN-CRIT-001 amount is 25000 GBP.",
+        "Risk assessment score is 95 with signals: high amount, PEP.",
+        "Case CASE-001 status is ESCALATED.",
+    ]
+    assert row["reference"] == (
+        "The summary should state the transaction risk level, case status, "
+        "and escalation reason without claiming proven fraud."
+    )

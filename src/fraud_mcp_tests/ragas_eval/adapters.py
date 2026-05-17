@@ -12,6 +12,7 @@ from typing import TypedDict
 class InvestigationSummarySample(TypedDict, total=False):
     user_input: str
     response: str
+    retrieved_contexts: list[str]
     contexts: list[str]
     reference: str
 
@@ -19,6 +20,7 @@ class InvestigationSummarySample(TypedDict, total=False):
 class PolicyGroundingSample(TypedDict, total=False):
     user_input: str
     response: str
+    retrieved_contexts: list[str]
     contexts: list[str]
     reference: str
 
@@ -41,6 +43,7 @@ def build_investigation_summary_sample(
     sample: InvestigationSummarySample = {
         "user_input": user_input,
         "response": response,
+        "retrieved_contexts": list(contexts),
         "contexts": list(contexts),
     }
     if reference is not None:
@@ -59,6 +62,7 @@ def build_policy_grounding_sample(
     sample: PolicyGroundingSample = {
         "user_input": user_input,
         "response": response,
+        "retrieved_contexts": [policy_context],
         "contexts": [policy_context],
     }
     if reference is not None:
