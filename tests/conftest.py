@@ -85,6 +85,13 @@ def mcp_client(
         yield client
 
 
+@pytest.fixture(scope="session")
+def ragas_config(mcp_config: McpTestConfig) -> McpTestConfig:
+    if not mcp_config.ragas_enabled:
+        pytest.skip("RAGAS_ENABLED is not true")
+    return mcp_config
+
+
 def _load_testdata(filename: str) -> list[dict[str, Any]]:
     data_file = resources.files("fraud_mcp_tests.testdata").joinpath(filename)
     loaded = json.loads(data_file.read_text())

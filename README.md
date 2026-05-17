@@ -27,6 +27,12 @@ MCP_SERVER_URL=https://fraud-mcp-platform.onrender.com/mcp
 MCP_TRANSPORT=streamable-http
 MCP_AUTH_TOKEN=
 MCP_TIMEOUT_SECONDS=30
+RAGAS_ENABLED=false
+RAGAS_MODEL=gpt-4o-mini
+RAGAS_FAITHFULNESS_THRESHOLD=0.80
+RAGAS_RESPONSE_RELEVANCY_THRESHOLD=0.75
+RAGAS_FACTUAL_CORRECTNESS_THRESHOLD=0.75
+AGENT_TOOL_CALL_F1_THRESHOLD=0.90
 ```
 
 The framework defaults to the hosted streamable HTTP Fraud MCP endpoint above.
@@ -51,6 +57,23 @@ uv run pytest -m discovery
 uv run pytest -m contract
 uv run pytest -m governance
 ```
+
+## Optional RAGAS Evaluations
+
+RAGAS tests live under `tests/ragas/` and are marked with `ragas` and
+`llm_eval`. They are optional LLM-as-judge evaluations for answer quality
+signals such as faithfulness, response relevancy, and factual correctness.
+Deterministic pytest checks still own contracts, schemas, workflows, RBAC,
+latency, and regression drift. RAGAS is disabled by default and is not part of
+the default fast regression path.
+
+Enable them explicitly with:
+
+```sh
+RAGAS_ENABLED=true uv run pytest -m ragas
+```
+
+RAGAS outputs should be written under `reports/ragas/`.
 
 ## Regression Baselines
 
@@ -77,12 +100,14 @@ src/fraud_mcp_tests/
   evidence.py
   trace.py
   reporting.py
+  ragas_eval/
   schemas/
     expected_tools.py
     tool_contracts.py
 tests/
   connection/
   contracts/
+  ragas/
 ```
 
 Evidence files are written under `reports/evidence/` during live integration
