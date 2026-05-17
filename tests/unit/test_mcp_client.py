@@ -164,3 +164,66 @@ def test_health_check_returns_false_for_network_error() -> None:
 
     assert client.health_check() is False
     assert client.metadata[0].error == "connection refused"
+
+
+@pytest.mark.connection
+def test_health_check_retries_timeout_before_success() -> None:
+    attempts = 0
+
+    def handler(_request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        if attempts == 1:
+            raise httpx.ReadTimeout("server still waking")
+        return httpx.Response(200, text="ok")
+
+    client = McpClient(
+        McpTestConfig(
+            server_url="http://mcp.example.test/mcp",
+            transport="http",
+            timeout_seconds=1,
+            retry_attempts=2,
+            retry_backoff_seconds=0,
+        ),
+        transport=httpx.MockTransport(handler),
+    )
+
+    assert client.health_check() is True
+    assert attempts == 2
+    assert client.metadata[0].attempts == 2
+
+
+@pytest.mark.connection
+def test_request_retries_transient_timeout_before_success() -> None:
+    attempts = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal attempts
+        attempts += 1
+        if attempts == 1:
+            raise httpx.ReadTimeout("server still waking")
+        body = request.read()
+        assert b'"method":"initialize"' in body
+        return httpx.Response(
+            200,
+            json={
+                "jsonrpc": "2.0",
+                "id": 1,
+                "result": {"serverInfo": {"name": "fraud-mcp"}},
+            },
+        )
+
+    client = McpClient(
+        McpTestConfig(
+            server_url="http://mcp.example.test/mcp",
+            transport="http",
+            timeout_seconds=1,
+            retry_attempts=2,
+            retry_backoff_seconds=0,
+        ),
+        transport=httpx.MockTransport(handler),
+    )
+
+    assert client.initialize() == {"serverInfo": {"name": "fraud-mcp"}}
+    assert attempts == 2
+    assert client.metadata[0].attempts == 2

@@ -13,7 +13,11 @@ from fraud_mcp_tests.ragas_eval.evaluators import (
     evaluate_policy_grounding,
     write_ragas_report,
 )
-from fraud_mcp_tests.ragas_eval.metrics import RagasMetricSpec, load_ragas_metrics
+from fraud_mcp_tests.ragas_eval.metrics import (
+    RagasMetricSpec,
+    load_investigation_summary_metrics,
+    load_policy_grounding_metrics,
+)
 
 
 pytestmark = [pytest.mark.ragas, pytest.mark.llm_eval]
@@ -58,29 +62,17 @@ def test_evaluate_investigation_summary_returns_structured_results(
 ) -> None:
     metric_specs = [
         RagasMetricSpec("faithfulness", object(), 0.80, ("faithfulness",)),
-        RagasMetricSpec(
-            "response_relevancy",
-            object(),
-            0.75,
-            ("response_relevancy", "answer_relevancy"),
-        ),
-        RagasMetricSpec(
-            "factual_correctness",
-            object(),
-            0.75,
-            ("factual_correctness",),
-        ),
     ]
     monkeypatch.setenv("OPENAI_API_KEY", "test-key")
-    monkeypatch.setattr(evaluators, "load_ragas_metrics", lambda config: metric_specs)
+    monkeypatch.setattr(
+        evaluators, "load_investigation_summary_metrics", lambda config: metric_specs
+    )
     monkeypatch.setattr(
         evaluators,
         "_run_ragas_evaluate",
         lambda sample, specs: {
             "faithfulness": 0.91,
             "faithfulness_reason": "Grounded in transaction evidence.",
-            "response_relevancy": 0.74,
-            "factual_correctness": 0.88,
         },
     )
 
@@ -102,18 +94,6 @@ def test_evaluate_investigation_summary_returns_structured_results(
             "passed": True,
             "reason": "Grounded in transaction evidence.",
         },
-        {
-            "metric_name": "response_relevancy",
-            "score": 0.74,
-            "threshold": 0.75,
-            "passed": False,
-        },
-        {
-            "metric_name": "factual_correctness",
-            "score": 0.88,
-            "threshold": 0.75,
-            "passed": True,
-        },
     ]
 
 
@@ -124,7 +104,9 @@ def test_evaluate_policy_grounding_uses_same_ragas_result_shape(
         RagasMetricSpec("faithfulness", object(), 0.80, ("faithfulness",)),
     ]
     monkeypatch.setenv("OPENAI_API_KEY", "test-key")
-    monkeypatch.setattr(evaluators, "load_ragas_metrics", lambda config: metric_specs)
+    monkeypatch.setattr(
+        evaluators, "load_policy_grounding_metrics", lambda config: metric_specs
+    )
     monkeypatch.setattr(
         evaluators,
         "_run_ragas_evaluate",
@@ -150,46 +132,41 @@ def test_evaluate_policy_grounding_uses_same_ragas_result_shape(
     ]
 
 
-def test_load_ragas_metrics_uses_available_metric_names(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    class FactualCorrectness:
-        pass
-
-    metrics_module = ModuleType("ragas.metrics")
-    metrics_module.faithfulness = object()
-    metrics_module.answer_relevancy = object()
-    metrics_module.FactualCorrectness = FactualCorrectness
-    monkeypatch.setitem(sys.modules, "ragas.metrics", metrics_module)
-
-    metric_specs = load_ragas_metrics(_enabled_config())
-
-    assert [metric_spec.metric_name for metric_spec in metric_specs] == [
-        "faithfulness",
-        "response_relevancy",
-        "factual_correctness",
-    ]
-    assert [metric_spec.threshold for metric_spec in metric_specs] == [
-        0.80,
-        0.75,
-        0.75,
-    ]
-
-
-def test_load_ragas_metrics_omits_unavailable_factual_correctness(
+def test_load_investigation_summary_metrics_returns_faithfulness(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     metrics_module = ModuleType("ragas.metrics")
     metrics_module.faithfulness = object()
-    metrics_module.response_relevancy = object()
     monkeypatch.setitem(sys.modules, "ragas.metrics", metrics_module)
 
-    metric_specs = load_ragas_metrics(_enabled_config())
+    metric_specs = load_investigation_summary_metrics(_enabled_config())
 
-    assert [metric_spec.metric_name for metric_spec in metric_specs] == [
-        "faithfulness",
-        "response_relevancy",
-    ]
+    assert [m.metric_name for m in metric_specs] == ["faithfulness"]
+    assert [m.threshold for m in metric_specs] == [0.80]
+
+
+def test_load_investigation_summary_metrics_returns_empty_when_faithfulness_unavailable(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    metrics_module = ModuleType("ragas.metrics")
+    monkeypatch.setitem(sys.modules, "ragas.metrics", metrics_module)
+
+    metric_specs = load_investigation_summary_metrics(_enabled_config())
+
+    assert metric_specs == []
+
+
+def test_load_policy_grounding_metrics_returns_faithfulness(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    metrics_module = ModuleType("ragas.metrics")
+    metrics_module.faithfulness = object()
+    monkeypatch.setitem(sys.modules, "ragas.metrics", metrics_module)
+
+    metric_specs = load_policy_grounding_metrics(_enabled_config())
+
+    assert [m.metric_name for m in metric_specs] == ["faithfulness"]
+    assert [m.threshold for m in metric_specs] == [0.80]
 
 
 def test_write_ragas_report(tmp_path) -> None:

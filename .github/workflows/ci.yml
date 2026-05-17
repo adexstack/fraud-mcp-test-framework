@@ -94,6 +94,13 @@ jobs:
       MCP_TRANSPORT: ${{ vars.MCP_TRANSPORT || 'streamable-http' }}
       MCP_AUTH_TOKEN: ${{ secrets.MCP_AUTH_TOKEN }}
       MCP_TIMEOUT_SECONDS: ${{ vars.MCP_TIMEOUT_SECONDS || '30' }}
+      # RAGAS LLM-as-judge — tests self-skip when OPENAI_API_KEY is absent or RAGAS_ENABLED is false
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      RAGAS_ENABLED: ${{ vars.RAGAS_ENABLED || 'false' }}
+      RAGAS_MODEL: ${{ vars.RAGAS_MODEL || 'gpt-4o-mini' }}
+      RAGAS_FAITHFULNESS_THRESHOLD: ${{ vars.RAGAS_FAITHFULNESS_THRESHOLD || '0.80' }}
+      RAGAS_RESPONSE_RELEVANCY_THRESHOLD: ${{ vars.RAGAS_RESPONSE_RELEVANCY_THRESHOLD || '0.75' }}
+      RAGAS_FACTUAL_CORRECTNESS_THRESHOLD: ${{ vars.RAGAS_FACTUAL_CORRECTNESS_THRESHOLD || '0.75' }}
 
     steps:
       - name: Checkout

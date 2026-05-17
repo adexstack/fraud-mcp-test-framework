@@ -20,63 +20,32 @@ class RagasMetricSpec:
     score_keys: tuple[str, ...]
 
 
-def load_ragas_metrics(config: McpTestConfig) -> list[RagasMetricSpec]:
-    """Load supported RAGAS metrics from the installed RAGAS version."""
+def load_investigation_summary_metrics(config: McpTestConfig) -> list[RagasMetricSpec]:
+    """Faithfulness only: checks the summary is grounded in evidence contexts."""
+    return _load_faithfulness_metric(config)
 
+
+def load_policy_grounding_metrics(config: McpTestConfig) -> list[RagasMetricSpec]:
+    """Faithfulness only: checks the summary is grounded in policy + data contexts."""
+    return _load_faithfulness_metric(config)
+
+
+def _load_faithfulness_metric(config: McpTestConfig) -> list[RagasMetricSpec]:
     metrics_module = importlib.import_module("ragas.metrics")
-    metric_specs: list[RagasMetricSpec] = []
-
     faithfulness = _first_available_metric(
         metrics_module,
         ("faithfulness", "Faithfulness"),
     )
-    if faithfulness is not None:
-        metric_specs.append(
-            RagasMetricSpec(
-                metric_name="faithfulness",
-                metric=faithfulness,
-                threshold=config.ragas_faithfulness_threshold,
-                score_keys=("faithfulness",),
-            )
+    if faithfulness is None:
+        return []
+    return [
+        RagasMetricSpec(
+            metric_name="faithfulness",
+            metric=faithfulness,
+            threshold=config.ragas_faithfulness_threshold,
+            score_keys=("faithfulness",),
         )
-
-    response_relevancy = _first_available_metric(
-        metrics_module,
-        (
-            "response_relevancy",
-            "answer_relevancy",
-            "ResponseRelevancy",
-            "AnswerRelevancy",
-        ),
-    )
-    if response_relevancy is not None:
-        metric_specs.append(
-            RagasMetricSpec(
-                metric_name="response_relevancy",
-                metric=response_relevancy,
-                threshold=config.ragas_response_relevancy_threshold,
-                score_keys=("response_relevancy", "answer_relevancy"),
-            )
-        )
-
-    factual_correctness = _first_available_metric(
-        metrics_module,
-        (
-            "factual_correctness",
-            "FactualCorrectness",
-        ),
-    )
-    if factual_correctness is not None:
-        metric_specs.append(
-            RagasMetricSpec(
-                metric_name="factual_correctness",
-                metric=factual_correctness,
-                threshold=config.ragas_factual_correctness_threshold,
-                score_keys=("factual_correctness",),
-            )
-        )
-
-    return metric_specs
+    ]
 
 
 def _first_available_metric(

@@ -11,7 +11,11 @@ from typing import Any, TypedDict
 import pytest
 
 from fraud_mcp_tests.config import McpTestConfig, load_config
-from fraud_mcp_tests.ragas_eval.metrics import RagasMetricSpec, load_ragas_metrics
+from fraud_mcp_tests.ragas_eval.metrics import (
+    RagasMetricSpec,
+    load_investigation_summary_metrics,
+    load_policy_grounding_metrics,
+)
 
 
 class RagasEvaluationResult(TypedDict, total=False):
@@ -29,7 +33,9 @@ def evaluate_investigation_summary(
     """Evaluate an investigation summary sample with available RAGAS metrics."""
 
     resolved_config = _require_ragas_runtime(config)
-    metric_specs = _load_supported_metrics(resolved_config)
+    metric_specs = _load_supported_metrics(
+        resolved_config, load_investigation_summary_metrics
+    )
     return _evaluate_sample_with_ragas(sample, metric_specs)
 
 
@@ -40,7 +46,9 @@ def evaluate_policy_grounding(
     """Evaluate a policy-grounding sample with available RAGAS metrics."""
 
     resolved_config = _require_ragas_runtime(config)
-    metric_specs = _load_supported_metrics(resolved_config)
+    metric_specs = _load_supported_metrics(
+        resolved_config, load_policy_grounding_metrics
+    )
     return _evaluate_sample_with_ragas(sample, metric_specs)
 
 
@@ -69,9 +77,12 @@ def _require_ragas_runtime(config: McpTestConfig | None = None) -> McpTestConfig
     return resolved_config
 
 
-def _load_supported_metrics(config: McpTestConfig) -> list[RagasMetricSpec]:
+def _load_supported_metrics(
+    config: McpTestConfig,
+    loader: Any,
+) -> list[RagasMetricSpec]:
     try:
-        metric_specs = load_ragas_metrics(config)
+        metric_specs = loader(config)
     except ImportError:
         pytest.skip("RAGAS is not installed")
 

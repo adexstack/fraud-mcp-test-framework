@@ -7,7 +7,7 @@ import json
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from time import perf_counter
+from time import perf_counter, sleep
 from typing import Any
 from uuid import uuid4
 
@@ -37,6 +37,7 @@ class RequestResponseMetadata:
     latency_ms: float
     timestamp: str
     error: str | None = None
+    attempts: int = 1
 
 
 @dataclass(frozen=True)
@@ -92,14 +93,18 @@ class McpClient:
         response_body: JsonObject | None = None
         status_code: int | None = None
         error: str | None = None
+        attempts = 1
 
         try:
-            response = self._client.get("")
+            response = self._get_with_retries()
+            attempts = getattr(response, "_fraud_mcp_attempts", 1)
             status_code = response.status_code
             response_body = {"text": response.text[:500]}
             return response.status_code < 500
         except httpx.RequestError as exc:
             error = str(exc)
+            if isinstance(exc, httpx.TimeoutException):
+                attempts = self._config.retry_attempts
             return False
         finally:
             latency_ms = self._elapsed_ms(started)
@@ -112,6 +117,7 @@ class McpClient:
                 latency_ms=latency_ms,
                 timestamp=timestamp,
                 error=error,
+                attempts=attempts,
             )
             if self._trace_recorder:
                 self._trace_recorder.record_rpc(
@@ -213,13 +219,11 @@ class McpClient:
         response_body: JsonObject | None = None
         status_code: int | None = None
         error: str | None = None
+        attempts = 1
 
         try:
-            response = self._client.post(
-                "",
-                json=payload,
-                headers=self._request_headers(trace_id),
-            )
+            response = self._post_with_retries(payload, trace_id)
+            attempts = getattr(response, "_fraud_mcp_attempts", 1)
             status_code = response.status_code
             response.raise_for_status()
             self._capture_session_id(response)
@@ -241,6 +245,8 @@ class McpClient:
             return result
         except Exception as exc:
             error = str(exc)
+            if isinstance(exc, httpx.TimeoutException):
+                attempts = self._config.retry_attempts
             raise
         finally:
             latency_ms = self._elapsed_ms(started)
@@ -253,6 +259,7 @@ class McpClient:
                 latency_ms=latency_ms,
                 timestamp=timestamp,
                 error=error,
+                attempts=attempts,
             )
             if self._trace_recorder:
                 self._trace_recorder.record_rpc(
@@ -283,6 +290,63 @@ class McpClient:
         if self._session_id:
             headers["Mcp-Session-Id"] = self._session_id
         return headers
+
+    def _get_with_retries(self) -> httpx.Response:
+        last_exc: httpx.TimeoutException | None = None
+        for attempt in range(1, self._config.retry_attempts + 1):
+            try:
+                response = self._client.get("")
+                response._fraud_mcp_attempts = attempt  # type: ignore[attr-defined]
+                if self._is_retryable_status(response.status_code):
+                    last_exc = None
+                    if attempt < self._config.retry_attempts:
+                        self._sleep_before_retry(attempt)
+                        continue
+                return response
+            except httpx.TimeoutException as exc:
+                last_exc = exc
+                if attempt >= self._config.retry_attempts:
+                    raise
+                self._sleep_before_retry(attempt)
+        assert last_exc is not None
+        raise last_exc
+
+    def _post_with_retries(self, payload: JsonObject, trace_id: str) -> httpx.Response:
+        last_exc: httpx.TimeoutException | httpx.HTTPStatusError | None = None
+        for attempt in range(1, self._config.retry_attempts + 1):
+            try:
+                response = self._client.post(
+                    "",
+                    json=payload,
+                    headers=self._request_headers(trace_id),
+                )
+                response._fraud_mcp_attempts = attempt  # type: ignore[attr-defined]
+                if self._is_retryable_status(response.status_code):
+                    last_exc = httpx.HTTPStatusError(
+                        f"Transient HTTP {response.status_code}",
+                        request=response.request,
+                        response=response,
+                    )
+                    if attempt < self._config.retry_attempts:
+                        self._sleep_before_retry(attempt)
+                        continue
+                return response
+            except httpx.TimeoutException as exc:
+                last_exc = exc
+                if attempt >= self._config.retry_attempts:
+                    raise
+                self._sleep_before_retry(attempt)
+        assert last_exc is not None
+        raise last_exc
+
+    def _sleep_before_retry(self, attempt: int) -> None:
+        if self._config.retry_backoff_seconds <= 0:
+            return
+        sleep(self._config.retry_backoff_seconds * attempt)
+
+    @staticmethod
+    def _is_retryable_status(status_code: int) -> bool:
+        return status_code in {502, 503, 504}
 
     def _capture_session_id(self, response: httpx.Response) -> None:
         session_id = response.headers.get("mcp-session-id")
@@ -317,6 +381,7 @@ class McpClient:
         latency_ms: float,
         timestamp: str,
         error: str | None = None,
+        attempts: int = 1,
     ) -> RequestResponseMetadata:
         metadata = RequestResponseMetadata(
             trace_id=trace_id,
@@ -328,6 +393,7 @@ class McpClient:
             latency_ms=latency_ms,
             timestamp=timestamp,
             error=error,
+            attempts=attempts,
         )
         self.metadata.append(metadata)
         return metadata

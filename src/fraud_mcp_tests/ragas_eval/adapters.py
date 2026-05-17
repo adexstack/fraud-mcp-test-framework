@@ -55,15 +55,22 @@ def build_policy_grounding_sample(
     user_input: str,
     response: str,
     policy_context: str,
+    data_contexts: list[str] | None = None,
     reference: str | None = None,
 ) -> PolicyGroundingSample:
-    """Build a sample for evaluating response grounding against policy text."""
+    """Build a sample for evaluating response grounding against policy text.
 
+    Pass ``data_contexts`` (e.g. serialised risk assessment, case details) so
+    that the faithfulness metric has the actual source material the summary was
+    drawn from, in addition to the policy rules.
+    """
+
+    contexts = [policy_context] + list(data_contexts or [])
     sample: PolicyGroundingSample = {
         "user_input": user_input,
         "response": response,
-        "retrieved_contexts": [policy_context],
-        "contexts": [policy_context],
+        "retrieved_contexts": contexts,
+        "contexts": contexts,
     }
     if reference is not None:
         sample["reference"] = reference

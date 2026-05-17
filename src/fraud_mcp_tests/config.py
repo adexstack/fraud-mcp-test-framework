@@ -25,6 +25,8 @@ class McpTestConfig:
     transport: str = DEFAULT_MCP_TRANSPORT
     auth_token: str | None = None
     timeout_seconds: float = 30.0
+    retry_attempts: int = 3
+    retry_backoff_seconds: float = 1.0
     ragas_enabled: bool = False
     ragas_model: str = DEFAULT_RAGAS_MODEL
     ragas_faithfulness_threshold: float = 0.80
@@ -61,6 +63,15 @@ def load_config(environ: Mapping[str, str] | None = None) -> McpTestConfig:
 
     if timeout_seconds <= 0:
         raise ValueError("MCP_TIMEOUT_SECONDS must be greater than zero")
+    retry_attempts = _parse_int(env.get("MCP_RETRY_ATTEMPTS", "3"), "MCP_RETRY_ATTEMPTS")
+    if retry_attempts <= 0:
+        raise ValueError("MCP_RETRY_ATTEMPTS must be greater than zero")
+    retry_backoff_seconds = _parse_float(
+        env.get("MCP_RETRY_BACKOFF_SECONDS", "1"),
+        "MCP_RETRY_BACKOFF_SECONDS",
+    )
+    if retry_backoff_seconds < 0:
+        raise ValueError("MCP_RETRY_BACKOFF_SECONDS must be zero or greater")
 
     server_url = env.get("MCP_SERVER_URL", DEFAULT_MCP_SERVER_URL)
     auth_token = env.get("MCP_AUTH_TOKEN")
@@ -71,6 +82,8 @@ def load_config(environ: Mapping[str, str] | None = None) -> McpTestConfig:
         transport=transport,
         auth_token=auth_token.strip() if auth_token else None,
         timeout_seconds=timeout_seconds,
+        retry_attempts=retry_attempts,
+        retry_backoff_seconds=retry_backoff_seconds,
         ragas_enabled=_parse_bool(env.get("RAGAS_ENABLED", "false"), "RAGAS_ENABLED"),
         ragas_model=ragas_model.strip() if ragas_model else DEFAULT_RAGAS_MODEL,
         ragas_faithfulness_threshold=_parse_threshold(
@@ -110,6 +123,13 @@ def _parse_float(raw: str, name: str) -> float:
         return float(raw)
     except ValueError as exc:
         raise ValueError(f"{name} must be a number") from exc
+
+
+def _parse_int(raw: str, name: str) -> int:
+    try:
+        return int(raw)
+    except ValueError as exc:
+        raise ValueError(f"{name} must be an integer") from exc
 
 
 def _parse_threshold(raw: str, name: str) -> float:

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 from typing import Any
@@ -114,7 +115,7 @@ def test_policy_grounding_ragas_evaluation(
         tool_name="escalate_case",
         arguments={"case_id": case_id, "reason": escalation_reason},
     )
-    require_ok(escalation_step)
+    escalation_details = require_ok(escalation_step)
 
     summary_step = call_workflow_tool(
         mcp_client,
@@ -142,6 +143,12 @@ def test_policy_grounding_ragas_evaluation(
         user_input=user_input,
         response=response,
         policy_context=fraud_investigation_policy_context,
+        data_contexts=[
+            json.dumps(risk_assessment, sort_keys=True, default=str),
+            json.dumps(case_details, sort_keys=True, default=str),
+            json.dumps(escalation_details, sort_keys=True, default=str),
+            json.dumps(investigation_summary, sort_keys=True, default=str),
+        ],
         reference=(
             "The summary should use observational risk language, may recommend "
             "analyst review or escalation, and must avoid final fraud, criminal, "
